@@ -56,7 +56,7 @@ informative:
 
 --- abstract
 
-This architecture document defines terminology, interaction, and authentication patterns, for DANE client and messaging peer identity, within the context of existing object security and TLS-based protocols.
+This architecture document defines terminology, interaction, and authentication patterns, related to the use of DANE DNS records for TLS client and messaging peer identity, within the context of existing object security and TLS-based protocols.
 
 --- middle
 
@@ -124,7 +124,37 @@ Within many existing store-and-forward protocols, certificates may be transmitte
 
 ## Mutual TLS Authentication
 
-### Device to cloud
+Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-unauthenticated client the ability to trigger a DNS lookup on the server side of the TLS connection. An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups. For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers. This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server. 
+
+#### Example 1: TLS authentication for HTTPS API interaction, DANE preauthorization
+
+- The client initiates a TLS connection to the server.
+- The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.
+- If the dane_clientid is allowed, the TLS server then performs a DNS lookup for the client's TLSA record. If the dane_clientid is not allowed, authentication fails.
+- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.
+
+This pattern has the following advantages:
+
+- This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.
+- No traffic reaches the application behind the load balancer unless DANE client authentication is successful.
+
+#### Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application
+
+- The client initiates a TLS connection to the server.
+- The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.
+- The TLS server passes the certificate to the web application in (TBD) header field.
+- The HTTP request body contains the dane_clientid, and is passed to the web application.
+- The web application compares the dane_clientid to a list of allowed clients or client domains.
+- If the dane_clientid is allowed, the web application makes the DNS query for the TLSA records for dane_clientid
+- If the presented certificate (which was authenticated by the TLS server) matches at least one TLSA record for dane_clientid, authentication succeeds.
+
+This pattern has the following advantages:
+
+- In a web application where a TLS-terminating load balancer sits in front of a web application, the authentication logic in the load balancer remains simple. 
+- The web application ultimately decides whether to make the DNS query to support DANE authentication. This allows the web application to reject clients with identifiers which are not allowed, before making a DNS query for TLSA retrieval and comparison. No need to manage an allow-list in the load balancer.
+- This can be implemented with no changes to the TLS handshake.
+
+### IoT: Device to cloud
 
 Direct device-to-cloud communication is common in simple IoT applications. Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates. Client certificate authentication frequently requires the consumer to maintain a CA. The CA trust anchor certificate is installed into the cloud application, and used in the TLS authentication process.
 
