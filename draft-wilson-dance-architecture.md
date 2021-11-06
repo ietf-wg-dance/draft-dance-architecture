@@ -182,6 +182,8 @@ By using DNS as a shared root of trust SIP and WebRTC end points can anchor the 
 
 ### SMTP, STARTTLS
 
+### SSH client
+
 ### Network Access
 
 #### EAP-TLS with RADIUS
@@ -228,7 +230,7 @@ DNS clients should use DNS over TLS with trusted DNS resolvers to protect the id
 
 ## Integrity
 
-The integrity of public keys represented in DNS is most important. An altered public key can enable device impersonation, and the denial of existence for a valid identity can cause devices to become un-trusted by the network or the application. DNS records should be validated by the DNS client, using the DNSSEC protocol.
+The integrity of public keys represented in DNS is most important. An altered public key can enable device impersonation, and the denial of existence for a valid identity can cause devices to become un-trusted by the network or the application. DNS records should be validated by the DNS stub resolver, using the DNSSEC protocol.
 
 Compartmentalizing failure domains within an application is a well-known architectural best practice. Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities. This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.
 
