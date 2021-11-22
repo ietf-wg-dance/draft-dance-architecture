@@ -238,6 +238,14 @@ The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huq
 
 ## Availability
 
+## Privacy
+
+If the name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
+When creating the name of the RR, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered. The name of the RR may note have to have a direct relation to the name of the subject
+of the certificate.
+
+Further work has do be done in this area.
+
 ### DNS Scalability
 
 In the use case for IoT an implementation must be scalable to a large amount of devices. In many cases, identities may also be very short lived as revocation is performed by simply removing a DNS record. A zone will have to manage a large amount of changes as devices are constantly added and de-activated.
