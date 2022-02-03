@@ -244,7 +244,7 @@ If the name of the identity proven by a certificate is directly or indirectly re
 When creating the name of the RR, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered. The name of the RR may note have to have a direct relation to the name of the subject
 of the certificate.
 
-Further work has do be done in this area. 
+Further work has do be done in this area.
 
 AW: Consider if an approach like the email local-part hashing used in SMIMEA <https://datatracker.ietf.org/doc/html/rfc8162> might work for this. If the identifier/local-part is hashed and the certificate association is a SHA256 or SHA512 hash, the effort required to walk a zone would not produce much useful information.
 
