@@ -1,17 +1,16 @@
 # An Architecture for DNS-Bound Client and Sender Identities
 
-This is the working area for the individual Internet-Draft, "An Architecture for DNS-Bound Client and Sender Identities".
+This is the working area for the IETF DANCE wg Internet-Draft, "An Architecture for DNS-Bound Client and Sender Identities".
 
-* [Editor's Copy](https://ashdwilson.github.io/draft-dance-architecture/#go.draft-wilson-dance-architecture.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-wilson-dance-architecture)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-wilson-dance-architecture)
-* [Compare Editor's Copy to Individual Draft](https://ashdwilson.github.io/draft-dance-architecture/#go.draft-wilson-dance-architecture.diff)
+* [IETF WG pages](https://datatracker.ietf.org/wg/dance/about/)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-dance-architecture)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-dance-architecture)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/ashdwilson/draft-dance-architecture/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ietf-wg-dance/draft-dance-architecture/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
