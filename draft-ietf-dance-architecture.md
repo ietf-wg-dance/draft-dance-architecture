@@ -24,7 +24,7 @@
 #
 title: "An Architecture for DNS-Bound Client and Sender Identities"
 abbrev: "DNS-Bound Identities Architecture"
-docname: draft-wilson-dance-architecture-latest
+docname: draft-ietf-dance-architecture-latest
 category: info
 
 ipr: trust200902
@@ -49,6 +49,10 @@ author:
     name: Olle Johansson
     organization: Edvina.net
     email: oej@edvina.net
+ -
+    name: Michael Richardson
+    organization: Sandelman Software Works Inc
+    email: mcr+ietf@sandelman.ca
 
 normative:
 
@@ -150,7 +154,7 @@ This pattern has the following advantages:
 
 This pattern has the following advantages:
 
-- In a web application where a TLS-terminating load balancer sits in front of a web application, the authentication logic in the load balancer remains simple. 
+- In a web application where a TLS-terminating load balancer sits in front of a web application, the authentication logic in the load balancer remains simple.
 - The web application ultimately decides whether to make the DNS query to support DANE authentication. This allows the web application to reject clients with identifiers which are not allowed, before making a DNS query for TLSA retrieval and comparison. No need to manage an allow-list in the load balancer.
 - This can be implemented with no changes to the TLS handshake.
 
