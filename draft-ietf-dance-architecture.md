@@ -24,7 +24,7 @@
 #
 title: "An Architecture for DNS-Bound Client and Sender Identities"
 abbrev: "DNS-Bound Identities Architecture"
-docname: draft-wilson-dance-architecture-latest
+docname: draft-ietf-dance-architecture-latest
 category: info
 
 ipr: trust200902
