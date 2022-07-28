@@ -49,6 +49,10 @@ author:
     name: Olle Johansson
     organization: Edvina.net
     email: oej@edvina.net
+ -
+    name: Michael Richardson
+    organization: Sandelman Software Works Inc
+    email: mcr+ietf@sandelman.ca
 
 normative:
 
