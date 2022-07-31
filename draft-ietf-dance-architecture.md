@@ -210,6 +210,17 @@ The RADIUS protocol has a few recognized security problems. [https://datatracker
 
 **We should ask S. if he wants to contribute to this section**
 
+LoRaWAN is an asymmetric protocol with a star topology. Data transmitted by the IoT ED (End-Device) is received by a Radio Gateway (RG), which relays it to a Network Server (NS). The NS decides on further processing the incoming data based on the ED’s unique identifier (DevEUI). The NS has multiple responsibilities like forwarding the uplink from the ED to the Application Server (AS), queuing the downlink from the AS to the ED, forwarding the ED onboarding request to the appropriate AA (Authentication & Authorisation) servers, named as Join Server (JS) in LoRaWAN terminology. While the ED is connected to the RG via LoRa modulated RF messages, the connection between the RG, the NS and the AS is done through IP traffic and can be backhauled via Wi-Fi, hardwired Ethernet or Cellular connection.
+
+The backend network elements (i.e. the RG, NS, the JS and the AS) operating in the IP space (IP enabled communication) needs to do mutual authentication for the IoT ED onboarding. For mutual authentication, commercial CA solutions are not operationally feasible in the LoRaWAN scenario since the backend network elements network stack doesn't have a certificate store containing hundreds of Root CA certificates like in the web based PKIX clients (i.e. the browsers). Even if we assume the infrastructure can de implemented, the commercial digital certificates come at a cost, which is not viable for most IoT services. A viable solution to resolve the operational and cost issue is to use Self-Signed certificates.
+
+Self-signed certificates are possible when the certificate provisioning infrastructure generating intermediate and leaf certificates for the servers are derived from a single root CA. This approach also fails from an operational feasibility perspective as number of stakeholders in LoRaWAN are not willing to be restricted to a single CA.
+
+The two Internet drafts [https://www.ietf.org/archive/id/draft-huque-dane-client-cert-08.txt] and [https://www.ietf.org/archive/id/draft-huque-tls-dane-clientid-06.txt], enables the possibility to resolve the single root CA issue. For this to work, the TLS Client and the server should have a signed DNS TLSA record published in the DNS zone corresponding to its DNS name and X.509 certificate or public key.
+
+During the TLS handshake, the server requests a client certificate (via the "Client Certificate Request" message). The server then extracts the DANE client identity, constructs the DNS query name for the corresponding TLSA record and authenticates the client's certificate or public key. Thus, during mutual authentication between the backend network elements in LoRaWAN, both the client and the server could be mutually authenticated.
+
+DANE-based mutual authentication enables using self-signed certificate derived from different Root CA's to be authenticated. Thus, organisations can choose its Root CA to sign the certificates and validate dynamically based on DANE client identity.
 ## Object Security
 
 ### Structured data messages: JOSE/COSE
