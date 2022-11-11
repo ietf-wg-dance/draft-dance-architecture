@@ -75,9 +75,13 @@ A first-class identity is an application-independent identity.
 
 {::boilerplate bcp14-tagged}
 
+<<<<<<< HEAD
 **This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.**
 
 **How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
+=======
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed by the same party or organization. A manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances, a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
+>>>>>>> 1790bb8 (Adding issue id's in text, small clean up)
 
 **DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE, usually through a _How to Dance with_ document.
 
@@ -126,8 +130,12 @@ This reduces the complexity of managing the CA certificate collection, and mitig
 
 ## Peer2peer
 
+<<<<<<< HEAD
 The extension also allows an application to find an application identity and set up a secure communication channel directly.
 This pattern can be used in mesh networking, IoT and in many communication protocols for multimedia sessions, chat and messaging.
+=======
+The extension also allows an application to find another application identity and set up a secure communication channel directly. This pattern can be used in mesh networking, IoT and in many communication protocols for multimedia sessions, chat and messaging.
+>>>>>>> 1790bb8 (Adding issue id's in text, small clean up)
 
 ## Decoupled
 
@@ -143,9 +151,11 @@ Within IoT applications, we find that networks may be more constrained.
 Including certificates in message payloads can present an unnecessary overhead on constrained network links.
 Decoupled applications benefit from an out-of-band public key discovery mechanism, which may enable the retrieval of certificates only when needed, and sometimes using a less expensive network connection.
 
-# Use Cases
+# Client authentication
 
-## Mutual TLS Authentication
+## Overview
+
+The client sets up a TLS connection to a server, attaches a client certificate with a subject alt name DNSname indicating the name of the client. In the TLS connection a DANCE flag is used telling the server to use the certificate DNS name to find a DANE record including the public key of the certificate to be able to validate. If the server trusts DNSsec, the server can validate the certificate and complete the TLS connection setup.
 
 Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
@@ -194,10 +204,6 @@ Using DANE for device identity can allow parties other than the implementer to o
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
-### Oauth2
-
-[This can be a broad topic. Should we include, or wait until a re-chartering to update?]
-
 ### Edge Computing
 
 [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01](Edge Computing) may require devices to mutually authenticate in the field.
@@ -217,19 +223,28 @@ For WebRTC the application developer needs to define the name space and mapping 
 By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
 In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.
 
-[https://datatracker.ietf.org/doc/html/draft-johansson-sipcore-dane-sip]
+[https://datatracker.ietf.org/doc/html/draft-johansson-sipcore-dane-sip](SIPDANE)
 
-**NOTE: include reference to earlier drafts for SIP + DANE**
 
 ### DNS over TLS client authentication
 
+Issue #7
+
 ### SMTP, STARTTLS
+
+Issue #8
 
 ### SSH client
 
+Issue #9
+
 ### Network Access
 
+Issue #11
+
 #### EAP-TLS with RADIUS
+
+Issue #10
 
 ##### Terminology
 
@@ -261,9 +276,11 @@ The benefit for this use case is that a hosted RADIUS service may mutually authe
 
 ### LoRaWAN
 
-**We should ask S. if he wants to contribute to this section**
+Issue #12
 
 ## Object Security
+
+Issue #13
 
 ### Structured data messages: JOSE/COSE
 
@@ -272,11 +289,13 @@ JOSE and COSE provide formats for exchanging authenticated and encrypted structu
 However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
-In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS. 
+In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
 (Open Issue #22, about {{RFC4501}})
 
 
 ## Operational anomaly reporting
+
+Issue #14
 
 ### MUD reporting for improper provisioning
 
