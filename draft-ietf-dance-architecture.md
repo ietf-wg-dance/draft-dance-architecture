@@ -324,8 +324,24 @@ If the DNS infrastructure hosting client identities becomes unavailable, then th
 
 ### Change of ownership
 
-What happens if an organization owning the client identity goes out of business?
-What’s the best way to transfer an identifier to another zone? <note: there may be an opportunity here to take advantage of EST, or another protocol supporting certificate renewal, to allow client devices to rotate to another zone>
+One of the significant use cases is where the devices are identified by their manufacturer assigned identities.
+A significant savings was that enterprises would not have to run their own (private) PKI systems, sometimes even one system per device type.
+But, with this usage style for DANCE there is no private PKI to run, and as a result there is no change of ownership required.
+The device continues to use the manufacturer assigned identity.
+
+The device OwnerOperator is therefore at risk if the device's manufacturer goes out of business, or decides that they no longer wish to manufacturer that device.
+Should that happen then the OwnerOperator of the device may be in trouble, and may find themselves having to replace the devices.
+
+{{?RFC8995, Section 10.4}} (BRSKI) deals with concerns about manufacturers influence on devices.
+In the case of BRSKI, the concern was limited to when the device ownership transfer was performed (the BRSKI transaction itself).
+There was no concern once the OwnerOperator had taken control over the device through an {{?RFC8366}} voucher.
+
+In the case of DANCE, the manufacturer is continuously involved with the day to day operation of the device.
+
+If this is of concern, then the OwnerOperator should perform some kind of transfer of ownership, such as using DPP, {{?RFC8995}}(BRSKI), {{?RFC9140}}(EAP-NOOB), and others yet to come.
+
+The DANCE method of using manufacturer assigned identities would therefore seem to be best used for devices which have a short lifetime: one much smaller than the uncertainty about the anticipated lifespan of the manufacturer.
+For instance, some kind of battery operated sensor which might be used in a large quantity at a construction site, and which can not be recharged.
 
 # IANA Considerations
 
