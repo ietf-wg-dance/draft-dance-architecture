@@ -306,7 +306,9 @@ There is therefore a tension between resilience (higher TTL values), and agility
 A lower TTL value allows for revocation or replacement of a key to become known much faster.
 This allows for a more agile security posture.
 
-On the other hand, lower TTLs cause the queries to occur more often, which reveals more information to an observer about which devices are active.
+On the other hand, lower TTLs cause the queries to occur more often, which may reveal more information to an observer about which devices are active.
+Encrypted transports like DoT/DoH/DoQ make these queries far less visible.
+In addition to the on-path observer being able to see more, the resolver logs also may be a source of information.
 It also allows for more opportunities for an attacker to affect the response time of the queries.
 
 ## Privacy
