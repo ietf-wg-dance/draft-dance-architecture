@@ -267,8 +267,14 @@ The benefit for this use case is that a hosted RADIUS service may mutually authe
 
 ### Structured data messages: JOSE/COSE
 
-JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in [https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5](RFC7515), and COSE defines a field of the same name in [https://datatracker.ietf.org/doc/html/draft-ietf-cose-x509-08#section-2](draft-ietf-cose-x509) which can be used for out-of-band x.509 certificate discovery.
-By adopting DANE for out-of-band certificate discovery, CBOR and JSON data may be authenticated, even if the originating sending agent not have IP connectivity, provided that the sending agent's certificate is discoverable in DNS and the receiving agent has access to DNS.
+JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{I-D.ietf-cose-x509, Section 2}}.
+
+However, this URL field points to where the key can be found.
+There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
+
+In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS. 
+(Open Issue #22, about {{RFC4501}})
+
 
 ## Operational anomaly reporting
 
