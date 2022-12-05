@@ -268,7 +268,8 @@ JOSE and COSE provide formats for exchanging authenticated and encrypted structu
 However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
-In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
+In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS. 
+(Open Issue #22, about {{RFC4501}})
 
 
 ## Operational anomaly reporting
