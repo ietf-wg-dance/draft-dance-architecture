@@ -259,6 +259,16 @@ The benefit for this use case is that a hosted RADIUS service may mutually authe
 
 **We should ask S. if he wants to contribute to this section**
 
+LoRaWAN is an asymmetric protocol with a star topology. Data transmitted by the IoT end-device 
+is received by a Gateway, which relays it to a "network server". While the end-device is connected to the gateway via LoRa modulated RF messages, the connection between the Gateway, the network and the AA (Authentication & Authorisation) servers are done through IP traffic and can be backhauled via Wi-Fi, hardwired Ethernet or Cellular connection.
+
+For the end-device onboarding in LoRaWAN, the network server and the AA server needs to establish mutual trust in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store. Self-signed certificate mutual-TLS authentication method is the alternative solution. 
+
+The issue with self-signed certificate method is that the client or the server digital certificate is not part of a PKI (Public Key Infrastructure). The two Internet drafts [https://www.ietf.org/archive/id/draft-huque-dane-client-cert-08.txt] and [https://www.ietf.org/archive/id/draft-huque-tls-dane-clientid-06.txt], enables the possibility of using DNS as the PKI. 
+
+
+The TLS Client and the server provisions a signed DNS TLSA record published in the DNS zone corresponding to its DNS name and X.509 certificate or public key. During the TLS handshake, the server requests a client certificate (via the "Client Certificate Request" message). The server then extracts the DANE client identity, constructs the DNS query name for the corresponding TLSA record and authenticates the client's certificate or public key. Thus, during mutual authentication between the backend network elements in LoRaWAN, both the client and the server could be mutually authenticated.
+
 ## Object Security
 
 ### Structured data messages: JOSE/COSE
