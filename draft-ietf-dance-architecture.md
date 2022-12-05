@@ -296,6 +296,19 @@ The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huq
 
 ## Availability
 
+One of the advantages of DNS is that it has more than fourty years of demonstrated scaling.
+It is a distributed database with a caching mechanism, and properly configured, it has proven resilient to many kinds of outages and attacks.
+
+A key part of this availability is the proper use of Time To Live (TTL) values for resource records.
+A cache is allowed to hang on to the data for a set time, the TTL, after which it must do a new query to find out if the data has changed, or perhaps been deleted.
+
+There is therefore a tension between resilience (higher TTL values), and agility (lower TTL values).
+A lower TTL value allows for revocation or replacement of a key to become known much faster.
+This allows for a more agile security posture.
+
+On the other hand, lower TTLs cause the queries to occur more often, which reveals more information to an observer about which devices are active.
+It also allows for more opportunities for an attacker to affect the response time of the queries.
+
 ## Privacy
 
 If the name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
