@@ -322,7 +322,7 @@ If the DNS infrastructure hosting client identities becomes unavailable, then th
 
 **OEJ: We may want to have a discussion with the IETF DNS directorate. The scalability section above is from a discussion with one of the members...**
 
-### Change of ownership
+### Change of ownership for IoT devices
 
 One of the significant use cases is where the devices are identified by their manufacturer assigned identities.
 A significant savings was that enterprises would not have to run their own (private) PKI systems, sometimes even one system per device type.
