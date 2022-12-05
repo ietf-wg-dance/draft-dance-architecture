@@ -149,8 +149,8 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 ## Overview
 
-The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the name of the client. 
-In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate. 
+The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the name of the client.
+In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
 
 Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
