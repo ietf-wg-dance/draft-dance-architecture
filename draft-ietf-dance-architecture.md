@@ -190,6 +190,14 @@ Using DANE for device identity can allow parties other than the implementer to o
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
+### LoRaWAN
+
+**We should ask S. if he wants to contribute to this section**
+
+For the end-device onboarding in LoRaWAN, the "network server" and the "join server" [RFC 8376] needs to establish mutual TLS authentication in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. Self-signed certificate based mutual-TLS authentication method is the alternative solution.
+
+DANE based client identity allows the server to authenticate clients during the TLS handhsake. Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated. 
+
 ### Oauth2
 
 [This can be a broad topic. Should we include, or wait until a re-chartering to update?]
@@ -255,19 +263,6 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-### LoRaWAN
-
-**We should ask S. if he wants to contribute to this section**
-
-LoRaWAN is an asymmetric protocol with a star topology. Data transmitted by the IoT end-device 
-is received by a Gateway, which relays it to a "network server". While the end-device is connected to the gateway via LoRa modulated RF messages, the connection between the Gateway, the network and the AA (Authentication & Authorisation) servers are done through IP traffic and can be backhauled via Wi-Fi, hardwired Ethernet or Cellular connection.
-
-For the end-device onboarding in LoRaWAN, the network server and the AA server needs to establish mutual trust in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store. Self-signed certificate mutual-TLS authentication method is the alternative solution. 
-
-The issue with self-signed certificate method is that the client or the server digital certificate is not part of a PKI (Public Key Infrastructure). The two Internet drafts [https://www.ietf.org/archive/id/draft-huque-dane-client-cert-08.txt] and [https://www.ietf.org/archive/id/draft-huque-tls-dane-clientid-06.txt], enables the possibility of using DNS as the PKI. 
-
-
-The TLS Client and the server provisions a signed DNS TLSA record published in the DNS zone corresponding to its DNS name and X.509 certificate or public key. During the TLS handshake, the server requests a client certificate (via the "Client Certificate Request" message). The server then extracts the DANE client identity, constructs the DNS query name for the corresponding TLSA record and authenticates the client's certificate or public key. Thus, during mutual authentication between the backend network elements in LoRaWAN, both the client and the server could be mutually authenticated.
 
 ## Object Security
 
