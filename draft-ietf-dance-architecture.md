@@ -239,7 +239,8 @@ Issue #9
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
-While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms with as the "network key" common in many homes are expected to decline due to many challenges, including Randomized and Changing MAC addresses (RCM), as described in {{I-D.ietf-madinas-use-cases}}.
+While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes. 
+The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
 
