@@ -232,7 +232,20 @@ Issue #8
 
 ### SSH client
 
-Issue #9
+SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
+
+In many SSH server implementations the list of users that is authorized to login to an account is given by listing their public keys in a per-user file ("authorized_keys").
+The file provides both authorization (who may login), and authentication (how they prove their identity).
+While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.
+
+However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
+Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file.
+
+A user who wants to update their key need only update DNS in that case.
+A user who has lost access to their key, but can still update DNS (or can have a colleague update it) would more easily be able to recover.
+An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.
+
+The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
 
 ### Network Access
 
