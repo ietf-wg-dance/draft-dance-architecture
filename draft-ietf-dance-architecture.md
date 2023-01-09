@@ -251,11 +251,27 @@ The DNS record used could be TLSA, but it is possible with some protocol work th
 
 ### Network Access
 
-Issue #11
+Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
+This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.
+
+While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes. 
+The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
 
-Issue #10
+Enterprise EAP methods use a version of TLS to form a secure transport.
+Client and server-side certificates are used as credentials.
+EAP-TLS does not run over TCP, but rather over a reliable transport provided by EAP.
+To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
+{{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
+
+The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
+In worst case scenarios, which are common with EDUROAM {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.
+The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
+Transferring the client certificate is redundant.
+That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.
+
+The use of DANE Client IDs in TLS as described in {{I-D.dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
 ##### Terminology
 
