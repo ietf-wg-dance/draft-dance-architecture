@@ -254,8 +254,8 @@ The DNS record used could be TLSA, but it is possible with some protocol work th
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
-While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes. 
-The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{I-D.ietf-madinas-use-cases}}.
+While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
+The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{?I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
 
@@ -271,7 +271,7 @@ The authenticating system (the "authentication server" in EAP terms) is a system
 Transferring the client certificate is redundant.
 That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.
 
-The use of DANE Client IDs in TLS as described in {{I-D.dance-tls-clientid}} reduces the redundant bytes of certificate sent.
+The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
 ##### Terminology
 
@@ -311,13 +311,13 @@ Issue #13
 
 ### Structured data messages: JOSE/COSE
 
-JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{I-D.ietf-cose-x509, Section 2}}.
+JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
 
 However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
 In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
-(Open Issue #22, about {{RFC4501}})
+(Open Issue #22, about {{?RFC4501}})
 
 
 ## Operational anomaly reporting
