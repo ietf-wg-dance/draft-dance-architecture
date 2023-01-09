@@ -266,7 +266,7 @@ To keep it simple the EAP "window" is always one, and there are various amounts 
 {{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
 
 The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
-In worst case scenarios, which are common with EDUROAM {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.
+In worst case scenarios, which are common with eduroam {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.
 The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
 Transferring the client certificate is redundant.
 That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.
