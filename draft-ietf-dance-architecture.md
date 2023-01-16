@@ -226,6 +226,16 @@ Using DANE for device identity can allow parties other than the implementer to o
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
+### LoRaWAN
+
+
+For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters. 
+Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. 
+Self-signed certificate based mutual-TLS authentication method is the alternative solution.
+
+DANE based client identity allows the server to authenticate clients during the TLS handhsake. 
+Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated. 
+
 ### Edge Computing
 
 [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01](Edge Computing) may require devices to mutually authenticate in the field.
@@ -330,10 +340,6 @@ The RADIUS protocol has a few recognized security problems.
 RADIUS datagrams are then transmitted between the authenticator and authentication server within the TLS session.
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
-
-### LoRaWAN
-
-Issue #12
 
 ## Object Security
 
