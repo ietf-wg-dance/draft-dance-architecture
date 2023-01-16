@@ -192,9 +192,8 @@ This makes PKI-based identity more approachable for small organizations which cu
 
 ### LoRaWAN
 
-**We should ask S. if he wants to contribute to this section**
 
-For the end-device onboarding in LoRaWAN, the "network server" and the "join server" [RFC 8376] needs to establish mutual TLS authentication in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. Self-signed certificate based mutual-TLS authentication method is the alternative solution.
+For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. Self-signed certificate based mutual-TLS authentication method is the alternative solution.
 
 DANE based client identity allows the server to authenticate clients during the TLS handhsake. Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated. 
 
