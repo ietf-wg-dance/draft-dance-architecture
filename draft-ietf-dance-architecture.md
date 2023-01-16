@@ -38,20 +38,26 @@ informative:
 
 --- abstract
 
-This architecture document defines terminology, interaction, and authentication patterns, related to the use of DANE DNS records for TLS client and messaging peer identity, within the context of existing object security and TLS-based protocols.
+This architecture document defines terminology, interaction, and authentication patterns,
+related to the use of DANE DNS records for TLS client and messaging peer identity,
+within the context of existing object security and TLS-based protocols.
 
 --- middle
 
 # Introduction
 
-A digital identity, in an abstract sense, possesses at least two features: an identifier (or name), and a means of proving ownership of the identifier.
-One of the most resilient mechanisms for tying an identifier to a method for proving ownership of the identifier is the digital certificate, issued by a well-run Certification Authority (CA).
+A digital identity, in an abstract sense, possesses at least two features: an identifier (or name),
+and a means of proving ownership of the identifier.
+One of the most resilient mechanisms for tying an identifier to a method for proving ownership of
+the identifier is the digital certificate, issued by a well-run Certification Authority (CA).
 The CA acts as a mutually trusted third party, a root of trust.
 
-Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the application responsible for issuing or validating the identity.
+Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the
+application responsible for issuing or validating the identity.
 
 An example of this limitation is well-illustrated by organizational Public Key Infrastructure (PKI).
-Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating a human or machine identity identifier with a public key.
+Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating
+a human or machine identity identifier with a public key.
 Within the organization, authentication systems already agree on the roots of trust for validating entity certificates issued by organizational PKI.
 
 Attempting to use organizational PKI outside the organization can be challenging.
@@ -59,16 +65,24 @@ In order to authenticate a certificate, the certificate’s CA must be trusted.
 CAs have no way of controlling identifiers in certificates issued by other CAs.
 Consequently, trusting multiple CAs at the same time can enable entity identifier collisions.
 Asking an entity to trust your CA implies trust in anything that your CA signs.
-This is why many organizations operate a private CA, and require devices connecting to the organization’s networks or applications to possess certificates issued by the organization’s CA.
+This is why many organizations operate a private CA, and require devices connecting to the
+organization’s networks or applications to possess certificates issued by the organization’s CA.
 
-These limitations make the implementation and ongoing maintenance of a PKI costly, and have a chilling effect on the broader adoption of certificate-based IoT device identity.
-If certificate-based device identity were easier to manage, more broadly trusted, and less operationally expensive, more organizations and applications would be able to use it.
+These limitations make the implementation and ongoing maintenance of a PKI costly, and have a
+chilling effect on the broader adoption of certificate-based IoT device identity.
+If certificate-based device identity were easier to manage, more broadly trusted, and less
+operationally expensive, more organizations and applications would be able to use it.
 
-The lack of trust between PKI domains has lead to a lack of simple and globally scalable solutions for secure end-to-end inter-domain communication between entities, such as SIP phones, email and chat accounts and IoT devices belonging to different organizations.
+The lack of trust between PKI domains has lead to a lack of simple and globally scalable solutions
+for secure end-to-end inter-domain communication between entities, such as SIP phones, email and
+chat accounts and IoT devices belonging to different organizations.
 
-DANCE seeks to make PKI-based IoT device identity universally discoverable, more broadly recognized, and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
-DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity certificate, public key, and trust anchor discovery.
-DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any application also trusting the DNS.
+DANCE seeks to make PKI-based IoT device identity universally discoverable, more broadly recognized,
+and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
+DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity
+certificate, public key, and trust anchor discovery.
+DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any
+application also trusting the DNS.
 A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
@@ -79,18 +93,30 @@ A first-class identity is an application-independent identity.
 
 **How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed by the same party or organization. A manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances, a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
+key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
+and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed
+by the same party or organization. A manufacturer may instantiate the key pair, and a systems integrator may
+be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances,
+a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs
+to perform network and application access configuration, since the identity already exists in DNS.
 
-**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE, usually through a _How to Dance with_ document.
+**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
+usually through a _How to Dance with_ document.
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
+key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
+and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
 In some circumstances, a manufacturer may also publish device identity records in DNS.
 In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
 
-**Security Domain:** DNS-bound client identity allows the device to establish secure communications with any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust its communicating peer by name, and agreement on protocols can be achieved.
-The act of joining a security domain, in the past, may have involved certificate provisioning. Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
+**Security Domain:** DNS-bound client identity allows the device to establish secure communications with
+any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
+its communicating peer by name, and agreement on protocols can be achieved.
+The act of joining a security domain, in the past, may have involved certificate provisioning.
+Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
 [Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]
 
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
@@ -204,9 +230,13 @@ This makes PKI-based identity more approachable for small organizations which cu
 
 [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01](Edge Computing) may require devices to mutually authenticate in the field.
 A practical example of this pattern is the edge computing in construction use case [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01#section-6.2.1].
-Using traditional certificate-based identity, the sensor and the gateway may have certificates issued by the same organizational PKI.
-By using DANE for client and sender identity, the sensor and the gateway may have identities represented by the equipment supplier, and still be able to mutually authenticate.
-Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of the originating sensor, and the cloud application may authenticate the measurement independent of the gateway which forwarded the information to the application.
+Using traditional certificate-based identity, the sensor and the gateway may have certificates issued by
+the same organizational PKI.
+By using DANE for client and sender identity, the sensor and the gateway may have identities represented
+by the equipment supplier, and still be able to mutually authenticate.
+Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of
+the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
+which forwarded the information to the application.
 
 ### SIP and WebRTC inter-domain privacy
 
@@ -348,12 +378,15 @@ Compartmentalizing failure domains within an application is a well-known archite
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
 This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.
 
-The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert> includes an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
+The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert> includes
+an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the
+event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
 
 ## Availability
 
 One of the advantages of DNS is that it has more than fourty years of demonstrated scaling.
-It is a distributed database with a caching mechanism, and properly configured, it has proven resilient to many kinds of outages and attacks.
+It is a distributed database with a caching mechanism, and properly configured, it has proven resilient
+to many kinds of outages and attacks.
 
 A key part of this availability is the proper use of Time To Live (TTL) values for resource records.
 A cache is allowed to hang on to the data for a set time, the TTL, after which it must do a new query to find out if the data has changed, or perhaps been deleted.
