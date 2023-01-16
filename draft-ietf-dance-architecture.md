@@ -38,20 +38,26 @@ informative:
 
 --- abstract
 
-This architecture document defines terminology, interaction, and authentication patterns, related to the use of DANE DNS records for TLS client and messaging peer identity, within the context of existing object security and TLS-based protocols.
+This architecture document defines terminology, interaction, and authentication patterns,
+related to the use of DANE DNS records for TLS client and messaging peer identity,
+within the context of existing object security and TLS-based protocols.
 
 --- middle
 
 # Introduction
 
-A digital identity, in an abstract sense, possesses at least two features: an identifier (or name), and a means of proving ownership of the identifier.
-One of the most resilient mechanisms for tying an identifier to a method for proving ownership of the identifier is the digital certificate, issued by a well-run Certification Authority (CA).
+A digital identity, in an abstract sense, possesses at least two features: an identifier (or name),
+and a means of proving ownership of the identifier.
+One of the most resilient mechanisms for tying an identifier to a method for proving ownership of
+the identifier is the digital certificate, issued by a well-run Certification Authority (CA).
 The CA acts as a mutually trusted third party, a root of trust.
 
-Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the application responsible for issuing or validating the identity.
+Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the
+application responsible for issuing or validating the identity.
 
 An example of this limitation is well-illustrated by organizational Public Key Infrastructure (PKI).
-Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating a human or machine identity identifier with a public key.
+Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating
+a human or machine identity identifier with a public key.
 Within the organization, authentication systems already agree on the roots of trust for validating entity certificates issued by organizational PKI.
 
 Attempting to use organizational PKI outside the organization can be challenging.
@@ -59,16 +65,24 @@ In order to authenticate a certificate, the certificate’s CA must be trusted.
 CAs have no way of controlling identifiers in certificates issued by other CAs.
 Consequently, trusting multiple CAs at the same time can enable entity identifier collisions.
 Asking an entity to trust your CA implies trust in anything that your CA signs.
-This is why many organizations operate a private CA, and require devices connecting to the organization’s networks or applications to possess certificates issued by the organization’s CA.
+This is why many organizations operate a private CA, and require devices connecting to the
+organization’s networks or applications to possess certificates issued by the organization’s CA.
 
-These limitations make the implementation and ongoing maintenance of a PKI costly, and have a chilling effect on the broader adoption of certificate-based IoT device identity.
-If certificate-based device identity were easier to manage, more broadly trusted, and less operationally expensive, more organizations and applications would be able to use it.
+These limitations make the implementation and ongoing maintenance of a PKI costly, and have a
+chilling effect on the broader adoption of certificate-based IoT device identity.
+If certificate-based device identity were easier to manage, more broadly trusted, and less
+operationally expensive, more organizations and applications would be able to use it.
 
-The lack of trust between PKI domains has lead to a lack of simple and globally scalable solutions for secure end-to-end inter-domain communication between entities, such as SIP phones, email and chat accounts and IoT devices belonging to different organizations.
+The lack of trust between PKI domains has lead to a lack of simple and globally scalable solutions
+for secure end-to-end inter-domain communication between entities, such as SIP phones, email and
+chat accounts and IoT devices belonging to different organizations.
 
-DANCE seeks to make PKI-based IoT device identity universally discoverable, more broadly recognized, and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
-DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity certificate, public key, and trust anchor discovery.
-DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any application also trusting the DNS.
+DANCE seeks to make PKI-based IoT device identity universally discoverable, more broadly recognized,
+and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
+DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity
+certificate, public key, and trust anchor discovery.
+DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any
+application also trusting the DNS.
 A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
@@ -77,14 +91,32 @@ A first-class identity is an application-independent identity.
 
 **This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.**
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
+**How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
+
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
+key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
+and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed
+by the same party or organization. A manufacturer may instantiate the key pair, and a systems integrator may
+be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances,
+a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs
+to perform network and application access configuration, since the identity already exists in DNS.
+
+**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
+usually through a _How to Dance with_ document.
+
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
+key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
+and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
 In some circumstances, a manufacturer may also publish device identity records in DNS.
 In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
 
-**Security Domain:** DNS-bound client identity allows the device to establish secure communications with any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust its communicating peer by name, and agreement on protocols can be achieved.
-The act of joining a security domain, in the past, may have involved certificate provisioning. Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
+**Security Domain:** DNS-bound client identity allows the device to establish secure communications with
+any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
+its communicating peer by name, and agreement on protocols can be achieved.
+The act of joining a security domain, in the past, may have involved certificate provisioning.
+Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
 [Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]
 
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
@@ -139,9 +171,13 @@ Within IoT applications, we find that networks may be more constrained.
 Including certificates in message payloads can present an unnecessary overhead on constrained network links.
 Decoupled applications benefit from an out-of-band public key discovery mechanism, which may enable the retrieval of certificates only when needed, and sometimes using a less expensive network connection.
 
-# Use Cases
+# Client authentication
 
-## Mutual TLS Authentication
+## Overview
+
+The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the name of the client.
+In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
+If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
 
 Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
@@ -193,21 +229,24 @@ This makes PKI-based identity more approachable for small organizations which cu
 ### LoRaWAN
 
 
-For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. Self-signed certificate based mutual-TLS authentication method is the alternative solution.
+For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters. 
+Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. 
+Self-signed certificate based mutual-TLS authentication method is the alternative solution.
 
-DANE based client identity allows the server to authenticate clients during the TLS handhsake. Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated. 
-
-### Oauth2
-
-[This can be a broad topic. Should we include, or wait until a re-chartering to update?]
+DANE based client identity allows the server to authenticate clients during the TLS handhsake. 
+Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated. 
 
 ### Edge Computing
 
 [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01](Edge Computing) may require devices to mutually authenticate in the field.
 A practical example of this pattern is the edge computing in construction use case [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01#section-6.2.1].
-Using traditional certificate-based identity, the sensor and the gateway may have certificates issued by the same organizational PKI.
-By using DANE for client and sender identity, the sensor and the gateway may have identities represented by the equipment supplier, and still be able to mutually authenticate.
-Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of the originating sensor, and the cloud application may authenticate the measurement independent of the gateway which forwarded the information to the application.
+Using traditional certificate-based identity, the sensor and the gateway may have certificates issued by
+the same organizational PKI.
+By using DANE for client and sender identity, the sensor and the gateway may have identities represented
+by the equipment supplier, and still be able to mutually authenticate.
+Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of
+the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
+which forwarded the information to the application.
 
 ### SIP and WebRTC inter-domain privacy
 
@@ -220,19 +259,59 @@ For WebRTC the application developer needs to define the name space and mapping 
 By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
 In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.
 
-[https://datatracker.ietf.org/doc/html/draft-johansson-sipcore-dane-sip]
+{{?I-D.johansson-sipcore-dane-sip}}(SIPDANE)
 
-**NOTE: include reference to earlier drafts for SIP + DANE**
 
 ### DNS over TLS client authentication
 
+Issue #7
+
 ### SMTP, STARTTLS
+
+Issue #8
 
 ### SSH client
 
+SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
+
+In many SSH server implementations the list of users that is authorized to login to an account is given by listing their public keys in a per-user file ("authorized_keys").
+The file provides both authorization (who may login), and authentication (how they prove their identity).
+While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.
+
+However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
+Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:
+
+* A user who wants to update their key need only update DNS in that case.
+
+* A user who has lost access to their key, but can still update DNS (or can have a colleague update it) would more easily be able to recover.
+
+* An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.
+
+The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
+
 ### Network Access
 
+Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
+This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.
+
+While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
+The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{?I-D.ietf-madinas-use-cases}}.
+
 #### EAP-TLS with RADIUS
+
+Enterprise EAP methods use a version of TLS to form a secure transport.
+Client and server-side certificates are used as credentials.
+EAP-TLS does not run over TCP, but rather over a reliable transport provided by EAP.
+To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
+{{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
+
+The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
+In worst case scenarios, which are common with eduroam {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.
+The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
+Transferring the client certificate is redundant.
+That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.
+
+The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
 ##### Terminology
 
@@ -262,15 +341,24 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-
 ## Object Security
+
+Issue #13
 
 ### Structured data messages: JOSE/COSE
 
-JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in [https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5](RFC7515), and COSE defines a field of the same name in [https://datatracker.ietf.org/doc/html/draft-ietf-cose-x509-08#section-2](draft-ietf-cose-x509) which can be used for out-of-band x.509 certificate discovery.
-By adopting DANE for out-of-band certificate discovery, CBOR and JSON data may be authenticated, even if the originating sending agent not have IP connectivity, provided that the sending agent's certificate is discoverable in DNS and the receiving agent has access to DNS.
+JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
+
+However, this URL field points to where the key can be found.
+There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
+
+In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
+(Open Issue #22, about {{?RFC4501}})
+
 
 ## Operational anomaly reporting
+
+Issue #14
 
 ### MUD reporting for improper provisioning
 
@@ -296,9 +384,27 @@ Compartmentalizing failure domains within an application is a well-known archite
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
 This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.
 
-The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert> includes an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
+The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert> includes
+an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the
+event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
 
 ## Availability
+
+One of the advantages of DNS is that it has more than fourty years of demonstrated scaling.
+It is a distributed database with a caching mechanism, and properly configured, it has proven resilient
+to many kinds of outages and attacks.
+
+A key part of this availability is the proper use of Time To Live (TTL) values for resource records.
+A cache is allowed to hang on to the data for a set time, the TTL, after which it must do a new query to find out if the data has changed, or perhaps been deleted.
+
+There is therefore a tension between resilience (higher TTL values), and agility (lower TTL values).
+A lower TTL value allows for revocation or replacement of a key to become known much faster.
+This allows for a more agile security posture.
+
+On the other hand, lower TTLs cause the queries to occur more often, which may reveal more information to an observer about which devices are active.
+Encrypted transports like DoT/DoH/DoQ make these queries far less visible.
+In addition to the on-path observer being able to see more, the resolver logs also may be a source of information.
+It also allows for more opportunities for an attacker to affect the response time of the queries.
 
 ## Privacy
 
@@ -326,10 +432,26 @@ If the DNS infrastructure hosting client identities becomes unavailable, then th
 
 **OEJ: We may want to have a discussion with the IETF DNS directorate. The scalability section above is from a discussion with one of the members...**
 
-### Change of ownership
+### Change of ownership for IoT devices
 
-What happens if an organization owning the client identity goes out of business?
-What’s the best way to transfer an identifier to another zone? <note: there may be an opportunity here to take advantage of EST, or another protocol supporting certificate renewal, to allow client devices to rotate to another zone>
+One of the significant use cases is where the devices are identified by their manufacturer assigned identities.
+A significant savings was that enterprises would not have to run their own (private) PKI systems, sometimes even one system per device type.
+But, with this usage style for DANCE there is no private PKI to run, and as a result there is no change of ownership required.
+The device continues to use the manufacturer assigned identity.
+
+The device OwnerOperator is therefore at risk if the device's manufacturer goes out of business, or decides that they no longer wish to manufacturer that device.
+Should that happen then the OwnerOperator of the device may be in trouble, and may find themselves having to replace the devices.
+
+{{?RFC8995, Section 10.4}} (BRSKI) deals with concerns about manufacturers influence on devices.
+In the case of BRSKI, the concern was limited to when the device ownership transfer was performed (the BRSKI transaction itself).
+There was no concern once the OwnerOperator had taken control over the device through an {{?RFC8366}} voucher.
+
+In the case of DANCE, the manufacturer is continuously involved with the day to day operation of the device.
+
+If this is of concern, then the OwnerOperator should perform some kind of transfer of ownership, such as using DPP, {{?RFC8995}}(BRSKI), {{?RFC9140}}(EAP-NOOB), and others yet to come.
+
+The DANCE method of using manufacturer assigned identities would therefore seem to be best used for devices which have a short lifetime: one much smaller than the uncertainty about the anticipated lifespan of the manufacturer.
+For instance, some kind of battery operated sensor which might be used in a large quantity at a construction site, and which can not be recharged.
 
 # IANA Considerations
 
