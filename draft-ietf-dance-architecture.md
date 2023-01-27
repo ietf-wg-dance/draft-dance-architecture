@@ -118,7 +118,7 @@ A user may instantiate a key pair, based upon which an organization's CA may pro
 
 **Security Domain:** DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
-its communicating peer by name, and agreement on protocols can be achieved.
+its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
 The act of joining a security domain, in the past, may have involved certificate provisioning.
 Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
 [Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]
@@ -182,10 +182,11 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 ## Overview
 
-The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the DNS owner name of the client.  If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
+The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the DNS owner name of the client.
+If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
-[PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid & dNSName, but it is limited to ASCII and suggests email only].
+(PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid & dNSName, but it is limited to ASCII and suggests email only).
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
@@ -266,7 +267,7 @@ Using traditional certificate-based identity, the sensor and the gateway may hav
 the same organizational PKI.
 By using DANE for client and sender identity, the sensor and the gateway may have identities represented
 by the equipment supplier, and still be able to mutually authenticate.
-Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of
+Important sensor measurements forwarded by the gateway to the cloud may bear the DNS owner name and signature of
 the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
 which forwarded the information to the application.
 
@@ -313,7 +314,7 @@ The file provides both authorization (who may login), and authentication (how th
 While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.
 
 However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
-Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:
+Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS owner name in the authorization file:
 
 * A user who wants to update their key need only update DNS in that case.
 
@@ -444,10 +445,10 @@ It also allows for more opportunities for an attacker to affect the response tim
 
 ## Privacy
 
-If the name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
+If the DNS owner name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
-When creating the name of the RR, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
-The name of the RR may note have to have a direct relation to the name of the subject of the certificate.
+When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
+The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
 
 Further work has do be done in this area.
 
