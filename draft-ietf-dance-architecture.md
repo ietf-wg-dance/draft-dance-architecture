@@ -179,7 +179,7 @@ The client sets up a TLS connection to a server, attaches a client certificate w
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
 
-Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
+Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
 For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
