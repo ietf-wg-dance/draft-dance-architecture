@@ -455,7 +455,15 @@ For instance, some kind of battery operated sensor which might be used in a larg
 
 # IANA Considerations
 
-This document has no IANA actions.
+IANA is requested to add the following elements to the Underscored and Globally
+Scoped DNS Node Names table in the Domain Name System Registry:
+
+```
+RR Type   _NODE NAME   Reference
+---------+------------+------------
+TLSA     | _device    | (this doc)
+TLSA     | _user      | (this doc)
+```
 
 --- back
 
