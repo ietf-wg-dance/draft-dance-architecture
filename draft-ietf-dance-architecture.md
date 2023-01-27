@@ -81,7 +81,7 @@ DANCE seeks to make PKI-based IoT device identity universally discoverable, more
 and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
 DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity
 certificate, public key, and trust anchor discovery.
-DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any
+DANCE allows entities to possess a first-class identity, which, thanks to DNSSEC, may be trusted by any
 application also trusting the DNS.
 A first-class identity is an application-independent identity.
 
