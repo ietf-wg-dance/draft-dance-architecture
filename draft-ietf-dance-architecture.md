@@ -437,6 +437,7 @@ If the DNS owner name of the identity proven by a certificate is directly or ind
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
 When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
 The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
+If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.
 
 Further work has do be done in this area.
 
