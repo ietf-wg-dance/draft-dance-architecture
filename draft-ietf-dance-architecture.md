@@ -242,9 +242,9 @@ This pattern has the following advantages:
 Direct device-to-cloud communication is common in simple IoT applications.
 Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates.
 Client certificate authentication frequently requires the consumer to maintain a CA.
-The CA trust anchor certificate is installed into the cloud application, and used in the TLS authentication process.
+Before client DANE, the CA trust anchor certificate would be installed into the cloud application, and used in the TLS authentication process.
 
-Using DANE for device identity can allow parties other than the implementer to operate the CA.
+Using client DANE for device identity can allow parties other than the implementer to operate the CA.
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
