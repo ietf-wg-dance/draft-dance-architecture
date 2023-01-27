@@ -223,12 +223,19 @@ This allows the web application to reject clients with identifiers which are not
 No need to manage an allow-list in the load balancer.
 - This can be implemented with no changes to the TLS handshake.
 
-#### Example 3: TLS user authentication for SMTP submission
+#### Example 3: TLS user authentication for an LDAP query
 
-- The mail user agent initiates a TLS connection the the server, conveying the user's domain via the DANE Client Identity extension.
+- The LDAP client initiates a TLS connection the the server, conveying the user's domain via the DANE Client Identity extension.
 - If the dane_clientid is allowed and begins with a _user label, the TLS server then performs a DNS lookup for TLSA records holding the user's CA, and includes them when requesting a client certificate.
-- If the client's certificate is signed by a CA found in the TLSA records and the certificate's dNSName matches the dane_clientid then the client identity is authenticated to consist of the uid in the certificate, an "@" symbold and the UTF-8 representation of the certificate's dNSName except for its "_user." prefix.
-- The SMTP submission uses SASL EXTERNAL to obtain the authenticated user identity in userid@domain.name form and, if so desired, request it be changed to an authorization identity.
+- If the client's certificate is signed by a CA found in the TLSA records and the certificate's dNSName prefixed with a _user label matches the dane_clientid then the client identity is authenticated to consist of the lowercase uid in the certificate, an "@" symbol and the lowercase UTF-8 representation of the certificate's dNSName (which lacks the "_user." prefix).
+- The LDAP server responds to SASL EXTERNAL authentication by obtaining the authenticated user identity in userid@domain.name form and, if so requested, attempts to change to an authorization identity.
+
+This pattern has the following advantages:
+
+- SASL authentication under TLS encryption is common to many protocols, including new ones.
+- This LDAP example demonstrates the potential of authentication with realm crossover support as a precursor to fine access control to possibly sensitive data.
+- User identities cannot be iterated in DNS; TLS 1.3 conceals the client certificate; TLS in general conceals the user's choice of authorization identity during SASL EXTERNAL.
+- This can be implemented with no changes to the TLS handshake.
 
 ### IoT: Device to cloud
 
@@ -265,7 +272,7 @@ which forwarded the information to the application.
 
 ### Domain Users
 
-The allocation of user identities are the prerogative of a domain, in line with the nesting suggested in URI notation.
+The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
 Domains who publish TLSA records for a CA under a _user name underneath their domain allow the validation of user identities as mentioned in a certificate as TLS client or peer identities.
 This mechanism is not restricted to domain-internal users, but can be used to validate users under any domain.
 
