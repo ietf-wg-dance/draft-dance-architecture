@@ -167,7 +167,7 @@ This pattern can be used in mesh networking, IoT and in many communication proto
 ## Decoupled
 
 Decoupled architecture, frequently incorporating store-and-forward systems, provides no direct connection between the producer and consumer of information.
-The producer (or sending agent) and consumer (or receiving agent) are typically separated by at least one layer of messaging-oriented middleware.
+The producer (or sending agent) and consumer (or receiving agent) are typically separated by at least one host running messaging-oriented middleware.
 The Messaging-oriented middleware components may act as a server for the purpose of establishing TLS sessions for the producer and consumer.
 This allows the assertion of identity between the middleware and sending agent, and the middleware and receiving agent.
 The trust relationship between the sending agent and receiving agent is based on the presumed trustworthiness of the middleware, unless an identity can be attached to the message itself, independent of transport and middleware components.
