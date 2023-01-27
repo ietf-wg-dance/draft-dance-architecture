@@ -192,7 +192,7 @@ An opportunity for DDOS may exist when malicious clients can trigger arbitrary D
 For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
 
-#### Example 1: TLS authentication for HTTPS API interaction, DANE preauthorization
+#### Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance
 
 - The client initiates a TLS connection to the server.
 - The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.
