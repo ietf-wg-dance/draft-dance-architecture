@@ -273,13 +273,14 @@ which forwarded the information to the application.
 ### Domain Users
 
 The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
+Domains may even choose to assign domain user identities to services, possibly with easily recognised identities like +mail+archive@domain.name.
 Domains who publish TLSA records for a CA under a _user name underneath their domain allow the validation of user identities as mentioned in a certificate as TLS client or peer identities.
 This mechanism is not restricted to domain-internal users, but can be used to validate users under any domain.
 
-Since ENUM maps telephone numbers to DNS names, it is possible to employ these same mechanisms for telephone number users.
-Any DANCEr may however define alternate derivation procedure to obtain the DNS name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
+Since ENUM maps telephone numbers to DNS owner names, it is possible to employ these same mechanisms for telephone number users.
+Any DANCEr may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
 
-There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this form of authentication, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
+There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
 
 ### SIP and WebRTC inter-domain privacy
 
