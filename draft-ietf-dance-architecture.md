@@ -266,9 +266,24 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 
 Issue #7
 
-### SMTP, STARTTLS
+### SMTP and Submission
 
-Issue #8
+Email submission {{?RFC6409}} has often used client certificates for authentication, either by the
+server maintaining a list of clients, or more often a list of valid signers.
+DANE validation of the certificates would work in a straightforward way.
+
+In general, SMTP clients do not authenticate themselves but in a few situations client certificates
+could be useful.
+When an organization exchanges email with business partners, it often wants to ensure that mail
+purporting to be from the partner actually is from that partner.
+If the partner provides its certificates, the organization can verify that the mail is indeed
+from the partner's server, and could reject unverified mail purporting to be from the partner.
+The server check is analogous to the IP verification provided by SPF {{?RFC7208}} and rejecting
+unverified mail is analogous to what DMARC {{?RFC7489}} does.
+
+Another niche use of SMTP client certificates is for forwarding within an organization, such as when
+branch offices send outgoing mail through the organization's main mail server.
+The main server can use client certificates to recognize the branch offices
 
 ### SSH client
 
