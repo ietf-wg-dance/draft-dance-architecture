@@ -14,24 +14,24 @@
 related to the use of DANE DNS records for TLS client and messaging peer identity,
 within the context of existing object security and TLS-based protocols. 
     " name="description">
-<meta content="xml2rfc 3.17.4" name="generator">
+<meta content="xml2rfc 3.20.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-dance-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.17.4
-    Python 3.11.4
-    ConfigArgParse 1.5.3
+  xml2rfc 3.20.1
+    Python 3.11.8
+    ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.9.1
+    platformdirs 4.2.0
     pycountry 22.3.5
-    PyYAML 6.0
+    PyYAML 6.0.1
     requests 2.31.0
-    setuptools 67.7.2
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-dance-architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -654,7 +654,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -747,7 +747,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -871,16 +871,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -893,6 +890,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -994,28 +994,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1052,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DNS-Bound Identities Architecture</td>
-<td class="right">July 2023</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilson, et al.</td>
-<td class="center">Expires 24 January 2024</td>
+<td class="center">Expires 26 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dance-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-07-23" class="published">23 July 2023</time>
+<time datetime="2024-03-25" class="published">25 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-01-24">24 January 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-26">26 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1111,7 @@ within the context of existing object security and TLS-based protocols.<a href="
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 January 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1142,7 +1120,7 @@ within the context of existing object security and TLS-based protocols.<a href="
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1201,19 +1179,22 @@ within the context of existing object security and TLS-based protocols.<a href="
                     <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-edge-computing" class="internal xref">Edge Computing</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
-                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-sip-and-webrtc-inter-domain" class="internal xref">SIP and WebRTC inter-domain privacy</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-domain-users" class="internal xref">Domain Users</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.6">
-                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-dns-over-tls-client-authent" class="internal xref">DNS over TLS client authentication</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-sip-and-webrtc-inter-domain" class="internal xref">SIP and WebRTC inter-domain privacy</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.7">
-                    <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-smtp-starttls" class="internal xref">SMTP, STARTTLS</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-dns-over-tls-client-authent" class="internal xref">DNS over TLS client authentication</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.8">
-                    <p id="section-toc.1-1.4.2.1.2.8.1"><a href="#section-4.1.8" class="auto internal xref">4.1.8</a>.  <a href="#name-ssh-client" class="internal xref">SSH client</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.8.1"><a href="#section-4.1.8" class="auto internal xref">4.1.8</a>.  <a href="#name-smtp-starttls" class="internal xref">SMTP, STARTTLS</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.9">
-                    <p id="section-toc.1-1.4.2.1.2.9.1"><a href="#section-4.1.9" class="auto internal xref">4.1.9</a>.  <a href="#name-network-access" class="internal xref">Network Access</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.9.1"><a href="#section-4.1.9" class="auto internal xref">4.1.9</a>.  <a href="#name-ssh-client" class="internal xref">SSH client</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.10">
+                    <p id="section-toc.1-1.4.2.1.2.10.1"><a href="#section-4.1.10" class="auto internal xref">4.1.10</a>. <a href="#name-network-access" class="internal xref">Network Access</a></p>
 </li>
                 </ul>
 </li>
@@ -1316,16 +1297,16 @@ In order to authenticate a certificate, the certificate’s CA must be trusted.
 CAs have no way of controlling identifiers in certificates issued by other CAs.
 Consequently, trusting multiple CAs at the same time can enable entity identifier collisions.
 Asking an entity to trust your CA implies trust in anything that your CA signs.
-This is why many organizations operate a private CA, and require devices connecting to the
+This is why many organizations operate a private CA, and require users and devices connecting to the
 organization’s networks or applications to possess certificates issued by the organization’s CA.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">These limitations make the implementation and ongoing maintenance of a PKI costly, and have a
-chilling effect on the broader adoption of certificate-based IoT device identity.
-If certificate-based device identity were easier to manage, more broadly trusted, and less
+chilling effect on the broader adoption of certificate-based IoT device identity and user identity.
+If certificate-based device and user identity were easier to manage, more broadly trusted, and less
 operationally expensive, more organizations and applications would be able to use it.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">The lack of trust between PKI domains has lead to a lack of simple and globally scalable solutions
 for secure end-to-end inter-domain communication between entities, such as SIP phones, email and
 chat accounts and IoT devices belonging to different organizations.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">DANCE seeks to make PKI-based IoT device identity universally discoverable, more broadly recognized,
+<p id="section-1-7">DANCE seeks to make PKI-based user and IoT device identity universally discoverable, more broadly recognized,
 and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
 DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity
 certificate, public key, and trust anchor discovery.
@@ -1343,24 +1324,28 @@ A first-class identity is an application-independent identity.<a href="#section-
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2"><strong>This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like "bootstrapping", depending on who's talking.</strong><a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2"><strong>This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.</strong><a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3"><strong>How to Dance with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with <em>entity</em>".<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric
 key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
 and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed
-by the same party or organization. A manufacturer may instantiate the key pair, and a systems integrator may
+by the same party or organization. A device manufacturer may instantiate the key pair, and a systems integrator may
 be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances,
 a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs
-to perform network and application access configuration, since the identity already exists in DNS.<a href="#section-2-4" class="pilcrow">¶</a></p>
+to perform network and application access configuration, since the identity already exists in DNS.
+A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after
+internally assuring the user identity, and the systems integrator may publish the CA root certificate
+in DNS.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <p id="section-2-5"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
 usually through a <em>How to Dance with</em> document.<a href="#section-2-5" class="pilcrow">¶</a></p>
 <p id="section-2-6"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric
 key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
 and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
-A manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
+A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
 In some circumstances, a manufacturer may also publish device identity records in DNS.
-In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.<a href="#section-2-6" class="pilcrow">¶</a></p>
+In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
+A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.<a href="#section-2-6" class="pilcrow">¶</a></p>
 <p id="section-2-7"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
 its communicating peer by name, and agreement on protocols can be achieved.
@@ -1368,19 +1353,20 @@ The act of joining a security domain, in the past, may have involved certificate
 Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
 [Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]<a href="#section-2-7" class="pilcrow">¶</a></p>
 <p id="section-2-8"><strong>Client:</strong> This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"<a href="#section-2-8" class="pilcrow">¶</a></p>
-<p id="section-2-9"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-9" class="pilcrow">¶</a></p>
-<p id="section-2-10"><strong>Sending agent:</strong> Software which encodes and transmits messages.
-A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-10" class="pilcrow">¶</a></p>
-<p id="section-2-11"><strong>Receiving agent:</strong> Software which interprets and processes messages.
-A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-11" class="pilcrow">¶</a></p>
-<p id="section-2-12"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-12" class="pilcrow">¶</a></p>
-<p id="section-2-13"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
+<p id="section-2-9"><strong>User:</strong> A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.<a href="#section-2-9" class="pilcrow">¶</a></p>
+<p id="section-2-10"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-10" class="pilcrow">¶</a></p>
+<p id="section-2-11"><strong>Sending agent:</strong> Software which encodes and transmits messages.
+A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-11" class="pilcrow">¶</a></p>
+<p id="section-2-12"><strong>Receiving agent:</strong> Software which interprets and processes messages.
+A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-12" class="pilcrow">¶</a></p>
+<p id="section-2-13"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-13" class="pilcrow">¶</a></p>
+<p id="section-2-14"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
 In many situations, multiple hardware suppliers are involved in producing a given device.
 In some cases, the hardware supplier may provision an asymmetric key pair for the device and establish the device identity in DNS.
-In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-13" class="pilcrow">¶</a></p>
-<p id="section-2-14"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
-In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-14" class="pilcrow">¶</a></p>
-<p id="section-2-15"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-15" class="pilcrow">¶</a></p>
+In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-14" class="pilcrow">¶</a></p>
+<p id="section-2-15"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
+In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-15" class="pilcrow">¶</a></p>
+<p id="section-2-16"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-16" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="communication-patterns">
@@ -1397,7 +1383,8 @@ In some cases, the systems integrator also installs the software onto the device
 A secure implementation of this pattern includes a TLS-protected session directly between the client and the server.
 A secure implementation may also include public key-based mutual authentication.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">Extending DANE to include client identity allows the server to authenticate clients independent of the private PKI used to issue the client certificate.
-This reduces the complexity of managing the CA certificate collection, and mitigates the possibility of client identifier collision.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+This reduces the complexity of managing the CA certificate collection, and mitigates the possibility of client identifier collision.
+If the client is a user, the certificate holds an additional user identity supplied under the prerogative of a DNS owner name, which reduces the complexity of authenticating both internal and external users, through protocol mechanisms like SASL EXTERNAL <span>[<a href="#RFC4422" class="cite xref">RFC4422</a>]</span>.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="peer2peer">
@@ -1406,7 +1393,7 @@ This reduces the complexity of managing the CA certificate collection, and mitig
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-peer2peer" class="section-name selfRef">Peer2peer</a>
         </h3>
 <p id="section-3.2-1">The extension also allows an application to find an application identity and set up a secure communication channel directly.
-This pattern can be used in mesh networking, IoT and in many communication protocols for multimedia sessions, chat and messaging.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+This pattern can be used in mesh networking, IoT and in many communication protocols for multimedia sessions, chat and messaging, where each endpoint may represent a device or a user.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="decoupled">
@@ -1438,9 +1425,10 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
         <h3 id="name-overview">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-4.1-1">The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the name of the client.
+<p id="section-4.1-1">The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the DNS owner name of the client.  If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute <span>[<a href="#RFC4519" class="cite xref">RFC4519</a>]</span>.
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
-If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
+[PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid &amp; dNSName, but it is limited to ASCII and suggests email only].<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2">Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
 For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
@@ -1451,21 +1439,27 @@ This sort of attack (of type slowloris) could have a performance or availability
 <a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-example-1-tls-authenticatio" class="section-name selfRef">Example 1: TLS authentication for HTTPS API interaction, DANE preauthorization</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-4.1.1-1.1">The client initiates a TLS connection to the server.<a href="#section-4.1.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.1.1-1.1">
+              <p id="section-4.1.1-1.1.1">The client initiates a TLS connection to the server.<a href="#section-4.1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.1-1.2">The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.<a href="#section-4.1.1-1.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.1-1.2">
+              <p id="section-4.1.1-1.2.1">The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.<a href="#section-4.1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.1-1.3">If the dane_clientid is allowed, the TLS server then performs a DNS lookup for the client's TLSA record.
-If the dane_clientid is not allowed, authentication fails.<a href="#section-4.1.1-1.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.1-1.3">
+              <p id="section-4.1.1-1.3.1">If the dane_clientid is allowed, the TLS server then performs a DNS lookup for the client's TLSA record.
+If the dane_clientid is not allowed, authentication fails.<a href="#section-4.1.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.1-1.4">If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.<a href="#section-4.1.1-1.4" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.1-1.4">
+              <p id="section-4.1.1-1.4.1">If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.<a href="#section-4.1.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-4.1.1-2">This pattern has the following advantages:<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1.1-3.1">This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.<a href="#section-4.1.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.1.1-3.1">
+              <p id="section-4.1.1-3.1.1">This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.<a href="#section-4.1.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.1-3.2">No traffic reaches the application behind the load balancer unless DANE client authentication is successful.<a href="#section-4.1.1-3.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.1-3.2">
+              <p id="section-4.1.1-3.2.1">No traffic reaches the application behind the load balancer unless DANE client authentication is successful.<a href="#section-4.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <div id="example-2-tls-authentication-for-https-api-interaction-dane-matching-in-web-application">
@@ -1474,30 +1468,76 @@ If the dane_clientid is not allowed, authentication fails.<a href="#section-4.1.
 <a href="#section-4.1.1.1" class="section-number selfRef">4.1.1.1. </a><a href="#name-example-2-tls-authenticatio" class="section-name selfRef">Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application</a>
             </h5>
 <ul class="normal">
-<li class="normal" id="section-4.1.1.1-1.1">The client initiates a TLS connection to the server.<a href="#section-4.1.1.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.1.1.1-1.1">
+                <p id="section-4.1.1.1-1.1.1">The client initiates a TLS connection to the server.<a href="#section-4.1.1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.2">The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.<a href="#section-4.1.1.1-1.2" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.2">
+                <p id="section-4.1.1.1-1.2.1">The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.<a href="#section-4.1.1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.3">The TLS server passes the certificate to the web application in (TBD) header field.<a href="#section-4.1.1.1-1.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.3">
+                <p id="section-4.1.1.1-1.3.1">The TLS server passes the certificate to the web application in (TBD) header field.<a href="#section-4.1.1.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.4">The HTTP request body contains the dane_clientid, and is passed to the web application.<a href="#section-4.1.1.1-1.4" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.4">
+                <p id="section-4.1.1.1-1.4.1">The HTTP request body contains the dane_clientid, and is passed to the web application.<a href="#section-4.1.1.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.5">The web application compares the dane_clientid to a list of allowed clients or client domains.<a href="#section-4.1.1.1-1.5" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.5">
+                <p id="section-4.1.1.1-1.5.1">The web application compares the dane_clientid to a list of allowed clients or client domains.<a href="#section-4.1.1.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.6">If the dane_clientid is allowed, the web application makes the DNS query for the TLSA records for dane_clientid<a href="#section-4.1.1.1-1.6" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.6">
+                <p id="section-4.1.1.1-1.6.1">If the dane_clientid is allowed, the web application makes the DNS query for the TLSA records for dane_clientid<a href="#section-4.1.1.1-1.6.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-1.7">If the presented certificate (which was authenticated by the TLS server) matches at least one TLSA record for dane_clientid, authentication succeeds.<a href="#section-4.1.1.1-1.7" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-1.7">
+                <p id="section-4.1.1.1-1.7.1">If the presented certificate (which was authenticated by the TLS server) matches at least one TLSA record for dane_clientid, authentication succeeds.<a href="#section-4.1.1.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 <p id="section-4.1.1.1-2">This pattern has the following advantages:<a href="#section-4.1.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1.1.1-3.1">In a web application where a TLS-terminating load balancer sits in front of a web application, the authentication logic in the load balancer remains simple.<a href="#section-4.1.1.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.1.1.1-3.1">
+                <p id="section-4.1.1.1-3.1.1">In a web application where a TLS-terminating load balancer sits in front of a web application, the authentication logic in the load balancer remains simple.<a href="#section-4.1.1.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-3.2">The web application ultimately decides whether to make the DNS query to support DANE authentication.
+              <li class="normal" id="section-4.1.1.1-3.2">
+                <p id="section-4.1.1.1-3.2.1">The web application ultimately decides whether to make the DNS query to support DANE authentication.
 This allows the web application to reject clients with identifiers which are not allowed, before making a DNS query for TLSA retrieval and comparison.
-No need to manage an allow-list in the load balancer.<a href="#section-4.1.1.1-3.2" class="pilcrow">¶</a>
+No need to manage an allow-list in the load balancer.<a href="#section-4.1.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-4.1.1.1-3.3">This can be implemented with no changes to the TLS handshake.<a href="#section-4.1.1.1-3.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-4.1.1.1-3.3">
+                <p id="section-4.1.1.1-3.3.1">This can be implemented with no changes to the TLS handshake.<a href="#section-4.1.1.1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</section>
+</div>
+<div id="example-3-tls-user-authentication-for-an-ldap-query">
+<section id="section-4.1.1.2">
+            <h5 id="name-example-3-tls-user-authenti">
+<a href="#section-4.1.1.2" class="section-number selfRef">4.1.1.2. </a><a href="#name-example-3-tls-user-authenti" class="section-name selfRef">Example 3: TLS user authentication for an LDAP query</a>
+            </h5>
+<ul class="normal">
+<li class="normal" id="section-4.1.1.2-1.1">
+                <p id="section-4.1.1.2-1.1.1">The LDAP client initiates a TLS connection the the server, conveying the user's domain via the DANE Client Identity extension.<a href="#section-4.1.1.2-1.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-1.2">
+                <p id="section-4.1.1.2-1.2.1">If the dane_clientid is allowed and begins with a _user label, the TLS server then performs a DNS lookup for TLSA records holding the user's CA, and includes them when requesting a client certificate.<a href="#section-4.1.1.2-1.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-1.3">
+                <p id="section-4.1.1.2-1.3.1">If the client's certificate is signed by a CA found in the TLSA records and the certificate's dNSName prefixed with a _user label matches the dane_clientid then the client identity is authenticated to consist of the lowercase uid in the certificate, an "@" symbol and the lowercase UTF-8 representation of the certificate's dNSName (which lacks the "_user." prefix).<a href="#section-4.1.1.2-1.3.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-1.4">
+                <p id="section-4.1.1.2-1.4.1">The LDAP server responds to SASL EXTERNAL authentication by obtaining the authenticated user identity in userid@domain.name form and, if so requested, attempts to change to an authorization identity.<a href="#section-4.1.1.2-1.4.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+<p id="section-4.1.1.2-2">This pattern has the following advantages:<a href="#section-4.1.1.2-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.1.1.2-3.1">
+                <p id="section-4.1.1.2-3.1.1">SASL authentication under TLS encryption is common to many protocols, including new ones.<a href="#section-4.1.1.2-3.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-3.2">
+                <p id="section-4.1.1.2-3.2.1">This LDAP example demonstrates the potential of authentication with realm crossover support as a precursor to fine access control to possibly sensitive data.<a href="#section-4.1.1.2-3.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-3.3">
+                <p id="section-4.1.1.2-3.3.1">User identities cannot be iterated in DNS; TLS 1.3 conceals the client certificate; TLS in general conceals the user's choice of authorization identity during SASL EXTERNAL.<a href="#section-4.1.1.2-3.3.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-4.1.1.2-3.4">
+                <p id="section-4.1.1.2-3.4.1">This can be implemented with no changes to the TLS handshake.<a href="#section-4.1.1.2-3.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </section>
@@ -1546,117 +1586,135 @@ the originating sensor, and the cloud application may authenticate the measureme
 which forwarded the information to the application.<a href="#section-4.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sip-and-webrtc-inter-domain-privacy">
+<div id="domain-users">
 <section id="section-4.1.5">
-          <h4 id="name-sip-and-webrtc-inter-domain">
-<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-sip-and-webrtc-inter-domain" class="section-name selfRef">SIP and WebRTC inter-domain privacy</a>
+          <h4 id="name-domain-users">
+<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-domain-users" class="section-name selfRef">Domain Users</a>
           </h4>
-<p id="section-4.1.5-1">End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
+<p id="section-4.1.5-1">The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
+Domains may even choose to assign domain user identities to services, possibly with easily recognised identities like +mail+archive@domain.name.
+Domains who publish TLSA records for a CA under a _user name underneath their domain allow the validation of user identities as mentioned in a certificate as TLS client or peer identities.
+This mechanism is not restricted to domain-internal users, but can be used to validate users under any domain.<a href="#section-4.1.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.5-2">Since ENUM maps telephone numbers to DNS owner names, it is possible to employ these same mechanisms for telephone number users.
+Any DANCEr may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.<a href="#section-4.1.5-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.5-3">There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.<a href="#section-4.1.5-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sip-and-webrtc-inter-domain-privacy">
+<section id="section-4.1.6">
+          <h4 id="name-sip-and-webrtc-inter-domain">
+<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-sip-and-webrtc-inter-domain" class="section-name selfRef">SIP and WebRTC inter-domain privacy</a>
+          </h4>
+<p id="section-4.1.6-1">End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
 There are also SIP standards that build upon a trust chained anchored on the HTTP trust chain (SIP identity, STIR).
 WebRTC has a trust model between the web browser and the servers using TLS, but no inter-domain trust infrastructure.
 WebRTC lacks a definition of namespace to map to DNS, where SIP is based on an email-style addressing scheme.
-For WebRTC the application developer needs to define the name space and mapping to DNS.<a href="#section-4.1.5-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.5-2">By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
-In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.<a href="#section-4.1.5-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.5-3"><span>[<a href="#I-D.johansson-sipcore-dane-sip" class="cite xref">I-D.johansson-sipcore-dane-sip</a>]</span>(SIPDANE)<a href="#section-4.1.5-3" class="pilcrow">¶</a></p>
+For WebRTC the application developer needs to define the name space and mapping to DNS.<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.6-2">By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
+In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.<a href="#section-4.1.6-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.6-3"><span>[<a href="#I-D.johansson-sipcore-dane-sip" class="cite xref">I-D.johansson-sipcore-dane-sip</a>]</span>(SIPDANE)<a href="#section-4.1.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="dns-over-tls-client-authentication">
-<section id="section-4.1.6">
+<section id="section-4.1.7">
           <h4 id="name-dns-over-tls-client-authent">
-<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-dns-over-tls-client-authent" class="section-name selfRef">DNS over TLS client authentication</a>
+<a href="#section-4.1.7" class="section-number selfRef">4.1.7. </a><a href="#name-dns-over-tls-client-authent" class="section-name selfRef">DNS over TLS client authentication</a>
           </h4>
-<p id="section-4.1.6-1">Issue #7<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.7-1">Issue #7<a href="#section-4.1.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="smtp-starttls">
-<section id="section-4.1.7">
+<section id="section-4.1.8">
           <h4 id="name-smtp-starttls">
-<a href="#section-4.1.7" class="section-number selfRef">4.1.7. </a><a href="#name-smtp-starttls" class="section-name selfRef">SMTP, STARTTLS</a>
+<a href="#section-4.1.8" class="section-number selfRef">4.1.8. </a><a href="#name-smtp-starttls" class="section-name selfRef">SMTP, STARTTLS</a>
           </h4>
-<p id="section-4.1.7-1">Issue #8<a href="#section-4.1.7-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.8-1">Issue #8<a href="#section-4.1.8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ssh-client">
-<section id="section-4.1.8">
+<section id="section-4.1.9">
           <h4 id="name-ssh-client">
-<a href="#section-4.1.8" class="section-number selfRef">4.1.8. </a><a href="#name-ssh-client" class="section-name selfRef">SSH client</a>
+<a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-ssh-client" class="section-name selfRef">SSH client</a>
           </h4>
-<p id="section-4.1.8-1">SSH servers have for some time been able to put their host keys into DNS using <span>[<a href="#RFC4255" class="cite xref">RFC4255</a>]</span>.<a href="#section-4.1.8-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.8-2">In many SSH server implementations the list of users that is authorized to login to an account is given by listing their public keys in a per-user file ("authorized_keys").
+<p id="section-4.1.9-1">SSH servers have for some time been able to put their host keys into DNS using <span>[<a href="#RFC4255" class="cite xref">RFC4255</a>]</span>.<a href="#section-4.1.9-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-2">In many SSH server implementations the list of users that is authorized to login to an account is given by listing their public keys in a per-user file ("authorized_keys").
 The file provides both authorization (who may login), and authentication (how they prove their identity).
-While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.<a href="#section-4.1.8-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.8-3">However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
-Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:<a href="#section-4.1.8-3" class="pilcrow">¶</a></p>
+While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.<a href="#section-4.1.9-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-3">However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
+Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:<a href="#section-4.1.9-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1.8-4.1">A user who wants to update their key need only update DNS in that case.<a href="#section-4.1.8-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.1.9-4.1">
+              <p id="section-4.1.9-4.1.1">A user who wants to update their key need only update DNS in that case.<a href="#section-4.1.9-4.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.8-4.2">A user who has lost access to their key, but can still update DNS (or can have a colleague update it) would more easily be able to recover.<a href="#section-4.1.8-4.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.9-4.2">
+              <p id="section-4.1.9-4.2.1">A user who has lost access to their key, but can still update DNS (or can have a colleague update it) would more easily be able to recover.<a href="#section-4.1.9-4.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.8-4.3">An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.<a href="#section-4.1.8-4.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-4.1.9-4.3">
+              <p id="section-4.1.9-4.3.1">An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.<a href="#section-4.1.9-4.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-4.1.8-5">The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.<a href="#section-4.1.8-5" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-5">The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
+Since SSH can trust CA certificates from X.509, those may be published for user authentication.<a href="#section-4.1.9-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="network-access">
-<section id="section-4.1.9">
+<section id="section-4.1.10">
           <h4 id="name-network-access">
-<a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-network-access" class="section-name selfRef">Network Access</a>
+<a href="#section-4.1.10" class="section-number selfRef">4.1.10. </a><a href="#name-network-access" class="section-name selfRef">Network Access</a>
           </h4>
-<p id="section-4.1.9-1">Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
-This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.<a href="#section-4.1.9-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.9-2">While there are EAP protocols that do not involve certificates, such as EAPSIM (<span>[<a href="#RFC4186" class="cite xref">RFC4186</a>]</span>, the use of symmetric key mechanisms as the "network key" is common in many homes.
-The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in <span>[<a href="#I-D.ietf-madinas-use-cases" class="cite xref">I-D.ietf-madinas-use-cases</a>]</span>.<a href="#section-4.1.9-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.10-1">Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
+This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.<a href="#section-4.1.10-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.10-2">While there are EAP protocols that do not involve certificates, such as EAPSIM (<span>[<a href="#RFC4186" class="cite xref">RFC4186</a>]</span>, the use of symmetric key mechanisms as the "network key" is common in many homes.
+The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in <span>[<a href="#I-D.ietf-madinas-use-cases" class="cite xref">I-D.ietf-madinas-use-cases</a>]</span>.<a href="#section-4.1.10-2" class="pilcrow">¶</a></p>
 <div id="eap-tls-with-radius">
-<section id="section-4.1.9.1">
+<section id="section-4.1.10.1">
             <h5 id="name-eap-tls-with-radius">
-<a href="#section-4.1.9.1" class="section-number selfRef">4.1.9.1. </a><a href="#name-eap-tls-with-radius" class="section-name selfRef">EAP-TLS with RADIUS</a>
+<a href="#section-4.1.10.1" class="section-number selfRef">4.1.10.1. </a><a href="#name-eap-tls-with-radius" class="section-name selfRef">EAP-TLS with RADIUS</a>
             </h5>
-<p id="section-4.1.9.1-1">Enterprise EAP methods use a version of TLS to form a secure transport.
+<p id="section-4.1.10.1-1">Enterprise EAP methods use a version of TLS to form a secure transport.
 Client and server-side certificates are used as credentials.
 EAP-TLS does not run over TCP, but rather over a reliable transport provided by EAP.
 To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
-<span>[<a href="#RFC3748" class="cite xref">RFC3748</a>]</span> does guarantee a minimum payload of 1020 bytes.<a href="#section-4.1.9.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1-2">The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
+<span>[<a href="#RFC3748" class="cite xref">RFC3748</a>]</span> does guarantee a minimum payload of 1020 bytes.<a href="#section-4.1.10.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.10.1-2">The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
 In worst case scenarios, which are common with eduroam <span>[<a href="#RFC7593" class="cite xref">RFC7593</a>]</span>, the EAP packets are transported some distance, easily across the entire planet.
 The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
 Transferring the client certificate is redundant.
-That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.<a href="#section-4.1.9.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1-3">The use of DANE Client IDs in TLS as described in <span>[<a href="#I-D.ietf-dance-tls-clientid" class="cite xref">I-D.ietf-dance-tls-clientid</a>]</span> reduces the redundant bytes of certificate sent.<a href="#section-4.1.9.1-3" class="pilcrow">¶</a></p>
+That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.<a href="#section-4.1.10.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.10.1-3">The use of DANE Client IDs in TLS as described in <span>[<a href="#I-D.ietf-dance-tls-clientid" class="cite xref">I-D.ietf-dance-tls-clientid</a>]</span> reduces the redundant bytes of certificate sent.<a href="#section-4.1.10.1-3" class="pilcrow">¶</a></p>
 <div id="terminology">
-<section id="section-4.1.9.1.1">
+<section id="section-4.1.10.1.1">
               <h6 id="name-terminology">
-<a href="#section-4.1.9.1.1" class="section-number selfRef">4.1.9.1.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+<a href="#section-4.1.10.1.1" class="section-number selfRef">4.1.10.1.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
               </h6>
-<p id="section-4.1.9.1.1-1"><strong>Supplicant:</strong> The entity which acts as the TLS client in the EAP-TLS authentication protocol.
+<p id="section-4.1.10.1.1-1"><strong>Supplicant:</strong> The entity which acts as the TLS client in the EAP-TLS authentication protocol.
 This term is defined in IEEE 802.1x.
-The suppliant acts as a client in the EAPOL (EAP over LAN) protocol, which is terminated at the authenticator (defined below).<a href="#section-4.1.9.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1.1-2"><strong>Authentication server:</strong> The entity which acts as the TLS server in the EAP-TLS protocol.
-RADIUS (RFC 2865) is a frequently-used authentication server protocol.<a href="#section-4.1.9.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1.1-3"><strong>Authenticator:</strong> The authenticator is the device which acts as a server the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
-The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.<a href="#section-4.1.9.1.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1.1-4"><a href="EAP-TLS">https://datatracker.ietf.org/doc/html/rfc5216</a> is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
+The suppliant acts as a client in the EAPOL (EAP over LAN) protocol, which is terminated at the authenticator (defined below).<a href="#section-4.1.10.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.10.1.1-2"><strong>Authentication server:</strong> The entity which acts as the TLS server in the EAP-TLS protocol.
+RADIUS (RFC 2865) is a frequently-used authentication server protocol.<a href="#section-4.1.10.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.10.1.1-3"><strong>Authenticator:</strong> The authenticator is the device which acts as a server the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
+The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.<a href="#section-4.1.10.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1.10.1.1-4"><a href="EAP-TLS">https://datatracker.ietf.org/doc/html/rfc5216</a> is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
 IEEE 802.1x defines the encapsulation of EAP over LAN access technologies, like IEEE 802.11 wireless and IEEE 802.3 ethernet.
 RADIUS is a protocol and server technology frequently used for supporting the server side of EAP-TLS authentication.
 Guidance for implementing RADIUS strongly encourages the use of a single common CA for all supplicants, to mitigate the possibility of identifier collisions across PKIs.
 The use of DANE for client identity can allow the safe use of any number of CAs.
 DNS acts as a constraining namespace, which prevents two unrelated CAs from issuing valid certificates bearing the same identifier.
-Certificates represented in DNS are valid, and all others are un-trusted.<a href="#section-4.1.9.1.1-4" class="pilcrow">¶</a></p>
+Certificates represented in DNS are valid, and all others are un-trusted.<a href="#section-4.1.10.1.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="radsec">
-<section id="section-4.1.9.2">
+<section id="section-4.1.10.2">
             <h5 id="name-radsec">
-<a href="#section-4.1.9.2" class="section-number selfRef">4.1.9.2. </a><a href="#name-radsec" class="section-name selfRef">RADSEC</a>
+<a href="#section-4.1.10.2" class="section-number selfRef">4.1.10.2. </a><a href="#name-radsec" class="section-name selfRef">RADSEC</a>
             </h5>
-<p id="section-4.1.9.2-1">The RADIUS protocol has a few recognized security problems.
+<p id="section-4.1.10.2-1">The RADIUS protocol has a few recognized security problems.
 <a href="RADSEC">https://datatracker.ietf.org/doc/html/rfc6614</a> addresses the challenges related to the weakness of MD5-based authentication and confidentiality over untrusted networks by establishing a TLS session between the RADIUS protocol client and the RADIUS protocol server.
 RADIUS datagrams are then transmitted between the authenticator and authentication server within the TLS session.
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
-The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.<a href="#section-4.1.9.2-1" class="pilcrow">¶</a></p>
+The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.<a href="#section-4.1.10.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1747,7 +1805,8 @@ Within the context of protecting DNS-based identities, this compartmentalization
 This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.2-3">The naming pattern suggested in <a href="https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert">https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert</a> includes
 an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the
-event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
+An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="availability">
@@ -1775,6 +1834,7 @@ It also allows for more opportunities for an attacker to affect the response tim
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-privacy" class="section-name selfRef">Privacy</a>
         </h3>
 <p id="section-5.4-1">If the name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
+This privacy is implied for domain users inasfar as the domain CA does not mention users.
 When creating the name of the RR, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
 The name of the RR may note have to have a direct relation to the name of the subject of the certificate.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 <p id="section-5.4-2">Further work has do be done in this area.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
@@ -1831,6 +1891,7 @@ For instance, some kind of battery operated sensor which might be used in a larg
       <h2 id="name-references">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-7.1">
         <h3 id="name-normative-references">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
@@ -1846,6 +1907,8 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-7.2">
         <h3 id="name-informative-references">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
@@ -1857,11 +1920,11 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dd class="break"></dd>
 <dt id="I-D.ietf-dance-tls-clientid">[I-D.ietf-dance-tls-clientid]</dt>
         <dd>
-<span class="refAuthor">Huque, S.</span> and <span class="refAuthor">V. Dukhovni</span>, <span class="refTitle">"TLS Extension for DANE Client Identity"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dance-tls-clientid-02</span>, <time datetime="2023-05-12" class="refDate">12 May 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-dance-tls-clientid-02">https://datatracker.ietf.org/doc/html/draft-ietf-dance-tls-clientid-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Huque, S.</span> and <span class="refAuthor">V. Dukhovni</span>, <span class="refTitle">"TLS Extension for DANE Client Identity"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dance-tls-clientid-03</span>, <time datetime="2024-01-08" class="refDate">8 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-dance-tls-clientid-03">https://datatracker.ietf.org/doc/html/draft-ietf-dance-tls-clientid-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-madinas-use-cases">[I-D.ietf-madinas-use-cases]</dt>
         <dd>
-<span class="refAuthor">Henry, J.</span> and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Randomized and Changing MAC Address Use Cases and Requirements"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-madinas-use-cases-06</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-06">https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Henry, J.</span> and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Randomized and Changing MAC Address Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-madinas-use-cases-09</span>, <time datetime="2024-02-29" class="refDate">29 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-09">https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-09</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.johansson-sipcore-dane-sip">[I-D.johansson-sipcore-dane-sip]</dt>
         <dd>
@@ -1879,9 +1942,17 @@ For instance, some kind of battery operated sensor which might be used in a larg
         <dd>
 <span class="refAuthor">Schlyter, J.</span> and <span class="refAuthor">W. Griffin</span>, <span class="refTitle">"Using DNS to Securely Publish Secure Shell (SSH) Key Fingerprints"</span>, <span class="seriesInfo">RFC 4255</span>, <span class="seriesInfo">DOI 10.17487/RFC4255</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4255">https://www.rfc-editor.org/rfc/rfc4255</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4422">[RFC4422]</dt>
+        <dd>
+<span class="refAuthor">Melnikov, A., Ed.</span> and <span class="refAuthor">K. Zeilenga, Ed.</span>, <span class="refTitle">"Simple Authentication and Security Layer (SASL)"</span>, <span class="seriesInfo">RFC 4422</span>, <span class="seriesInfo">DOI 10.17487/RFC4422</span>, <time datetime="2006-06" class="refDate">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4422">https://www.rfc-editor.org/rfc/rfc4422</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC4501">[RFC4501]</dt>
         <dd>
 <span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"Domain Name System Uniform Resource Identifiers"</span>, <span class="seriesInfo">RFC 4501</span>, <span class="seriesInfo">DOI 10.17487/RFC4501</span>, <time datetime="2006-05" class="refDate">May 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4501">https://www.rfc-editor.org/rfc/rfc4501</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4519">[RFC4519]</dt>
+        <dd>
+<span class="refAuthor">Sciberras, A., Ed.</span>, <span class="refTitle">"Lightweight Directory Access Protocol (LDAP): Schema for User Applications"</span>, <span class="seriesInfo">RFC 4519</span>, <span class="seriesInfo">DOI 10.17487/RFC4519</span>, <time datetime="2006-06" class="refDate">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4519">https://www.rfc-editor.org/rfc/rfc4519</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7515">[RFC7515]</dt>
         <dd>
@@ -1909,6 +1980,7 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
 <div id="acknowledgments">
 <section id="appendix-A">
