@@ -93,28 +93,15 @@ A first-class identity is an application-independent identity.
 
 **How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
-key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
-and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed
-by the same party or organization. A device manufacturer may instantiate the key pair, and a systems integrator may
-be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances,
-a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs
-to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after
-internally assuring the user identity, and the systems integrator may publish the CA root certificate
-in DNS.
-
-**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a _How to Dance with_ document.
-
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric
-key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
-and publish the public key or certificate in DNS.
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
 In some circumstances, a manufacturer may also publish device identity records in DNS.
 In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
 A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.
+
+**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
+usually through a _How to Dance with_ document.
 
 **Security Domain:** DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
