@@ -1167,7 +1167,7 @@ within the context of existing object security and TLS-based protocols.<a href="
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
-                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-example-1-tls-authenticatio" class="internal xref">Example 1: TLS authentication for HTTPS API interaction, DANE preauthorization</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-example-1-tls-authenticatio" class="internal xref">Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-iot-device-to-cloud" class="internal xref">IoT: Device to cloud</a></p>
@@ -1310,7 +1310,7 @@ chat accounts and IoT devices belonging to different organizations.<a href="#sec
 and less expensive to maintain by using DNS as the constraining namespace and lookup mechanism.
 DANCE builds on patterns established by the original DANE RFCs to enable client and sending entity
 certificate, public key, and trust anchor discovery.
-DANCE allows entities to possess a first-class identity, which, thanks to DNS, may be trusted by any
+DANCE allows entities to possess a first-class identity, which, thanks to DNSSEC, may be trusted by any
 application also trusting the DNS.
 A first-class identity is an application-independent identity.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </section>
@@ -1326,47 +1326,35 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2"><strong>This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.</strong><a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3"><strong>How to Dance with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with <em>entity</em>".<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric
-key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
-and publish the public key or certificate in DNS. Under some circumstances, these steps are not all performed
-by the same party or organization. A device manufacturer may instantiate the key pair, and a systems integrator may
-be responsible for issuing (and publishing) the device certificate in DNS. In some circumstances,
-a manufacturer may also publish device identity records in DNS. In this case, the system integrator needs
-to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after
-internally assuring the user identity, and the systems integrator may publish the CA root certificate
-in DNS.<a href="#section-2-4" class="pilcrow">¶</a></p>
-<p id="section-2-5"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a <em>How to Dance with</em> document.<a href="#section-2-5" class="pilcrow">¶</a></p>
-<p id="section-2-6"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric
-key pair for the device, sign the certificate (if the public credential is not simply a raw public key),
-and publish the public key or certificate in DNS.
+<p id="section-2-4"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
 In some circumstances, a manufacturer may also publish device identity records in DNS.
 In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.<a href="#section-2-6" class="pilcrow">¶</a></p>
-<p id="section-2-7"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
+A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-5"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
+usually through a <em>How to Dance with</em> document.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
-its communicating peer by name, and agreement on protocols can be achieved.
+its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
 The act of joining a security domain, in the past, may have involved certificate provisioning.
 Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
-[Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]<a href="#section-2-7" class="pilcrow">¶</a></p>
-<p id="section-2-8"><strong>Client:</strong> This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"<a href="#section-2-8" class="pilcrow">¶</a></p>
-<p id="section-2-9"><strong>User:</strong> A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.<a href="#section-2-9" class="pilcrow">¶</a></p>
-<p id="section-2-10"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-10" class="pilcrow">¶</a></p>
-<p id="section-2-11"><strong>Sending agent:</strong> Software which encodes and transmits messages.
-A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-11" class="pilcrow">¶</a></p>
-<p id="section-2-12"><strong>Receiving agent:</strong> Software which interprets and processes messages.
-A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-12" class="pilcrow">¶</a></p>
-<p id="section-2-13"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-13" class="pilcrow">¶</a></p>
-<p id="section-2-14"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
+[Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-7"><strong>Client:</strong> This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"<a href="#section-2-7" class="pilcrow">¶</a></p>
+<p id="section-2-8"><strong>User:</strong> A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.<a href="#section-2-8" class="pilcrow">¶</a></p>
+<p id="section-2-9"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-9" class="pilcrow">¶</a></p>
+<p id="section-2-10"><strong>Sending agent:</strong> Software which encodes and transmits messages.
+A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-10" class="pilcrow">¶</a></p>
+<p id="section-2-11"><strong>Receiving agent:</strong> Software which interprets and processes messages.
+A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-11" class="pilcrow">¶</a></p>
+<p id="section-2-12"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-12" class="pilcrow">¶</a></p>
+<p id="section-2-13"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
 In many situations, multiple hardware suppliers are involved in producing a given device.
 In some cases, the hardware supplier may provision an asymmetric key pair for the device and establish the device identity in DNS.
-In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-14" class="pilcrow">¶</a></p>
-<p id="section-2-15"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
-In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-15" class="pilcrow">¶</a></p>
-<p id="section-2-16"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-16" class="pilcrow">¶</a></p>
+In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-13" class="pilcrow">¶</a></p>
+<p id="section-2-14"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
+In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-14" class="pilcrow">¶</a></p>
+<p id="section-2-15"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-15" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="communication-patterns">
@@ -1402,7 +1390,7 @@ This pattern can be used in mesh networking, IoT and in many communication proto
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-decoupled" class="section-name selfRef">Decoupled</a>
         </h3>
 <p id="section-3.3-1">Decoupled architecture, frequently incorporating store-and-forward systems, provides no direct connection between the producer and consumer of information.
-The producer (or sending agent) and consumer (or receiving agent) are typically separated by at least one layer of messaging-oriented middleware.
+The producer (or sending agent) and consumer (or receiving agent) are typically separated by at least one host running messaging-oriented middleware.
 The Messaging-oriented middleware components may act as a server for the purpose of establishing TLS sessions for the producer and consumer.
 This allows the assertion of identity between the middleware and sending agent, and the middleware and receiving agent.
 The trust relationship between the sending agent and receiving agent is based on the presumed trustworthiness of the middleware, unless an identity can be attached to the message itself, independent of transport and middleware components.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
@@ -1425,18 +1413,19 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
         <h3 id="name-overview">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
         </h3>
-<p id="section-4.1-1">The client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the DNS owner name of the client.  If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute <span>[<a href="#RFC4519" class="cite xref">RFC4519</a>]</span>.
-In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
+<p id="section-4.1-1">The client sets up a TLS connection to a server, attaches a client certificate with one subjectAltName element dNSName indicating the DNS onwer name of the client.
+If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute <span>[<a href="#RFC4519" class="cite xref">RFC4519</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
-[PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid &amp; dNSName, but it is limited to ASCII and suggests email only].<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">Using DNS to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
+(PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid &amp; dNSName, but it is limited to ASCII and suggests email only).<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
 For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
-This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<div id="example-1-tls-authentication-for-https-api-interaction-dane-preauthorization">
+This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<div id="example-1-tls-authentication-for-https-api-interaction-dane-pattern-assurance">
 <section id="section-4.1.1">
           <h4 id="name-example-1-tls-authenticatio">
-<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-example-1-tls-authenticatio" class="section-name selfRef">Example 1: TLS authentication for HTTPS API interaction, DANE preauthorization</a>
+<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-example-1-tls-authenticatio" class="section-name selfRef">Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance</a>
           </h4>
 <ul class="normal">
 <li class="normal" id="section-4.1.1-1.1">
@@ -1552,8 +1541,8 @@ No need to manage an allow-list in the load balancer.<a href="#section-4.1.1.1-3
 <p id="section-4.1.2-1">Direct device-to-cloud communication is common in simple IoT applications.
 Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates.
 Client certificate authentication frequently requires the consumer to maintain a CA.
-The CA trust anchor certificate is installed into the cloud application, and used in the TLS authentication process.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-2">Using DANE for device identity can allow parties other than the implementer to operate the CA.
+Before client DANE, the CA trust anchor certificate would be installed into the cloud application, and used in the TLS authentication process.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-2">Using client DANE for device identity can allow parties other than the implementer to operate the CA.
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
 </section>
@@ -1581,7 +1570,7 @@ Using traditional certificate-based identity, the sensor and the gateway may hav
 the same organizational PKI.
 By using DANE for client and sender identity, the sensor and the gateway may have identities represented
 by the equipment supplier, and still be able to mutually authenticate.
-Important sensor measurements forwarded by the gateway to the cloud may bear the DNS name and signature of
+Important sensor measurements forwarded by the gateway to the cloud may bear the DNS owner name and signature of
 the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
 which forwarded the information to the application.<a href="#section-4.1.4-1" class="pilcrow">¶</a></p>
 </section>
@@ -1641,7 +1630,7 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 The file provides both authorization (who may login), and authentication (how they prove their identity).
 While this is an implementation detail, doing both in one place has been one of Secure Shell's major reason for success.<a href="#section-4.1.9-2" class="pilcrow">¶</a></p>
 <p id="section-4.1.9-3">However, there are downsides to this: a user can not easily replace their key without visiting every host they are authorized to access and update the key on that host.
-Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:<a href="#section-4.1.9-3" class="pilcrow">¶</a></p>
+Separation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS owner name in the authorization file:<a href="#section-4.1.9-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4.1.9-4.1">
               <p id="section-4.1.9-4.1.1">A user who wants to update their key need only update DNS in that case.<a href="#section-4.1.9-4.1.1" class="pilcrow">¶</a></p>
@@ -1833,10 +1822,11 @@ It also allows for more opportunities for an attacker to affect the response tim
         <h3 id="name-privacy">
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-privacy" class="section-name selfRef">Privacy</a>
         </h3>
-<p id="section-5.4-1">If the name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
+<p id="section-5.4-1">If the DNS owner name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
-When creating the name of the RR, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
-The name of the RR may note have to have a direct relation to the name of the subject of the certificate.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
+The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
+If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 <p id="section-5.4-2">Further work has do be done in this area.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 <p id="section-5.4-3">AW: Consider if an approach like the email local-part hashing used in SMIMEA <a href="https://datatracker.ietf.org/doc/html/rfc8162">https://datatracker.ietf.org/doc/html/rfc8162</a> might work for this.
 If the identifier/local-part is hashed and the certificate association is a SHA256 or SHA512 hash, the effort required to walk a zone would not produce much useful information.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
