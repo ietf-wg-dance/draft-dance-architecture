@@ -287,7 +287,31 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 
 ### DNS over TLS client authentication
 
-Issue #7
+DNS-over-TLS client authentication is applicable to most portions of the
+transport segments of the DNS infrastructure.
+Current BCP for authentication between DNS infrastructure tends to be based
+upon a shared secret in the form of TSIG.
+
+From authoritative to authoritative secondary, it can be applied to
+XFR-over-TLS ("XoT") as an upgrade to TSIG, removing the need for out-of-band
+communication of shared secrets, currently a weak point in that portion of
+the infrastructure.
+
+From authoritative servers to recursive servers, in situations in which both
+are part of a common trust-group or have access to the same non-public or
+split-horizon zone data, client authentication allows authoritative servers
+to give selective access to specific recursive servers. Alternatively, some
+recursive servers could authenticate in order to gain access to
+non-content-related special services, such as a higher query rate-limit quota
+than is publicly available.
+
+Between recursive resolvers and caching/forwarding or stub resolvers,
+authentication can be used to gain access to special services, such as
+subscription-based malware blocking, or visibility of corporate split-horizon
+internal zone, or to distinguish between subscribers to different performance tiers.
+
+In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
+
 
 ### SMTP, STARTTLS
 
