@@ -310,7 +310,7 @@ authentication can be used to gain access to special services, such as
 subscription-based malware blocking, or visibility of corporate split-horizon
 internal zone, or to distinguish between subscribers to different performance tiers.
 
-In the ideal implementation, client and server would bidirectionally authenticate, using DANE certificates to bootstrap TLS transport security.
+In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
 
 
 ### SMTP, STARTTLS
