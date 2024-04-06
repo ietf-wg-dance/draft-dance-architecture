@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 7 October 2024                                       Salesforce
+Expires: 8 October 2024                                       Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                            5 April 2024
+                                                            6 April 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 October 2024.
+   This Internet-Draft will expire on 8 October 2024.
 
 Copyright Notice
 
@@ -555,8 +555,8 @@ Table of Contents
    different performance tiers.
 
    In the ideal implementation, client and server would bidirectionally
-   authenticate, using DANE certificates to bootstrap TLS transport
-   security.
+   authenticate, using DANE client certificates to bootstrap TLS
+   transport security.
 
 4.1.8.  SMTP, STARTTLS
 
@@ -937,7 +937,10 @@ Table of Contents
               Identifiers", RFC 4501, DOI 10.17487/RFC4501, May 2006,
               <https://www.rfc-editor.org/rfc/rfc4501>.
 
-   [RFC4519]  "*** BROKEN REFERENCE ***".
+   [RFC4519]  Sciberras, A., Ed., "Lightweight Directory Access Protocol
+              (LDAP): Schema for User Applications", RFC 4519,
+              DOI 10.17487/RFC4519, June 2006,
+              <https://www.rfc-editor.org/rfc/rfc4519>.
 
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
