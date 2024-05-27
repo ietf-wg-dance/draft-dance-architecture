@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 8 October 2024                                       Salesforce
+Expires: 28 November 2024                                     Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                            6 April 2024
+                                                             27 May 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 October 2024.
+   This Internet-Draft will expire on 28 November 2024.
 
 Copyright Notice
 
@@ -84,16 +84,9 @@ Table of Contents
        4.1.5.  Domain Users
        4.1.6.  SIP and WebRTC inter-domain privacy
        4.1.7.  DNS over TLS client authentication
-       4.1.8.  SMTP, STARTTLS
-       4.1.9.  SSH client
-       4.1.10. Network Access
-     4.2.  Object Security
-       4.2.1.  Structured data messages: JOSE/COSE
-     4.3.  Operational anomaly reporting
-       4.3.1.  MUD reporting for improper provisioning
-       4.3.2.  XARF for abuse reporting
-     4.4.  Adjacent Ecosystem Components
-       4.4.1.  Certification Authority
+       4.1.8.  SSH client
+       4.1.9.  Network Access
+       4.1.10. Structured data messages: JOSE/COSE
    5.  Security Considerations
      5.1.  Confidentiality
      5.2.  Integrity
@@ -558,11 +551,7 @@ Table of Contents
    authenticate, using DANE client certificates to bootstrap TLS
    transport security.
 
-4.1.8.  SMTP, STARTTLS
-
-   Issue #8
-
-4.1.9.  SSH client
+4.1.8.  SSH client
 
    SSH servers have for some time been able to put their host keys into
    DNS using [RFC4255].
@@ -597,7 +586,7 @@ Table of Contents
    certificates from X.509, those may be published for user
    authentication.
 
-4.1.10.  Network Access
+4.1.9.  Network Access
 
    Network access refers to an authentication process by which a node is
    admitted securely onto network infrastructure.  This is most common
@@ -611,7 +600,7 @@ Table of Contents
    Randomized and Changing MAC addresses (RCM), as described in
    [I-D.ietf-madinas-use-cases].
 
-4.1.10.1.  EAP-TLS with RADIUS
+4.1.9.1.  EAP-TLS with RADIUS
 
    Enterprise EAP methods use a version of TLS to form a secure
    transport.  Client and server-side certificates are used as
@@ -638,7 +627,7 @@ Table of Contents
    [I-D.ietf-dance-tls-clientid] reduces the redundant bytes of
    certificate sent.
 
-4.1.10.1.1.  Terminology
+4.1.9.1.1.  Terminology
 
    *Supplicant:* The entity which acts as the TLS client in the EAP-TLS
    authentication protocol.  This term is defined in IEEE 802.1x.  The
@@ -670,7 +659,7 @@ Table of Contents
    valid certificates bearing the same identifier.  Certificates
    represented in DNS are valid, and all others are un-trusted.
 
-4.1.10.2.  RADSEC
+4.1.9.2.  RADSEC
 
    The RADIUS protocol has a few recognized security problems.
    https://datatracker.ietf.org/doc/html/rfc6614 (RADSEC) addresses the
@@ -687,11 +676,7 @@ Table of Contents
    switch, via RADSEC, without requiring the distribution of CA
    certificates.
 
-4.2.  Object Security
-
-   Issue #13
-
-4.2.1.  Structured data messages: JOSE/COSE
+4.1.10.  Structured data messages: JOSE/COSE
 
    JOSE and COSE provide formats for exchanging authenticated and
    encrypted structured data.  JOSE defines the x5u field in [RFC7515],
@@ -703,20 +688,7 @@ Table of Contents
    the DNS lookup itself.
 
    In order to make use of x5u, a DANCEr would have to define a new URI
-   scheme that explained how to get the right key from DNS.  (Open Issue
-   #22, about [RFC4501])
-
-4.3.  Operational anomaly reporting
-
-   Issue #14
-
-4.3.1.  MUD reporting for improper provisioning
-
-4.3.2.  XARF for abuse reporting
-
-4.4.  Adjacent Ecosystem Components
-
-4.4.1.  Certification Authority
+   scheme that explained how to get the right key from DNS.
 
 5.  Security Considerations
 
@@ -932,10 +904,6 @@ Table of Contents
               Authentication and Security Layer (SASL)", RFC 4422,
               DOI 10.17487/RFC4422, June 2006,
               <https://www.rfc-editor.org/rfc/rfc4422>.
-
-   [RFC4501]  Josefsson, S., "Domain Name System Uniform Resource
-              Identifiers", RFC 4501, DOI 10.17487/RFC4501, May 2006,
-              <https://www.rfc-editor.org/rfc/rfc4501>.
 
    [RFC4519]  Sciberras, A., Ed., "Lightweight Directory Access Protocol
               (LDAP): Schema for User Applications", RFC 4519,
