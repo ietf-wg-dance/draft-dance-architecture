@@ -312,11 +312,6 @@ internal zone, or to distinguish between subscribers to different performance ti
 
 In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
 
-
-### SMTP, STARTTLS
-
-Issue #8
-
 ### SSH client
 
 SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
@@ -389,10 +384,6 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-## Object Security
-
-Issue #13
-
 ### Structured data messages: JOSE/COSE
 
 JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
@@ -401,20 +392,6 @@ However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
 In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
-(Open Issue #22, about {{?RFC4501}})
-
-
-## Operational anomaly reporting
-
-Issue #14
-
-### MUD reporting for improper provisioning
-
-### XARF for abuse reporting
-
-## Adjacent Ecosystem Components
-
-### Certification Authority
 
 # Security Considerations
 
