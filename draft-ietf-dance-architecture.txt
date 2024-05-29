@@ -164,12 +164,6 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   *This section will be interesting to define.  We have great examples
-   of identity terminology in the https://datatracker.ietf.org/doc/html/
-   draft-sarikaya-t2trg-sbootstrapping-06 document, but this document
-   also admits that there is semantic drift on terms like
-   “bootstrapping”, depending on who’s talking.*
-
    *How to Dance with ENTITY:* This architecture document delegates many
    details of how DANCE can be used with some specific protocol to a
    document with the names "How to Dance with _entity_".
