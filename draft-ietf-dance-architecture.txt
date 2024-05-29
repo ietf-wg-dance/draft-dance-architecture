@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 28 November 2024                                     Salesforce
+Expires: 30 November 2024                                     Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                             27 May 2024
+                                                             29 May 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2024.
+   This Internet-Draft will expire on 30 November 2024.
 
 Copyright Notice
 
@@ -303,7 +303,7 @@ Table of Contents
 
    The client sets up a TLS connection to a server, attaches a client
    certificate with one subjectAltName element dNSName indicating the
-   DNS onwer name of the client.  If the client is a user, their user
+   DNS owner name of the client.  If the client is a user, their user
    identity is added in one subjectAltName element otherName holding
    their uid attribute [RFC4519].
 
