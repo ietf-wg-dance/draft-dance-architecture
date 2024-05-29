@@ -89,8 +89,6 @@ A first-class identity is an application-independent identity.
 
 {::boilerplate bcp14-tagged}
 
-**This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.**
-
 **How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
 
 **Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
