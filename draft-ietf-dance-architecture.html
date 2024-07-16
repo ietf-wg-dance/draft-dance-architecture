@@ -14,23 +14,22 @@
 related to the use of DANE DNS records for TLS client and messaging peer identity,
 within the context of existing object security and TLS-based protocols. 
     " name="description">
-<meta content="xml2rfc 3.21.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-dance-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.21.0
-    Python 3.11.9
+  xml2rfc 3.22.0
+    Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.3
-    platformdirs 4.2.1
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 68.2.2
-    six 1.16.0
+    requests 2.32.3
+    setuptools 69.5.1
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-dance-architecture.xml" rel="alternate" type="application/rfc+xml">
@@ -1030,11 +1029,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DNS-Bound Identities Architecture</td>
-<td class="right">May 2024</td>
+<td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilson, et al.</td>
-<td class="center">Expires 30 November 2024</td>
+<td class="center">Expires 17 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1046,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dance-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-29" class="published">29 May 2024</time>
+<time datetime="2024-07-16" class="published">16 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-30">30 November 2024</time></dd>
+<dd class="expires"><time datetime="2025-01-17">17 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1111,7 +1110,7 @@ within the context of existing object security and TLS-based protocols.<a href="
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1297,7 +1296,7 @@ A first-class identity is an application-independent identity.<a href="#section-
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2"><strong>How to Dance with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with <em>entity</em>".<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2"><strong>How to Dance with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to Dance with <em>entity</em>".<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
@@ -1474,7 +1473,7 @@ No need to manage an allow-list in the load balancer.<a href="#section-4.1.1.1-3
             </h5>
 <ul class="normal">
 <li class="normal" id="section-4.1.1.2-1.1">
-                <p id="section-4.1.1.2-1.1.1">The LDAP client initiates a TLS connection the the server, conveying the user's domain via the DANE Client Identity extension.<a href="#section-4.1.1.2-1.1.1" class="pilcrow">¶</a></p>
+                <p id="section-4.1.1.2-1.1.1">The LDAP client initiates a TLS connection to the server, conveying the user's domain via the DANE Client Identity extension.<a href="#section-4.1.1.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-4.1.1.2-1.2">
                 <p id="section-4.1.1.2-1.2.1">If the dane_clientid is allowed and begins with a _user label, the TLS server then performs a DNS lookup for TLSA records holding the user's CA, and includes them when requesting a client certificate.<a href="#section-4.1.1.2-1.2.1" class="pilcrow">¶</a></p>
@@ -1567,11 +1566,11 @@ Any DANCEr may however define alternate derivation procedures to obtain the DNS 
 <a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-sip-and-webrtc-inter-domain" class="section-name selfRef">SIP and WebRTC inter-domain privacy</a>
           </h4>
 <p id="section-4.1.6-1">End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
-There are also SIP standards that build upon a trust chained anchored on the HTTP trust chain (SIP identity, STIR).
+There are also SIP standards that build upon a trust chain anchored on the HTTP trust chain (SIP identity, STIR).
 WebRTC has a trust model between the web browser and the servers using TLS, but no inter-domain trust infrastructure.
 WebRTC lacks a definition of namespace to map to DNS, where SIP is based on an email-style addressing scheme.
 For WebRTC the application developer needs to define the name space and mapping to DNS.<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.6-2">By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
+<p id="section-4.1.6-2">By using DNS as a shared root of trust, SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
 In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.<a href="#section-4.1.6-2" class="pilcrow">¶</a></p>
 <p id="section-4.1.6-3"><span>[<a href="#I-D.johansson-sipcore-dane-sip" class="cite xref">I-D.johansson-sipcore-dane-sip</a>]</span>(SIPDANE)<a href="#section-4.1.6-3" class="pilcrow">¶</a></p>
 </section>
@@ -1635,8 +1634,8 @@ Since SSH can trust CA certificates from X.509, those may be published for user 
 <a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-network-access" class="section-name selfRef">Network Access</a>
           </h4>
 <p id="section-4.1.9-1">Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
-This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.<a href="#section-4.1.9-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.9-2">While there are EAP protocols that do not involve certificates, such as EAPSIM (<span>[<a href="#RFC4186" class="cite xref">RFC4186</a>]</span>, the use of symmetric key mechanisms as the "network key" is common in many homes.
+This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.<a href="#section-4.1.9-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-2">While there are EAP protocols that do not involve certificates, such as EAPSIM <span>[<a href="#RFC4186" class="cite xref">RFC4186</a>]</span>, the use of symmetric key mechanisms as the "network key" is common in many homes.
 The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in <span>[<a href="#I-D.ietf-madinas-use-cases" class="cite xref">I-D.ietf-madinas-use-cases</a>]</span>.<a href="#section-4.1.9-2" class="pilcrow">¶</a></p>
 <div id="eap-tls-with-radius">
 <section id="section-4.1.9.1">
@@ -1664,7 +1663,7 @@ This term is defined in IEEE 802.1x.
 The suppliant acts as a client in the EAPOL (EAP over LAN) protocol, which is terminated at the authenticator (defined below).<a href="#section-4.1.9.1.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1.9.1.1-2"><strong>Authentication server:</strong> The entity which acts as the TLS server in the EAP-TLS protocol.
 RADIUS (RFC 2865) is a frequently-used authentication server protocol.<a href="#section-4.1.9.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.9.1.1-3"><strong>Authenticator:</strong> The authenticator is the device which acts as a server the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
+<p id="section-4.1.9.1.1-3"><strong>Authenticator:</strong> The authenticator is the device which acts as a server in the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
 The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.<a href="#section-4.1.9.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-4.1.9.1.1-4"><a href="EAP-TLS">https://datatracker.ietf.org/doc/html/rfc5216</a> is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
 IEEE 802.1x defines the encapsulation of EAP over LAN access technologies, like IEEE 802.11 wireless and IEEE 802.3 ethernet.
@@ -1852,7 +1851,7 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dd class="break"></dd>
 <dt id="I-D.ietf-madinas-use-cases">[I-D.ietf-madinas-use-cases]</dt>
         <dd>
-<span class="refAuthor">Henry, J.</span> and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Randomized and Changing MAC Address Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-madinas-use-cases-09</span>, <time datetime="2024-02-29" class="refDate">29 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-09">https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Henry, J.</span> and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Randomized and Changing MAC Address Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-madinas-use-cases-10</span>, <time datetime="2024-06-23" class="refDate">23 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-10">https://datatracker.ietf.org/doc/html/draft-ietf-madinas-use-cases-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.johansson-sipcore-dane-sip">[I-D.johansson-sipcore-dane-sip]</dt>
         <dd>

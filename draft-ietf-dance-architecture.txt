@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 30 November 2024                                     Salesforce
+Expires: 17 January 2025                                      Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                             29 May 2024
+                                                            16 July 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 November 2024.
+   This Internet-Draft will expire on 17 January 2025.
 
 Copyright Notice
 
@@ -166,7 +166,7 @@ Table of Contents
 
    *How to Dance with ENTITY:* This architecture document delegates many
    details of how DANCE can be used with some specific protocol to a
-   document with the names "How to Dance with _entity_".
+   document with the name "How to Dance with _entity_".
 
    *Identity provisioning:* This refers to the set of tasks required to
    securely provision an asymmetric key pair for the device, sign the
@@ -384,7 +384,7 @@ Table of Contents
 
 4.1.1.2.  Example 3: TLS user authentication for an LDAP query
 
-   *  The LDAP client initiates a TLS connection the the server,
+   *  The LDAP client initiates a TLS connection to the server,
       conveying the user's domain via the DANE Client Identity
       extension.
 
@@ -499,7 +499,7 @@ Table of Contents
 
    End to end security in SIP is currently based on a classical S/MIME
    model which has not received much implementation.  There are also SIP
-   standards that build upon a trust chained anchored on the HTTP trust
+   standards that build upon a trust chain anchored on the HTTP trust
    chain (SIP identity, STIR).  WebRTC has a trust model between the web
    browser and the servers using TLS, but no inter-domain trust
    infrastructure.  WebRTC lacks a definition of namespace to map to
@@ -507,7 +507,7 @@ Table of Contents
    WebRTC the application developer needs to define the name space and
    mapping to DNS.
 
-   By using DNS as a shared root of trust SIP and WebRTC end points can
+   By using DNS as a shared root of trust, SIP and WebRTC end points can
    anchor the keys used for DTLS/SRTP media channel setup.  In addition,
    SIP devices can establish security in the SIP messaging by using DNS
    to find the callee’s and the callers digital identity.
@@ -584,11 +584,11 @@ Table of Contents
 
    Network access refers to an authentication process by which a node is
    admitted securely onto network infrastructure.  This is most common
-   for wireless networks (wifi, 802.15.4), but has also routine been
+   for wireless networks (wifi, 802.15.4), but has also routinely been
    done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
    While there are EAP protocols that do not involve certificates, such
-   as EAPSIM ([RFC4186], the use of symmetric key mechanisms as the
+   as EAPSIM [RFC4186], the use of symmetric key mechanisms as the
    "network key" is common in many homes.  The use of certificate based
    mechanisms are expected to increase, due to challenges, such as
    Randomized and Changing MAC addresses (RCM), as described in
@@ -633,7 +633,7 @@ Table of Contents
    authentication server protocol.
 
    *Authenticator:* The authenticator is the device which acts as a
-   server the EAPOL (EAP over LAN) protocol, and is a client of the
+   server in the EAPOL (EAP over LAN) protocol, and is a client of the
    authentication server.  The authenticator is responsible for passing
    EAP messages between the supplicant and the authentication server,
    and for ensuring that only authenticated supplicants gain access to
@@ -866,9 +866,9 @@ Table of Contents
    [I-D.ietf-madinas-use-cases]
               Henry, J. and Y. Lee, "Randomized and Changing MAC Address
               Use Cases", Work in Progress, Internet-Draft, draft-ietf-
-              madinas-use-cases-09, 29 February 2024,
+              madinas-use-cases-10, 23 June 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-madinas-
-              use-cases-09>.
+              use-cases-10>.
 
    [I-D.johansson-sipcore-dane-sip]
               Johansson, O. E., "TLS sessions in SIP using DNS-based
