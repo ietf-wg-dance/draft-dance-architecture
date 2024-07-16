@@ -1,0 +1,83 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2022-01-23T00:08:26.894481+00:00",
+  "repo": "ashdwilson/draft-dance-architecture",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOGUUnfc4u1quW",
+      "title": "Add privacy considerations",
+      "url": "https://github.com/ashdwilson/draft-dance-architecture/pull/1",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add privacy considerations as raised on the mailing list.",
+      "createdAt": "2021-11-22T09:16:48Z",
+      "updatedAt": "2021-11-22T13:24:47Z",
+      "baseRepository": "ashdwilson/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "77977030986208bb245f690ee0f715738ef787f4",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "main",
+      "headRefOid": "4d63f724c8ccd8a5a8cf4a11b5c7b92a6b18ee93",
+      "closedAt": "2021-11-22T13:24:46Z",
+      "mergedAt": "2021-11-22T13:24:46Z",
+      "mergedBy": "ashdwilson",
+      "mergeCommit": {
+        "oid": "3a2daf003a76098df4e7245fed24af08aab4f382"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
