@@ -75,19 +75,22 @@ Table of Contents
      3.2.  Peer2peer
      3.3.  Decoupled
    4.  Client authentication
-     4.1.  Overview
+     4.1.  Overview - DANCE usage examples
        4.1.1.  Example 1: TLS authentication for HTTPS API
                interaction, DANE pattern assurance
-       4.1.2.  IoT: Device to cloud
-       4.1.3.  LoRaWAN
-       4.1.4.  Edge Computing
-       4.1.5.  Domain Users
-       4.1.6.  SIP and WebRTC inter-domain privacy
-       4.1.7.  DNS over TLS client authentication
-       4.1.8.  SMTP, STARTTLS
-       4.1.9.  SSH client
-       4.1.10. Network Access
-       4.1.11. Structured data messages: JOSE/COSE
+       4.1.2.  Example 2: TLS authentication for HTTPS API
+               interaction, DANE matching in web application
+       4.1.3.  Example 3: TLS user authentication for an LDAP query
+       4.1.4.  IoT: Device to cloud
+       4.1.5.  LoRaWAN
+       4.1.6.  Edge Computing
+       4.1.7.  Domain Users
+       4.1.8.  SIP and WebRTC inter-domain privacy
+       4.1.9.  DNS over TLS client authentication
+       4.1.10. SMTP, STARTTLS
+       4.1.11. SSH client
+       4.1.12. Network Access
+       4.1.13. Structured data messages: JOSE/COSE
    5.  Security Considerations
      5.1.  Confidentiality
      5.2.  Integrity
@@ -295,7 +298,7 @@ Table of Contents
 
 4.  Client authentication
 
-4.1.  Overview
+4.1.  Overview - DANCE usage examples
 
    The client sets up a TLS connection to a server, attaches a client
    certificate with one subjectAltName element dNSName indicating the
@@ -346,8 +349,8 @@ Table of Contents
    *  No traffic reaches the application behind the load balancer unless
       DANE client authentication is successful.
 
-4.1.1.1.  Example 2: TLS authentication for HTTPS API interaction, DANE
-          matching in web application
+4.1.2.  Example 2: TLS authentication for HTTPS API interaction, DANE
+        matching in web application
 
    *  The client initiates a TLS connection to the server.
 
@@ -384,7 +387,7 @@ Table of Contents
 
    *  This can be implemented with no changes to the TLS handshake.
 
-4.1.1.2.  Example 3: TLS user authentication for an LDAP query
+4.1.3.  Example 3: TLS user authentication for an LDAP query
 
    *  The LDAP client initiates a TLS connection to the server,
       conveying the user's domain via the DANE Client Identity
@@ -421,7 +424,7 @@ Table of Contents
 
    *  This can be implemented with no changes to the TLS handshake.
 
-4.1.2.  IoT: Device to cloud
+4.1.4.  IoT: Device to cloud
 
    Direct device-to-cloud communication is common in simple IoT
    applications.  Authentication in these applications is usually
@@ -438,7 +441,7 @@ Table of Contents
    approachable for small organizations which currently lack the
    resources to operate an organizational CA.
 
-4.1.3.  LoRaWAN
+4.1.5.  LoRaWAN
 
    For the end-device onboarding in LoRaWAN, the "network server" and
    the "join server" [RFC8376] needs to establish mutual TLS
@@ -453,7 +456,7 @@ Table of Contents
    to issue the client's self-signed certificate, the "network server"
    and the "join server" could be mutually authenticated.
 
-4.1.4.  Edge Computing
+4.1.6.  Edge Computing
 
    https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-
    computing-01 (Edge Computing) may require devices to mutually
@@ -471,7 +474,7 @@ Table of Contents
    measurement independent of the gateway which forwarded the
    information to the application.
 
-4.1.5.  Domain Users
+4.1.7.  Domain Users
 
    The allocation of user identities is the prerogative of a domain, in
    line with the nesting suggested in URI notation.  Domains may even
@@ -497,7 +500,7 @@ Table of Contents
    statements are for resources underneath the domain -- notably, the
    assignment of uid names.
 
-4.1.6.  SIP and WebRTC inter-domain privacy
+4.1.8.  SIP and WebRTC inter-domain privacy
 
    End to end security in SIP is currently based on a classical S/MIME
    model which has not received much implementation.  There are also SIP
@@ -516,7 +519,7 @@ Table of Contents
 
    [I-D.johansson-sipcore-dane-sip](SIPDANE)
 
-4.1.7.  DNS over TLS client authentication
+4.1.9.  DNS over TLS client authentication
 
    DNS-over-TLS client authentication is applicable to most portions of
    the transport segments of the DNS infrastructure.  Current BCP for
@@ -547,7 +550,7 @@ Table of Contents
    authenticate, using DANE client certificates to bootstrap TLS
    transport security.
 
-4.1.8.  SMTP, STARTTLS
+4.1.10.  SMTP, STARTTLS
 
    SMTP has included the ability to upgrade in-protocol to TLS using the
    STARTTLS [RFC7817] command.  When upgrading the connection, the
@@ -565,7 +568,7 @@ Table of Contents
    There are many use cases, but a major one is often dealing with
    authenticated relaying of email.
 
-4.1.9.  SSH client
+4.1.11.  SSH client
 
    SSH servers have for some time been able to put their host keys into
    DNS using [RFC4255].
@@ -600,7 +603,7 @@ Table of Contents
    certificates from X.509, those may be published for user
    authentication.
 
-4.1.10.  Network Access
+4.1.12.  Network Access
 
    Network access refers to an authentication process by which a node is
    admitted securely onto network infrastructure.  This is most common
@@ -614,7 +617,7 @@ Table of Contents
    Randomized and Changing MAC addresses (RCM), as described in
    [I-D.ietf-madinas-use-cases].
 
-4.1.10.1.  EAP-TLS with RADIUS
+4.1.12.1.  EAP-TLS with RADIUS
 
    Enterprise EAP methods use a version of TLS to form a secure
    transport.  Client and server-side certificates are used as
@@ -641,7 +644,7 @@ Table of Contents
    [I-D.ietf-dance-tls-clientid] reduces the redundant bytes of
    certificate sent.
 
-4.1.10.1.1.  Terminology
+4.1.12.1.1.  Terminology
 
    *Supplicant:* The entity which acts as the TLS client in the EAP-TLS
    authentication protocol.  This term is defined in IEEE 802.1x.  The
@@ -673,7 +676,7 @@ Table of Contents
    valid certificates bearing the same identifier.  Certificates
    represented in DNS are valid, and all others are un-trusted.
 
-4.1.10.2.  RADSEC
+4.1.12.2.  RADSEC
 
    The RADIUS protocol has a few recognized security problems.
    https://datatracker.ietf.org/doc/html/rfc6614 (RADSEC) addresses the
@@ -690,7 +693,7 @@ Table of Contents
    switch, via RADSEC, without requiring the distribution of CA
    certificates.
 
-4.1.11.  Structured data messages: JOSE/COSE
+4.1.13.  Structured data messages: JOSE/COSE
 
    JOSE and COSE provide formats for exchanging authenticated and
    encrypted structured data.  JOSE defines the x5u field in [RFC7515],
