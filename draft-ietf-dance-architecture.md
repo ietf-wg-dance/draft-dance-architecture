@@ -313,12 +313,12 @@ In the ideal implementation, client and server would bidirectionally authenticat
 ### SMTP, STARTTLS
 
 SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS {{?RFC7817}} command.
-When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{RFC9525}}.
+When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{!RFC9525}}.
 Support for this is very common and most email on the Internet is transmitted in this way.
 
 The use of client TLS certificates has not yet become common, in part because it is unclear how or what the server would check the certificate against.
 
-For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
+For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{!I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
 There are many use cases, but a major one is often dealing with authenticated relaying of email.
 
 ### SSH client
@@ -443,7 +443,7 @@ It also allows for more opportunities for an attacker to affect the response tim
 
 ## TLS Server availability
 
-TLS servers supporting DANCE should implement a list of domains that are valid for client authentication, 
+TLS servers supporting DANCE should implement a list of domains that are valid for client authentication,
 in order not to be open to DDOS attacks where a large number of clients force the server to do random DNS lookups.
 More implementation details are to be found in the protocol specific documents.
 
