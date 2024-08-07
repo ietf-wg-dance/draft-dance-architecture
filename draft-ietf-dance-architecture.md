@@ -457,9 +457,6 @@ If there is such a relation, a DANCEr may specify support for CA certificates, s
 
 Further work has do be done in this area.
 
-AW: Consider if an approach like the email local-part hashing used in SMIMEA <https://datatracker.ietf.org/doc/html/rfc8162> might work for this.
-If the identifier/local-part is hashed and the certificate association is a SHA256 or SHA512 hash, the effort required to walk a zone would not produce much useful information.
-
 ### DNS Scalability
 
 In the use case for IoT an implementation must be scalable to a large amount of devices.
@@ -472,8 +469,6 @@ If an authoritative resolver were configured to respond quite slowly (think slow
 
 The availability of a client identity zone is essential to permitting clients to authenticate.
 If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.
-
-**OEJ: We may want to have a discussion with the IETF DNS directorate. The scalability section above is from a discussion with one of the members...**
 
 ### Change of ownership for IoT devices
 
