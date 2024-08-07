@@ -310,6 +310,17 @@ internal zone, or to distinguish between subscribers to different performance ti
 
 In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
 
+### SMTP, STARTTLS
+
+SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS {{?RFC7817}} command.
+When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{RFC9525}}.
+Support for this is very common and most email on the Internet is transmitted in this way.
+
+The use of client TLS certificates has not yet become common, in part because it is unclear how or what the server would check the certificate against.
+
+For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
+There are many use cases, but a major one is often dealing with authenticated relaying of email.
+
 ### SSH client
 
 SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
