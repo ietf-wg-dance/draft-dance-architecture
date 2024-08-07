@@ -1794,8 +1794,6 @@ When creating the DNS owner name, effects of DNS zone walking and possible harve
 The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
 If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
 <p id="section-5.5-2">Further work has do be done in this area.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
-<p id="section-5.5-3">AW: Consider if an approach like the email local-part hashing used in SMIMEA <a href="https://datatracker.ietf.org/doc/html/rfc8162">https://datatracker.ietf.org/doc/html/rfc8162</a> might work for this.
-If the identifier/local-part is hashed and the certificate association is a SHA256 or SHA512 hash, the effort required to walk a zone would not produce much useful information.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
 <div id="dns-scalability">
 <section id="section-5.5.1">
           <h4 id="name-dns-scalability">
@@ -1808,7 +1806,6 @@ A zone will have to manage a large amount of changes as devices are constantly a
 <p id="section-5.5.1-3">If an authoritative resolver were configured to respond quite slowly (think slow loris [XXXrefereceXXX]), is it possible to cause a DoS on the TLS server via complete exhaustion of TCP connections?<a href="#section-5.5.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-4">The availability of a client identity zone is essential to permitting clients to authenticate.
 If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
-<p id="section-5.5.1-5"><strong>OEJ: We may want to have a discussion with the IETF DNS directorate. The scalability section above is from a discussion with one of the members...</strong><a href="#section-5.5.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="change-of-ownership-for-iot-devices">
