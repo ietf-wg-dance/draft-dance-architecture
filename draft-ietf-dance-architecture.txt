@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 17 January 2025                                      Salesforce
+Expires: 8 February 2025                                      Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                            16 July 2024
+                                                           7 August 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 January 2025.
+   This Internet-Draft will expire on 8 February 2025.
 
 Copyright Notice
 
@@ -84,16 +84,18 @@ Table of Contents
        4.1.5.  Domain Users
        4.1.6.  SIP and WebRTC inter-domain privacy
        4.1.7.  DNS over TLS client authentication
-       4.1.8.  SSH client
-       4.1.9.  Network Access
-       4.1.10. Structured data messages: JOSE/COSE
+       4.1.8.  SMTP, STARTTLS
+       4.1.9.  SSH client
+       4.1.10. Network Access
+       4.1.11. Structured data messages: JOSE/COSE
    5.  Security Considerations
      5.1.  Confidentiality
      5.2.  Integrity
      5.3.  Availability
-     5.4.  Privacy
-       5.4.1.  DNS Scalability
-       5.4.2.  Change of ownership for IoT devices
+     5.4.  TLS Server availability
+     5.5.  Privacy
+       5.5.1.  DNS Scalability
+       5.5.2.  Change of ownership for IoT devices
    6.  IANA Considerations
    7.  References
      7.1.  Normative References
@@ -545,7 +547,25 @@ Table of Contents
    authenticate, using DANE client certificates to bootstrap TLS
    transport security.
 
-4.1.8.  SSH client
+4.1.8.  SMTP, STARTTLS
+
+   SMTP has included the ability to upgrade in-protocol to TLS using the
+   STARTTLS [RFC7817] command.  When upgrading the connection, the
+   client checks the server certificate using the DNS-ID mechanisms
+   described in [RFC9525].  Support for this is very common and most
+   email on the Internet is transmitted in this way.
+
+   The use of client TLS certificates has not yet become common, in part
+   because it is unclear how or what the server would check the
+   certificate against.
+
+   For mail-transfer-agent (MTA) to MTA communications, the use of a
+   TLSA RR as described in [I-D.ietf-dance-client-auth] permits the SMTP
+   server to check the identity of the parties trying to send email.
+   There are many use cases, but a major one is often dealing with
+   authenticated relaying of email.
+
+4.1.9.  SSH client
 
    SSH servers have for some time been able to put their host keys into
    DNS using [RFC4255].
@@ -580,7 +600,7 @@ Table of Contents
    certificates from X.509, those may be published for user
    authentication.
 
-4.1.9.  Network Access
+4.1.10.  Network Access
 
    Network access refers to an authentication process by which a node is
    admitted securely onto network infrastructure.  This is most common
@@ -594,7 +614,7 @@ Table of Contents
    Randomized and Changing MAC addresses (RCM), as described in
    [I-D.ietf-madinas-use-cases].
 
-4.1.9.1.  EAP-TLS with RADIUS
+4.1.10.1.  EAP-TLS with RADIUS
 
    Enterprise EAP methods use a version of TLS to form a secure
    transport.  Client and server-side certificates are used as
@@ -621,7 +641,7 @@ Table of Contents
    [I-D.ietf-dance-tls-clientid] reduces the redundant bytes of
    certificate sent.
 
-4.1.9.1.1.  Terminology
+4.1.10.1.1.  Terminology
 
    *Supplicant:* The entity which acts as the TLS client in the EAP-TLS
    authentication protocol.  This term is defined in IEEE 802.1x.  The
@@ -653,7 +673,7 @@ Table of Contents
    valid certificates bearing the same identifier.  Certificates
    represented in DNS are valid, and all others are un-trusted.
 
-4.1.9.2.  RADSEC
+4.1.10.2.  RADSEC
 
    The RADIUS protocol has a few recognized security problems.
    https://datatracker.ietf.org/doc/html/rfc6614 (RADSEC) addresses the
@@ -670,7 +690,7 @@ Table of Contents
    switch, via RADSEC, without requiring the distribution of CA
    certificates.
 
-4.1.10.  Structured data messages: JOSE/COSE
+4.1.11.  Structured data messages: JOSE/COSE
 
    JOSE and COSE provide formats for exchanging authenticated and
    encrypted structured data.  JOSE defines the x5u field in [RFC7515],
@@ -743,7 +763,15 @@ Table of Contents
    also allows for more opportunities for an attacker to affect the
    response time of the queries.
 
-5.4.  Privacy
+5.4.  TLS Server availability
+
+   TLS servers supporting DANCE should implement a list of domains that
+   are valid for client authentication, in order not to be open to DDOS
+   attacks where a large number of clients force the server to do random
+   DNS lookups.  More implementation details are to be found in the
+   protocol specific documents.
+
+5.5.  Privacy
 
    If the DNS owner name of the identity proven by a certificate is
    directly or indirectly relatable to a person, privacy needs to be
@@ -766,7 +794,7 @@ Table of Contents
    association is a SHA256 or SHA512 hash, the effort required to walk a
    zone would not produce much useful information.
 
-5.4.1.  DNS Scalability
+5.5.1.  DNS Scalability
 
    In the use case for IoT an implementation must be scalable to a large
    amount of devices.  In many cases, identities may also be very short
@@ -792,7 +820,7 @@ Table of Contents
    The scalability section above is from a discussion with one of the
    members...*
 
-5.4.2.  Change of ownership for IoT devices
+5.5.2.  Change of ownership for IoT devices
 
    One of the significant use cases is where the devices are identified
    by their manufacturer assigned identities.  A significant savings was
@@ -837,6 +865,13 @@ Table of Contents
 
 7.1.  Normative References
 
+   [I-D.ietf-dance-client-auth]
+              Huque, S. and V. Dukhovni, "TLS Client Authentication via
+              DANE TLSA records", Work in Progress, Internet-Draft,
+              draft-ietf-dance-client-auth-05, 13 January 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-dance-
+              client-auth-05>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -845,6 +880,10 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC9525]  Saint-Andre, P. and R. Salz, "Service Identity in TLS",
+              RFC 9525, DOI 10.17487/RFC9525, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9525>.
 
 7.2.  Informative References
 
@@ -912,6 +951,11 @@ Table of Contents
               Architecture for Network Roaming", RFC 7593,
               DOI 10.17487/RFC7593, September 2015,
               <https://www.rfc-editor.org/rfc/rfc7593>.
+
+   [RFC7817]  Melnikov, A., "Updated Transport Layer Security (TLS)
+              Server Identity Check Procedure for Email-Related
+              Protocols", RFC 7817, DOI 10.17487/RFC7817, March 2016,
+              <https://www.rfc-editor.org/rfc/rfc7817>.
 
    [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
               "A Voucher Artifact for Bootstrapping Protocols",
