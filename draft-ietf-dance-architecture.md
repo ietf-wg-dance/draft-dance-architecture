@@ -89,9 +89,7 @@ A first-class identity is an application-independent identity.
 
 {::boilerplate bcp14-tagged}
 
-**This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like “bootstrapping”, depending on who’s talking.**
-
-**How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the names "How to Dance with _entity_".
+**How to Dance with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to Dance with _entity_".
 
 **Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
@@ -169,7 +167,7 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 ## Overview
 
-The client sets up a TLS connection to a server, attaches a client certificate with one subjectAltName element dNSName indicating the DNS onwer name of the client.
+The client sets up a TLS connection to a server, attaches a client certificate with one subjectAltName element dNSName indicating the DNS owner name of the client.
 If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
 
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
@@ -214,7 +212,7 @@ No need to manage an allow-list in the load balancer.
 
 #### Example 3: TLS user authentication for an LDAP query
 
-- The LDAP client initiates a TLS connection the the server, conveying the user's domain via the DANE Client Identity extension.
+- The LDAP client initiates a TLS connection to the server, conveying the user's domain via the DANE Client Identity extension.
 - If the dane_clientid is allowed and begins with a _user label, the TLS server then performs a DNS lookup for TLSA records holding the user's CA, and includes them when requesting a client certificate.
 - If the client's certificate is signed by a CA found in the TLSA records and the certificate's dNSName prefixed with a _user label matches the dane_clientid then the client identity is authenticated to consist of the lowercase uid in the certificate, an "@" symbol and the lowercase UTF-8 representation of the certificate's dNSName (which lacks the "_user." prefix).
 - The LDAP server responds to SASL EXTERNAL authentication by obtaining the authenticated user identity in userid@domain.name form and, if so requested, attempts to change to an authorization identity.
@@ -274,12 +272,12 @@ There is no reason why other uses, such as store-and-forward with S/MIME, could 
 ### SIP and WebRTC inter-domain privacy
 
 End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
-There are also SIP standards that build upon a trust chained anchored on the HTTP trust chain (SIP identity, STIR).
+There are also SIP standards that build upon a trust chain anchored on the HTTP trust chain (SIP identity, STIR).
 WebRTC has a trust model between the web browser and the servers using TLS, but no inter-domain trust infrastructure.
 WebRTC lacks a definition of namespace to map to DNS, where SIP is based on an email-style addressing scheme.
 For WebRTC the application developer needs to define the name space and mapping to DNS.
 
-By using DNS as a shared root of trust SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
+By using DNS as a shared root of trust, SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
 In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.
 
 {{?I-D.johansson-sipcore-dane-sip}}(SIPDANE)
@@ -346,9 +344,9 @@ Since SSH can trust CA certificates from X.509, those may be published for user 
 ### Network Access
 
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
-This is most common for wireless networks (wifi, 802.15.4), but has also routine been done for wired infrastructure using 802.1X mechanisms with EAPOL.
+This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
-While there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
+While there are EAP protocols that do not involve certificates, such as EAPSIM {{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
 The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{?I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
@@ -376,7 +374,7 @@ The suppliant acts as a client in the EAPOL (EAP over LAN) protocol, which is te
 **Authentication server:** The entity which acts as the TLS server in the EAP-TLS protocol.
 RADIUS (RFC 2865) is a frequently-used authentication server protocol.
 
-**Authenticator:** The authenticator is the device which acts as a server the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
+**Authenticator:** The authenticator is the device which acts as a server in the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
 The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.
 
 [https://datatracker.ietf.org/doc/html/rfc5216](EAP-TLS) is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
@@ -395,10 +393,6 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-## Object Security
-
-Issue #13
-
 ### Structured data messages: JOSE/COSE
 
 JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
@@ -407,20 +401,6 @@ However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
 In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
-(Open Issue #22, about {{?RFC4501}})
-
-
-## Operational anomaly reporting
-
-Issue #14
-
-### MUD reporting for improper provisioning
-
-### XARF for abuse reporting
-
-## Adjacent Ecosystem Components
-
-### Certification Authority
 
 # Security Considerations
 
