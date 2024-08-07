@@ -315,7 +315,7 @@ In the ideal implementation, client and server would bidirectionally authenticat
 ### SMTP, STARTTLS
 
 SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS {{?RFC7817}} command.
-When doing so the certificate of the server is checked against what the client was expecting.
+When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{RFC9525}}.
 Support for this is very common and most email on the Internet is transmitted in this way.
 
 The use of client TLS certificates has not yet become common, in part because it is unclear how or what the server would check the certificate against.
