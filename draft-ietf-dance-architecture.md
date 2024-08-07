@@ -287,7 +287,7 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 
 DNS-over-TLS client authentication is applicable to most portions of the
 transport segments of the DNS infrastructure.
-Current BCP for authentication between DNS infrastructure tends to be based
+Current best practise for authentication between DNS infrastructure tends to be based
 upon a shared secret in the form of TSIG.
 
 From authoritative to authoritative secondary, it can be applied to
