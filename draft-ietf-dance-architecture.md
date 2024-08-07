@@ -430,6 +430,12 @@ Encrypted transports like DoT/DoH/DoQ make these queries far less visible.
 In addition to the on-path observer being able to see more, the resolver logs also may be a source of information.
 It also allows for more opportunities for an attacker to affect the response time of the queries.
 
+## TLS Server availability
+
+TLS servers supporting DANCE should implement a list of domains that are valid for client authentication, 
+in order not to be open to DDOS attacks where a large number of clients force the server to do random DNS lookups.
+More implementation details are to be find in the protocol specific documents.
+
 ## Privacy
 
 If the DNS owner name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
