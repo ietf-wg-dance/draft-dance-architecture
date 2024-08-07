@@ -320,7 +320,7 @@ Support for this is very common and most email on the Internet is transmitted in
 
 The use of client TLS certificates has not yet become common, in part because it is unclear how or what the server would check the certificate against.
 
-For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR in the DNS would permit SMTP servers to check the identity of the parties trying to send email.
+For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
 There are many use cases, but a major one is often dealing with authenticated relaying of email.
 
 ### SSH client
