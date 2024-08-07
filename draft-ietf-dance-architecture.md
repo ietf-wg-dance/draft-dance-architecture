@@ -434,7 +434,7 @@ It also allows for more opportunities for an attacker to affect the response tim
 
 TLS servers supporting DANCE should implement a list of domains that are valid for client authentication, 
 in order not to be open to DDOS attacks where a large number of clients force the server to do random DNS lookups.
-More implementation details are to be find in the protocol specific documents.
+More implementation details are to be found in the protocol specific documents.
 
 ## Privacy
 
