@@ -165,7 +165,7 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 # Client authentication
 
-## Overview
+## Overview - DANCE usage examples
 
 The client sets up a TLS connection to a server, attaches a client certificate with one subjectAltName element dNSName indicating the DNS owner name of the client.
 If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
@@ -179,7 +179,7 @@ An opportunity for DDOS may exist when malicious clients can trigger arbitrary D
 For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
 
-#### Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance
+### Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance
 
 - The client initiates a TLS connection to the server.
 - The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.
@@ -192,7 +192,7 @@ This pattern has the following advantages:
 - This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.
 - No traffic reaches the application behind the load balancer unless DANE client authentication is successful.
 
-#### Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application
+### Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application
 
 - The client initiates a TLS connection to the server.
 - The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.
@@ -210,7 +210,7 @@ This allows the web application to reject clients with identifiers which are not
 No need to manage an allow-list in the load balancer.
 - This can be implemented with no changes to the TLS handshake.
 
-#### Example 3: TLS user authentication for an LDAP query
+### Example 3: TLS user authentication for an LDAP query
 
 - The LDAP client initiates a TLS connection to the server, conveying the user's domain via the DANE Client Identity extension.
 - If the dane_clientid is allowed and begins with a _user label, the TLS server then performs a DNS lookup for TLSA records holding the user's CA, and includes them when requesting a client certificate.
