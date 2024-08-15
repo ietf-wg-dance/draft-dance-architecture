@@ -247,8 +247,8 @@ Thus, independent of the private PKI used to issue the client's self-signed cert
 
 ### Edge Computing
 
-[https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01](Edge Computing) may require devices to mutually authenticate in the field.
-A practical example of this pattern is the edge computing in construction use case [https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-01#section-6.2.1].
+{{?I-D.hong-t2trg-iot-edge-computing}} may require devices to mutually authenticate in the field.
+A practical example of this pattern is the edge computing in construction use case {{?I-D.hong-t2trg-iot-edge-computing, Section 6.2.1}}
 Using traditional certificate-based identity, the sensor and the gateway may have certificates issued by
 the same organizational PKI.
 By using DANE for client and sender identity, the sensor and the gateway may have identities represented
