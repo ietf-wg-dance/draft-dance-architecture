@@ -418,9 +418,13 @@ Compartmentalizing failure domains within an application is a well-known archite
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
 This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.
 
-The naming pattern suggested in <https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert> includes
-an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the
-event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
+The naming pattern suggested in {{I-D.ietf-dane-client-certs}} includes
+an underscore label (_device).
+The underscore is not a valid character for in names used in the Web PKI.
+This prevents the issuance of any Web PKI-validating certificates for these names.
+
+This means that even were the authoritative DNS server compromised, it would not be possible to issue Web PKI certificates using, for instance, the {{?RFC8555}} DNS-01 challenge.
+
 An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.
 
 ## Availability
