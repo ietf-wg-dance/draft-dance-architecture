@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 16 February 2025                                     Salesforce
+Expires: 21 February 2025                                     Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                          15 August 2024
+                                                          20 August 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 February 2025.
+   This Internet-Draft will expire on 21 February 2025.
 
 Copyright Notice
 
@@ -169,9 +169,9 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   *How to Dance with ENTITY:* This architecture document delegates many
+   *How to DANCE with ENTITY:* This architecture document delegates many
    details of how DANCE can be used with some specific protocol to a
-   document with the name "How to Dance with _entity_".
+   document with the name "How to DANCE with _entity_".
 
    *Identity provisioning:* This refers to the set of tasks required to
    securely provision an asymmetric key pair for the device, sign the
@@ -190,7 +190,7 @@ Table of Contents
    certificate in DNS.
 
    *DANCEr:* A DANCEr is the term which is used to describe a protocol
-   that has been taught to use DANE, usually through a _How to Dance
+   that has been taught to use DANE, usually through a _How to DANCE
    with_ document.
 
    *Security Domain:* DNS-bound client identity allows the device to
@@ -635,7 +635,7 @@ Table of Contents
    that issued the client side certificate, and so already has access to
    the entire client certificate.  Transferring the client certificate
    is redundant.  That is, the authenticator already has access to the
-   entire certificate, but the client does not know this to tbe case, so
+   entire certificate, but the client does not know this to the case, so
    it sends the entire certificate anyway.
 
    The use of DANE Client IDs in TLS as described in
