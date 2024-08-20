@@ -29,7 +29,7 @@ within the context of existing object security and TLS-based protocols.
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-dance-architecture.xml" rel="alternate" type="application/rfc+xml">
@@ -1033,7 +1033,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilson, et al.</td>
-<td class="center">Expires 16 February 2025</td>
+<td class="center">Expires 21 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1046,12 +1046,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dance-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-08-15" class="published">15 August 2024</time>
+<time datetime="2024-08-20" class="published">20 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-16">16 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-21">21 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ within the context of existing object security and TLS-based protocols.<a href="
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1308,7 +1308,7 @@ A first-class identity is an application-independent identity.<a href="#section-
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2"><strong>How to Dance with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to Dance with <em>entity</em>".<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2"><strong>How to DANCE with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with <em>entity</em>".<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
 Under some circumstances, these steps are not all performed by the same party or organization.
 A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
@@ -1316,7 +1316,7 @@ In some circumstances, a manufacturer may also publish device identity records i
 In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
 A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a <em>How to Dance with</em> document.<a href="#section-2-4" class="pilcrow">¶</a></p>
+usually through a <em>How to DANCE with</em> document.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <p id="section-2-5"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
 its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
@@ -1676,7 +1676,7 @@ To keep it simple the EAP "window" is always one, and there are various amounts 
 In worst case scenarios, which are common with eduroam <span>[<a href="#RFC7593" class="cite xref">RFC7593</a>]</span>, the EAP packets are transported some distance, easily across the entire planet.
 The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
 Transferring the client certificate is redundant.
-That is, the authenticator already has access to the entire certificate, but the client does not know this to tbe case, so it sends the entire certificate anyway.<a href="#section-4.1.12.1-2" class="pilcrow">¶</a></p>
+That is, the authenticator already has access to the entire certificate, but the client does not know this to the case, so it sends the entire certificate anyway.<a href="#section-4.1.12.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1.12.1-3">The use of DANE Client IDs in TLS as described in <span>[<a href="#I-D.ietf-dance-tls-clientid" class="cite xref">I-D.ietf-dance-tls-clientid</a>]</span> reduces the redundant bytes of certificate sent.<a href="#section-4.1.12.1-3" class="pilcrow">¶</a></p>
 <div id="terminology">
 <section id="section-4.1.12.1.1">
