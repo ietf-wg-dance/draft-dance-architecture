@@ -29,7 +29,7 @@ within the context of existing object security and TLS-based protocols.
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-dance-architecture.xml" rel="alternate" type="application/rfc+xml">
@@ -1033,7 +1033,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilson, et al.</td>
-<td class="center">Expires 16 February 2025</td>
+<td class="center">Expires 22 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1046,12 +1046,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dance-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-08-15" class="published">15 August 2024</time>
+<time datetime="2024-08-21" class="published">21 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-16">16 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-22">22 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ within the context of existing object security and TLS-based protocols.<a href="
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1810,7 +1810,7 @@ In many cases, identities may also be very short lived as revocation is performe
 A zone will have to manage a large amount of changes as devices are constantly added and de-activated.<a href="#section-5.5.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-2">In these cases it is important to consider the architecture of the DNS zone and when possible use a tree-like structure with many subdomain parts, much like reverse DNS records or how telephone numbers are represented in the ENUM standard (RFC 6116).<a href="#section-5.5.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-3">If an authoritative resolver were configured to respond quite slowly using TCP, (for instance, a
-<span>[<a href="#slowlaris" class="cite xref">slowlaris</a>]</span> attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.<a href="#section-5.5.1-3" class="pilcrow">¶</a></p>
+<span>[<a href="#slowloris" class="cite xref">slowloris</a>]</span> attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.<a href="#section-5.5.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-4">The availability of a client identity zone is essential to permitting clients to authenticate.
 If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1951,9 +1951,9 @@ For instance, some kind of battery operated sensor which might be used in a larg
         <dd>
 <span class="refAuthor">Aura, T.</span>, <span class="refAuthor">Sethi, M.</span>, and <span class="refAuthor">A. Peltonen</span>, <span class="refTitle">"Nimble Out-of-Band Authentication for EAP (EAP-NOOB)"</span>, <span class="seriesInfo">RFC 9140</span>, <span class="seriesInfo">DOI 10.17487/RFC9140</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9140">https://www.rfc-editor.org/rfc/rfc9140</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="slowlaris">[slowlaris]</dt>
+<dt id="slowloris">[slowloris]</dt>
       <dd>
-<span class="refTitle">"Slowlaris Attack"</span>, <time datetime="2024-08-15" class="refDate">15 August 2024</time>, <span>&lt;<a href="https://en.wikipedia.org/wiki/Slowloris_(computer_security)">https://en.wikipedia.org/wiki/Slowloris_(computer_security)</a>&gt;</span>. </dd>
+<span class="refTitle">"Slowloris Attack"</span>, <time datetime="2024-08-15" class="refDate">15 August 2024</time>, <span>&lt;<a href="https://en.wikipedia.org/wiki/Slowloris_(computer_security)">https://en.wikipedia.org/wiki/Slowloris_(computer_security)</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
