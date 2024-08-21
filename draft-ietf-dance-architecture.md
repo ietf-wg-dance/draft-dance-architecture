@@ -280,7 +280,7 @@ For WebRTC the application developer needs to define the name space and mapping 
 By using DNS as a shared root of trust, SIP and WebRTC end points can anchor the keys used for DTLS/SRTP media channel setup.
 In addition, SIP devices can establish security in the SIP messaging by using DNS to find the callee’s and the callers digital identity.
 
-{{?I-D.johansson-sipcore-dane-sip}}(SIPDANE)
+For an example, read {{?I-D.johansson-sipcore-dane-sip}}(SIPDANE).
 
 
 ### DNS over TLS client authentication
