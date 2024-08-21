@@ -1755,10 +1755,12 @@ DNS records should be validated by the DNS stub resolver, using the DNSSEC proto
 <p id="section-5.2-2">Compartmentalizing failure domains within an application is a well-known architectural best practice.
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
 This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">The naming pattern suggested in <a href="https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert">https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert</a> includes
-an underscore label (_device) which also prevents the issuance of Web PKI-validating certificates in the
-event a DNS server hosting a client identity zone, which is capable of presenting A and AAAA records, is compromised.
-An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">The naming pattern suggested in <span>[<a href="#I-D.ietf-dance-client-auth" class="cite xref">I-D.ietf-dance-client-auth</a>]</span> includes
+an underscore label (_device).
+The underscore is not a valid character for names used in the Web PKI.
+This prevents the issuance of any Web PKI-validating certificates for these names.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-4">This means that even were the authoritative DNS server compromised, it would not be possible to issue Web PKI certificates using, for instance, the <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> DNS-01 challenge.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2-5">An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="availability">
@@ -1947,6 +1949,10 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dt id="RFC8376">[RFC8376]</dt>
         <dd>
 <span class="refAuthor">Farrell, S., Ed.</span>, <span class="refTitle">"Low-Power Wide Area Network (LPWAN) Overview"</span>, <span class="seriesInfo">RFC 8376</span>, <span class="seriesInfo">DOI 10.17487/RFC8376</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8376">https://www.rfc-editor.org/rfc/rfc8376</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8555">[RFC8555]</dt>
+        <dd>
+<span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Hoffman-Andrews, J.</span>, <span class="refAuthor">McCarney, D.</span>, and <span class="refAuthor">J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8555">https://www.rfc-editor.org/rfc/rfc8555</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8995">[RFC8995]</dt>
         <dd>
