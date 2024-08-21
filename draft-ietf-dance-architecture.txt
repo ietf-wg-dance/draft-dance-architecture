@@ -729,15 +729,17 @@ Table of Contents
    presenting records essential for impersonating web sites under the
    organization’s domain name.
 
-   The naming pattern suggested in
-   https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert
-   (https://datatracker.ietf.org/doc/html/draft-huque-dane-client-cert)
-   includes an underscore label (_device) which also prevents the
-   issuance of Web PKI-validating certificates in the event a DNS server
-   hosting a client identity zone, which is capable of presenting A and
-   AAAA records, is compromised.  An alternative underscore label _user
-   separates the TLSA records with the domain CA from the TLSA records
-   for devices.
+   The naming pattern suggested in [I-D.ietf-dance-client-auth] includes
+   an underscore label (_device).  The underscore is not a valid
+   character for names used in the Web PKI.  This prevents the issuance
+   of any Web PKI-validating certificates for these names.
+
+   This means that even were the authoritative DNS server compromised,
+   it would not be possible to issue Web PKI certificates using, for
+   instance, the [RFC8555] DNS-01 challenge.
+
+   An alternative underscore label _user separates the TLSA records with
+   the domain CA from the TLSA records for devices.
 
 5.3.  Availability
 
@@ -969,6 +971,11 @@ Table of Contents
    [RFC8376]  Farrell, S., Ed., "Low-Power Wide Area Network (LPWAN)
               Overview", RFC 8376, DOI 10.17487/RFC8376, May 2018,
               <https://www.rfc-editor.org/rfc/rfc8376>.
+
+   [RFC8555]  Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
+              Kasten, "Automatic Certificate Management Environment
+              (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
+              <https://www.rfc-editor.org/rfc/rfc8555>.
 
    [RFC8995]  Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
               and K. Watsen, "Bootstrapping Remote Secure Key
