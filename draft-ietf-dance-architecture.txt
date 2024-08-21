@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 21 February 2025                                     Salesforce
+Expires: 22 February 2025                                     Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                          20 August 2024
+                                                          21 August 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 February 2025.
+   This Internet-Draft will expire on 22 February 2025.
 
 Copyright Notice
 
@@ -515,7 +515,7 @@ Table of Contents
    SIP devices can establish security in the SIP messaging by using DNS
    to find the callee’s and the callers digital identity.
 
-   [I-D.johansson-sipcore-dane-sip](SIPDANE)
+   For an example, read [I-D.johansson-sipcore-dane-sip](SIPDANE).
 
 4.1.9.  DNS over TLS client authentication
 
