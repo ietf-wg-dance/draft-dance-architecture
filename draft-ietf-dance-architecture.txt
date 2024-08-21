@@ -802,8 +802,8 @@ Table of Contents
    numbers are represented in the ENUM standard (RFC 6116).
 
    If an authoritative resolver were configured to respond quite slowly
-   (think slow loris [XXXrefereceXXX]), is it possible to cause a DoS on
-   the TLS server via complete exhaustion of TCP connections?
+   using TCP, (for instance, a [slowloris] attack), it possible that
+   this would cause a TLS server to exhaust all it's TCP sockets.
 
    The availability of a client identity zone is essential to permitting
    clients to authenticate.  If the DNS infrastructure hosting client
@@ -979,6 +979,11 @@ Table of Contents
               Authentication for EAP (EAP-NOOB)", RFC 9140,
               DOI 10.17487/RFC9140, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9140>.
+
+   [slowloris]
+              "Slowloris Attack", 15 August 2024,
+              <https://en.wikipedia.org/wiki/
+              Slowloris_(computer_security)>.
 
 Acknowledgments
 
