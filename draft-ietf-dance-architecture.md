@@ -35,9 +35,9 @@ author:
 normative:
 
 informative:
-  slowlaris:
+  slowloris:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
-    title: "Slowlaris Attack"
+    title: "Slowloris Attack"
     date: 2024-08-15
 
 --- abstract
