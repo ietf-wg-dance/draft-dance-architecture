@@ -420,7 +420,7 @@ This can prevent a compromised identity zone DNS server from presenting records 
 
 The naming pattern suggested in {{I-D.ietf-dane-client-certs}} includes
 an underscore label (_device).
-The underscore is not a valid character for in names used in the Web PKI.
+The underscore is not a valid character for names used in the Web PKI.
 This prevents the issuance of any Web PKI-validating certificates for these names.
 
 This means that even were the authoritative DNS server compromised, it would not be possible to issue Web PKI certificates using, for instance, the {{?RFC8555}} DNS-01 challenge.
