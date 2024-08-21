@@ -167,7 +167,8 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 ## Overview - DANCE usage examples
 
-The client sets up a TLS connection to a server, attaches a client certificate with one subjectAltName element dNSName indicating the DNS owner name of the client.
+The client sets up a TLS connection to a server, attaches a client certificate with one
+subjectAltName element dNSName indicating the DNS owner name of the client {{?RFC5280}}.
 If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
 
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
