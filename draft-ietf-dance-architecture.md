@@ -470,7 +470,7 @@ A zone will have to manage a large amount of changes as devices are constantly a
 In these cases it is important to consider the architecture of the DNS zone and when possible use a tree-like structure with many subdomain parts, much like reverse DNS records or how telephone numbers are represented in the ENUM standard (RFC 6116).
 
 If an authoritative resolver were configured to respond quite slowly using TCP, (for instance, a
-{{slowlaris}} attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.
+{{slowloris}} attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.
 
 The availability of a client identity zone is essential to permitting clients to authenticate.
 If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.
