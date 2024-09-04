@@ -407,6 +407,20 @@ There is, as yet, no URI scheme which says that the key can be found via the DNS
 
 In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
 
+# Protocol implementations
+
+For each protocol implementation, a specific usage document needs to be published. In this document,
+the DANCE protocol requirements and usage needs to be specified (this is refered above as the "How to DANCE" document).
+These documents should as a minimum contain the following sections:
+
+- Specifics on naming: How the name of the client is defined and how this is related to the name in
+  a DNS zone. This defines the organization of the related DNS zone. Whether a flat namespace is used,
+  or a way to use a DNS Zone hierarchy is applied to this usage. (see notes above on DNS zone design)
+- Privacy: If the subject name is a personal identifier, how to protect that name from being exposed
+  in the DNS zone. {{?RFC7929}} describes one way to handle privacy for personal identifiers in DNS.
+- TTL: Recommended TTL settings for records in this usage
+- Security: Security considerations for this usage
+
 # Security Considerations
 
 ## Confidentiality
