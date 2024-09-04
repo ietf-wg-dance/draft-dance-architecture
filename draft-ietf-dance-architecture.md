@@ -229,7 +229,7 @@ This pattern has the following advantages:
 - User identities cannot be iterated in DNS; TLS 1.3 conceals the client certificate; TLS in general conceals the user's choice of authorization identity during SASL EXTERNAL.
 - This can be implemented with no changes to the TLS handshake.
 
-### IoT: Device to cloud
+### Example 4: IoT: Device to cloud
 
 Direct device-to-cloud communication is common in simple IoT applications.
 Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates.
@@ -240,7 +240,7 @@ Using client DANE for device identity can allow parties other than the implement
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
-### LoRaWAN
+### Example 5: LoRaWAN
 
 
 For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters.
@@ -250,7 +250,7 @@ Self-signed certificate based mutual-TLS authentication method is the alternativ
 DANE based client identity allows the server to authenticate clients during the TLS handhsake.
 Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated.
 
-### Edge Computing
+### Example 6: Edge Computing
 
 {{?I-D.hong-t2trg-iot-edge-computing}} may require devices to mutually authenticate in the field.
 A practical example of this pattern is the edge computing in construction use case {{?I-D.hong-t2trg-iot-edge-computing, Section 6.2.1}}
@@ -262,7 +262,7 @@ Important sensor measurements forwarded by the gateway to the cloud may bear the
 the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
 which forwarded the information to the application.
 
-### Domain Users
+### Example 7: Domain Users
 
 The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
 Domains may even choose to assign domain user identities to services, possibly with easily recognised identities like +mail+archive@domain.name.
@@ -274,7 +274,7 @@ Any DANCEr may however define alternate derivation procedures to obtain the DNS 
 
 There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
 
-### SIP and WebRTC inter-domain privacy
+### Example 8: SIP and WebRTC inter-domain privacy
 
 End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
 There are also SIP standards that build upon a trust chain anchored on the HTTP trust chain (SIP identity, STIR).
@@ -288,7 +288,7 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 For an example, read {{?I-D.johansson-sipcore-dane-sip}}(SIPDANE).
 
 
-### DNS over TLS client authentication
+### Example 9: DNS over TLS client authentication
 
 DNS-over-TLS client authentication is applicable to most portions of the
 transport segments of the DNS infrastructure.
@@ -315,7 +315,7 @@ internal zone, or to distinguish between subscribers to different performance ti
 
 In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
 
-### SMTP, STARTTLS
+### Example 10: SMTP, STARTTLS
 
 SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS {{?RFC7817}} command.
 When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{!RFC9525}}.
@@ -326,7 +326,7 @@ The use of client TLS certificates has not yet become common, in part because it
 For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{!I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
 There are many use cases, but a major one is often dealing with authenticated relaying of email.
 
-### SSH client
+### Example 11: SSH client
 
 SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
 
@@ -346,7 +346,7 @@ Separation of authorization and authentication in this case would involve puttin
 The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
 Since SSH can trust CA certificates from X.509, those may be published for user authentication.
 
-### Network Access
+### Example 12: Network Access
 
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.
@@ -398,7 +398,7 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-### Structured data messages: JOSE/COSE
+### Example 13: Structured data messages: JOSE/COSE
 
 JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
 
