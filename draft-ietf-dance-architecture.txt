@@ -338,7 +338,7 @@ Table of Contents
    *  If the client's TLSA record matches the presented certificate or
       public key, the TLS handshake completes successfully and the
       authenticated dane_clientid is presented to the web application in
-      the (TBD) header field.
+      a header field.
 
    This pattern has the following advantages:
 
@@ -356,8 +356,8 @@ Table of Contents
    *  The TLS server accepts any certificate for which the client can
       prove possession of the corresponding private key.
 
-   *  The TLS server passes the certificate to the web application in
-      (TBD) header field.
+   *  The TLS server passes the certificate to the web application in a
+      header field.
 
    *  The HTTP request body contains the dane_clientid, and is passed to
       the web application.
