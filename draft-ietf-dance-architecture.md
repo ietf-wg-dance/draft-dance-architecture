@@ -190,7 +190,8 @@ This sort of attack (of type slowloris) could have a performance or availability
 - The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.
 - If the dane_clientid is allowed, the TLS server then performs a DNS lookup for the client's TLSA record.
 If the dane_clientid is not allowed, authentication fails.
-- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.
+- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes
+  successfully and the authenticated dane_clientid is presented to the web application in a header field.
 
 This pattern has the following advantages:
 
@@ -201,7 +202,7 @@ This pattern has the following advantages:
 
 - The client initiates a TLS connection to the server.
 - The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.
-- The TLS server passes the certificate to the web application in (TBD) header field.
+- The TLS server passes the certificate to the web application in a header field.
 - The HTTP request body contains the dane_clientid, and is passed to the web application.
 - The web application compares the dane_clientid to a list of allowed clients or client domains.
 - If the dane\_clientid is allowed, the web application makes the DNS query for the TLSA records for dane\_clientid
