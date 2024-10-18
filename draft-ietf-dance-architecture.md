@@ -96,11 +96,15 @@ A first-class identity is an application-independent identity.
 **How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
 
 **Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
-Under some circumstances, these steps are not all performed by the same party or organization.
-A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
-In some circumstances, a manufacturer may also publish device identity records in DNS.
-In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.
+These steps may not be performed by the same party or organization. Examples:
+
+- A device manufacturer may instantiate the key pair, and a systems integrator may be
+  responsible for issuing (and publishing) the device certificate in DNS.
+- A device manufacturer publish device identity records in DNS. The system integrator
+  needs to perform network and application access configuration, since the identity already exists in DNS.
+- A user may instantiate a key pair, based upon which an organization's CA may produce
+  a certificate after internally assuring the user identity, and the systems integrator
+  may publish the CA root certificate in DNS.
 
 **DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
 usually through a _How to DANCE with_ document.
