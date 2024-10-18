@@ -1313,33 +1313,44 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2"><strong>How to DANCE with ENTITY:</strong> This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with <em>entity</em>".<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3"><strong>Identity provisioning:</strong> This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
-Under some circumstances, these steps are not all performed by the same party or organization.
-A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
-In some circumstances, a manufacturer may also publish device identity records in DNS.
-In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a <em>How to DANCE with</em> document.<a href="#section-2-4" class="pilcrow">¶</a></p>
-<p id="section-2-5"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
+These steps may not be performed by the same party or organization. Examples:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-4.1">
+          <p id="section-2-4.1.1">A device manufacturer may instantiate the key pair, and a systems integrator may be
+responsible for issuing (and publishing) the device certificate in DNS.<a href="#section-2-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-2-4.2">
+          <p id="section-2-4.2.1">A device manufacturer publish device identity records in DNS. The system integrator
+needs to perform network and application access configuration, since the identity already exists in DNS.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-2-4.3">
+          <p id="section-2-4.3.1">A user may instantiate a key pair, based upon which an organization's CA may produce
+a certificate after internally assuring the user identity, and the systems integrator
+may publish the CA root certificate in DNS.<a href="#section-2-4.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-2-5"><strong>DANCEr:</strong> A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
+usually through a <em>How to DANCE with</em> document.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6"><strong>Security Domain:</strong> DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
 its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
 The act of joining a security domain, in the past, may have involved certificate provisioning.
-Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.<a href="#section-2-5" class="pilcrow">¶</a></p>
-<p id="section-2-6"><strong>Client:</strong> This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"<a href="#section-2-6" class="pilcrow">¶</a></p>
-<p id="section-2-7"><strong>User:</strong> A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.<a href="#section-2-7" class="pilcrow">¶</a></p>
-<p id="section-2-8"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-8" class="pilcrow">¶</a></p>
-<p id="section-2-9"><strong>Sending agent:</strong> Software which encodes and transmits messages.
-A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-9" class="pilcrow">¶</a></p>
-<p id="section-2-10"><strong>Receiving agent:</strong> Software which interprets and processes messages.
-A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-10" class="pilcrow">¶</a></p>
-<p id="section-2-11"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-11" class="pilcrow">¶</a></p>
-<p id="section-2-12"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
+Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-7"><strong>Client:</strong> This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"<a href="#section-2-7" class="pilcrow">¶</a></p>
+<p id="section-2-8"><strong>User:</strong> A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.<a href="#section-2-8" class="pilcrow">¶</a></p>
+<p id="section-2-9"><strong>Server:</strong> This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"<a href="#section-2-9" class="pilcrow">¶</a></p>
+<p id="section-2-10"><strong>Sending agent:</strong> Software which encodes and transmits messages.
+A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.<a href="#section-2-10" class="pilcrow">¶</a></p>
+<p id="section-2-11"><strong>Receiving agent:</strong> Software which interprets and processes messages.
+A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.<a href="#section-2-11" class="pilcrow">¶</a></p>
+<p id="section-2-12"><strong>Store-and-forward system:</strong> A message handling system in-path between the sending agent and the receiving agent.<a href="#section-2-12" class="pilcrow">¶</a></p>
+<p id="section-2-13"><strong>Hardware supplier role:</strong> The entity which manufactures or assembles the physical device.
 In many situations, multiple hardware suppliers are involved in producing a given device.
 In some cases, the hardware supplier may provision an asymmetric key pair for the device and establish the device identity in DNS.
-In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-12" class="pilcrow">¶</a></p>
-<p id="section-2-13"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
-In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-13" class="pilcrow">¶</a></p>
-<p id="section-2-14"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-14" class="pilcrow">¶</a></p>
+In some cases, the hardware supplier may ship a device with software pre-installed.<a href="#section-2-13" class="pilcrow">¶</a></p>
+<p id="section-2-14"><strong>Systems integrator:</strong> The party responsible for configuration and deployment of application components.
+In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.<a href="#section-2-14" class="pilcrow">¶</a></p>
+<p id="section-2-15"><strong>Consumer:</strong> The entity or organization which pays for the value provided by the application, and defines the success criteria for the output of the application.<a href="#section-2-15" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="communication-patterns">
