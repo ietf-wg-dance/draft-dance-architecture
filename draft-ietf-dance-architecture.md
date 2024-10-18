@@ -110,7 +110,6 @@ any server with a DNS-bound identity, as long as a network path exists, the enti
 its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
 The act of joining a security domain, in the past, may have involved certificate provisioning.
 Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
-[Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]
 
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
 
