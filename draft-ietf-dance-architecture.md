@@ -173,11 +173,11 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 The client sets up a TLS connection to a server, attaches a client certificate with one
 subjectAltName element dNSName indicating the DNS owner name of the client {{?RFC5280}}.
-If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
+If the client is a user, their user identity is added in one subjectAltName element
+otherName holding their uid attribute {{?RFC4519}} or email address {{?RFC9598}}.
 
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
-(PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid & dNSName, but it is limited to ASCII and suggests email only).
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
