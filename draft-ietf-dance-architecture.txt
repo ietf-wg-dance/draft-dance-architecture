@@ -305,15 +305,13 @@ Table of Contents
    certificate with one subjectAltName element dNSName indicating the
    DNS owner name of the client [RFC5280].  If the client is a user,
    their user identity is added in one subjectAltName element otherName
-   holding their uid attribute [RFC4519].
+   holding their uid attribute [RFC4519] or email address [RFC9598].
 
    In the TLS connection the DANE-client-id extension is used to tell
    the server to use the certificate dNSName to find a DANE record
    including the public key of the certificate to be able to validate.
    If the server can validate the DNSSEC response, the server validates
-   the certificate and completes the TLS connection setup.  (PKIX offers
-   rfc822Name with userid@domain.name as alternative for a user's uid &
-   dNSName, but it is limited to ASCII and suggests email only).
+   the certificate and completes the TLS connection setup.
 
    Using DANE to convey certificate information for authenticating TLS
    clients gives a not-yet-authenticated client the ability to trigger a
@@ -1021,6 +1019,11 @@ Table of Contents
               Authentication for EAP (EAP-NOOB)", RFC 9140,
               DOI 10.17487/RFC9140, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9140>.
+
+   [RFC9598]  Melnikov, A., Chuang, W., and C. Bonnell,
+              "Internationalized Email Addresses in X.509 Certificates",
+              RFC 9598, DOI 10.17487/RFC9598, May 2024,
+              <https://www.rfc-editor.org/rfc/rfc9598>.
 
    [slowloris]
               "Slowloris Attack", 15 August 2024,
