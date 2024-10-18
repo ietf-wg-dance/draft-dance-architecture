@@ -5,12 +5,12 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 8 March 2025                                         Salesforce
+Expires: 21 April 2025                                        Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                        4 September 2024
+                                                         18 October 2024
 
 
        An Architecture for DNS-Bound Client and Sender Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 March 2025.
+   This Internet-Draft will expire on 21 April 2025.
 
 Copyright Notice
 
@@ -81,28 +81,29 @@ Table of Contents
        4.1.2.  Example 2: TLS authentication for HTTPS API
                interaction, DANE matching in web application
        4.1.3.  Example 3: TLS user authentication for an LDAP query
-       4.1.4.  IoT: Device to cloud
-       4.1.5.  LoRaWAN
-       4.1.6.  Edge Computing
-       4.1.7.  Domain Users
-       4.1.8.  SIP and WebRTC inter-domain privacy
-       4.1.9.  DNS over TLS client authentication
-       4.1.10. SMTP, STARTTLS
-       4.1.11. SSH client
-       4.1.12. Network Access
-       4.1.13. Structured data messages: JOSE/COSE
-   5.  Security Considerations
-     5.1.  Confidentiality
-     5.2.  Integrity
-     5.3.  Availability
-     5.4.  TLS Server availability
-     5.5.  Privacy
-       5.5.1.  DNS Scalability
-       5.5.2.  Change of ownership for IoT devices
-   6.  IANA Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+       4.1.4.  Example 4: IoT: Device to cloud
+       4.1.5.  Example 5: LoRaWAN
+       4.1.6.  Example 6: Edge Computing
+       4.1.7.  Example 7: Domain Users
+       4.1.8.  Example 8: SIP and WebRTC inter-domain privacy
+       4.1.9.  Example 9: DNS over TLS client authentication
+       4.1.10. Example 10: SMTP, STARTTLS
+       4.1.11. Example 11: SSH client
+       4.1.12. Example 12: Network Access
+       4.1.13. Example 13: Structured data messages: JOSE/COSE
+   5.  Protocol implementations
+   6.  Security Considerations
+     6.1.  Confidentiality
+     6.2.  Integrity
+     6.3.  Availability
+     6.4.  TLS Server availability
+     6.5.  Privacy
+       6.5.1.  DNS Scalability
+       6.5.2.  Change of ownership for IoT devices
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -424,7 +425,7 @@ Table of Contents
 
    *  This can be implemented with no changes to the TLS handshake.
 
-4.1.4.  IoT: Device to cloud
+4.1.4.  Example 4: IoT: Device to cloud
 
    Direct device-to-cloud communication is common in simple IoT
    applications.  Authentication in these applications is usually
@@ -441,7 +442,7 @@ Table of Contents
    approachable for small organizations which currently lack the
    resources to operate an organizational CA.
 
-4.1.5.  LoRaWAN
+4.1.5.  Example 5: LoRaWAN
 
    For the end-device onboarding in LoRaWAN, the "network server" and
    the "join server" [RFC8376] needs to establish mutual TLS
@@ -456,7 +457,7 @@ Table of Contents
    to issue the client's self-signed certificate, the "network server"
    and the "join server" could be mutually authenticated.
 
-4.1.6.  Edge Computing
+4.1.6.  Example 6: Edge Computing
 
    [I-D.hong-t2trg-iot-edge-computing] may require devices to mutually
    authenticate in the field.  A practical example of this pattern is
@@ -472,7 +473,7 @@ Table of Contents
    the measurement independent of the gateway which forwarded the
    information to the application.
 
-4.1.7.  Domain Users
+4.1.7.  Example 7: Domain Users
 
    The allocation of user identities is the prerogative of a domain, in
    line with the nesting suggested in URI notation.  Domains may even
@@ -498,7 +499,7 @@ Table of Contents
    statements are for resources underneath the domain -- notably, the
    assignment of uid names.
 
-4.1.8.  SIP and WebRTC inter-domain privacy
+4.1.8.  Example 8: SIP and WebRTC inter-domain privacy
 
    End to end security in SIP is currently based on a classical S/MIME
    model which has not received much implementation.  There are also SIP
@@ -517,7 +518,7 @@ Table of Contents
 
    For an example, read [I-D.johansson-sipcore-dane-sip](SIPDANE).
 
-4.1.9.  DNS over TLS client authentication
+4.1.9.  Example 9: DNS over TLS client authentication
 
    DNS-over-TLS client authentication is applicable to most portions of
    the transport segments of the DNS infrastructure.  Current best
@@ -548,7 +549,7 @@ Table of Contents
    authenticate, using DANE client certificates to bootstrap TLS
    transport security.
 
-4.1.10.  SMTP, STARTTLS
+4.1.10.  Example 10: SMTP, STARTTLS
 
    SMTP has included the ability to upgrade in-protocol to TLS using the
    STARTTLS [RFC7817] command.  When upgrading the connection, the
@@ -566,7 +567,7 @@ Table of Contents
    There are many use cases, but a major one is often dealing with
    authenticated relaying of email.
 
-4.1.11.  SSH client
+4.1.11.  Example 11: SSH client
 
    SSH servers have for some time been able to put their host keys into
    DNS using [RFC4255].
@@ -601,7 +602,7 @@ Table of Contents
    certificates from X.509, those may be published for user
    authentication.
 
-4.1.12.  Network Access
+4.1.12.  Example 12: Network Access
 
    Network access refers to an authentication process by which a node is
    admitted securely onto network infrastructure.  This is most common
@@ -691,7 +692,7 @@ Table of Contents
    switch, via RADSEC, without requiring the distribution of CA
    certificates.
 
-4.1.13.  Structured data messages: JOSE/COSE
+4.1.13.  Example 13: Structured data messages: JOSE/COSE
 
    JOSE and COSE provide formats for exchanging authenticated and
    encrypted structured data.  JOSE defines the x5u field in [RFC7515],
@@ -705,14 +706,37 @@ Table of Contents
    In order to make use of x5u, a DANCEr would have to define a new URI
    scheme that explained how to get the right key from DNS.
 
-5.  Security Considerations
+5.  Protocol implementations
 
-5.1.  Confidentiality
+   For each protocol implementation, a specific usage document needs to
+   be published.  In this document, the DANCE protocol requirements and
+   usage needs to be specified (this is refered above as the "How to
+   DANCE" document).  These documents should as a minimum contain the
+   following sections:
+
+   *  Specifics on naming: How the name of the client is defined and how
+      this is related to the name in a DNS zone.  This defines the
+      organization of the related DNS zone.  Whether a flat namespace is
+      used, or a way to use a DNS Zone hierarchy is applied to this
+      usage. (see notes above on DNS zone design)
+
+   *  Privacy: If the subject name is a personal identifier, how to
+      protect that name from being exposed in the DNS zone.  [RFC7929]
+      describes one way to handle privacy for personal identifiers in
+      DNS.
+
+   *  TTL: Recommended TTL settings for records in this usage
+
+   *  Security: Security considerations for this usage
+
+6.  Security Considerations
+
+6.1.  Confidentiality
 
    DNS clients should use DNS over TLS with trusted DNS resolvers to
    protect the identity of authenticating peers.
 
-5.2.  Integrity
+6.2.  Integrity
 
    The integrity of public keys represented in DNS is most important.
    An altered public key can enable device impersonation, and the denial
@@ -741,7 +765,7 @@ Table of Contents
    An alternative underscore label _user separates the TLSA records with
    the domain CA from the TLSA records for devices.
 
-5.3.  Availability
+6.3.  Availability
 
    One of the advantages of DNS is that it has more than fourty years of
    demonstrated scaling.  It is a distributed database with a caching
@@ -772,7 +796,7 @@ Table of Contents
    also allows for more opportunities for an attacker to affect the
    response time of the queries.
 
-5.4.  TLS Server availability
+6.4.  TLS Server availability
 
    TLS servers supporting DANCE should implement a list of domains that
    are valid for client authentication, in order not to be open to DDOS
@@ -780,7 +804,7 @@ Table of Contents
    DNS lookups.  More implementation details are to be found in the
    protocol specific documents.
 
-5.5.  Privacy
+6.5.  Privacy
 
    If the DNS owner name of the identity proven by a certificate is
    directly or indirectly relatable to a person, privacy needs to be
@@ -796,7 +820,7 @@ Table of Contents
 
    Further work has do be done in this area.
 
-5.5.1.  DNS Scalability
+6.5.1.  DNS Scalability
 
    In the use case for IoT an implementation must be scalable to a large
    amount of devices.  In many cases, identities may also be very short
@@ -818,7 +842,7 @@ Table of Contents
    identities becomes unavailable, then the clients represented by that
    zone cannot be authenticated.
 
-5.5.2.  Change of ownership for IoT devices
+6.5.2.  Change of ownership for IoT devices
 
    One of the significant use cases is where the devices are identified
    by their manufacturer assigned identities.  A significant savings was
@@ -855,13 +879,13 @@ Table of Contents
    operated sensor which might be used in a large quantity at a
    construction site, and which can not be recharged.
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    This document has no IANA actions.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [I-D.ietf-dance-client-auth]
               Huque, S. and V. Dukhovni, "TLS Client Authentication via
@@ -883,11 +907,11 @@ Table of Contents
               RFC 9525, DOI 10.17487/RFC9525, November 2023,
               <https://www.rfc-editor.org/rfc/rfc9525>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.hong-t2trg-iot-edge-computing]
               Hong, J., Hong, Y., de Foy, X., Kovatsch, M., Schooler,
-              E., and D. Kutscher, "IoT Edge Challenges and Functions",
+              E., and D. KUTSCHER, "IoT Edge Challenges and Functions",
               Work in Progress, Internet-Draft, draft-hong-t2trg-iot-
               edge-computing-05, 13 July 2020,
               <https://datatracker.ietf.org/doc/html/draft-hong-t2trg-
@@ -968,6 +992,11 @@ Table of Contents
               Server Identity Check Procedure for Email-Related
               Protocols", RFC 7817, DOI 10.17487/RFC7817, March 2016,
               <https://www.rfc-editor.org/rfc/rfc7817>.
+
+   [RFC7929]  Wouters, P., "DNS-Based Authentication of Named Entities
+              (DANE) Bindings for OpenPGP", RFC 7929,
+              DOI 10.17487/RFC7929, August 2016,
+              <https://www.rfc-editor.org/rfc/rfc7929>.
 
    [RFC8366]  Watsen, K., Richardson, M., Pritikin, M., and T. Eckert,
               "A Voucher Artifact for Bootstrapping Protocols",

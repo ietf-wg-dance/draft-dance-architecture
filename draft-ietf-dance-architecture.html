@@ -14,18 +14,18 @@
 related to the use of DANE DNS records for TLS client and messaging peer identity,
 within the context of existing object security and TLS-based protocols. 
     " name="description">
-<meta content="xml2rfc 3.23.0" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-dance-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.0
-    Python 3.12.3
+  xml2rfc 3.23.2
+    Python 3.12.7
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
@@ -1029,11 +1029,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DNS-Bound Identities Architecture</td>
-<td class="right">September 2024</td>
+<td class="right">October 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilson, et al.</td>
-<td class="center">Expires 8 March 2025</td>
+<td class="center">Expires 21 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1046,12 +1046,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dance-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-04" class="published">4 September 2024</time>
+<time datetime="2024-10-18" class="published">18 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-08">8 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-21">21 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ within the context of existing object security and TLS-based protocols.<a href="
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1175,86 +1175,89 @@ within the context of existing object security and TLS-based protocols.<a href="
                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-example-3-tls-user-authenti" class="internal xref">Example 3: TLS user authentication for an LDAP query</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.4">
-                    <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-iot-device-to-cloud" class="internal xref">IoT: Device to cloud</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-example-4-iot-device-to-clo" class="internal xref">Example 4: IoT: Device to cloud</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
-                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-lorawan" class="internal xref">LoRaWAN</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-example-5-lorawan" class="internal xref">Example 5: LoRaWAN</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.6">
-                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-edge-computing" class="internal xref">Edge Computing</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-example-6-edge-computing" class="internal xref">Example 6: Edge Computing</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.7">
-                    <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-domain-users" class="internal xref">Domain Users</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-example-7-domain-users" class="internal xref">Example 7: Domain Users</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.8">
-                    <p id="section-toc.1-1.4.2.1.2.8.1"><a href="#section-4.1.8" class="auto internal xref">4.1.8</a>.  <a href="#name-sip-and-webrtc-inter-domain" class="internal xref">SIP and WebRTC inter-domain privacy</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.8.1"><a href="#section-4.1.8" class="auto internal xref">4.1.8</a>.  <a href="#name-example-8-sip-and-webrtc-in" class="internal xref">Example 8: SIP and WebRTC inter-domain privacy</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.9">
-                    <p id="section-toc.1-1.4.2.1.2.9.1"><a href="#section-4.1.9" class="auto internal xref">4.1.9</a>.  <a href="#name-dns-over-tls-client-authent" class="internal xref">DNS over TLS client authentication</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.9.1"><a href="#section-4.1.9" class="auto internal xref">4.1.9</a>.  <a href="#name-example-9-dns-over-tls-clie" class="internal xref">Example 9: DNS over TLS client authentication</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.10">
-                    <p id="section-toc.1-1.4.2.1.2.10.1"><a href="#section-4.1.10" class="auto internal xref">4.1.10</a>. <a href="#name-smtp-starttls" class="internal xref">SMTP, STARTTLS</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.10.1"><a href="#section-4.1.10" class="auto internal xref">4.1.10</a>. <a href="#name-example-10-smtp-starttls" class="internal xref">Example 10: SMTP, STARTTLS</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.11">
-                    <p id="section-toc.1-1.4.2.1.2.11.1"><a href="#section-4.1.11" class="auto internal xref">4.1.11</a>. <a href="#name-ssh-client" class="internal xref">SSH client</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.11.1"><a href="#section-4.1.11" class="auto internal xref">4.1.11</a>. <a href="#name-example-11-ssh-client" class="internal xref">Example 11: SSH client</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.12">
-                    <p id="section-toc.1-1.4.2.1.2.12.1"><a href="#section-4.1.12" class="auto internal xref">4.1.12</a>. <a href="#name-network-access" class="internal xref">Network Access</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.12.1"><a href="#section-4.1.12" class="auto internal xref">4.1.12</a>. <a href="#name-example-12-network-access" class="internal xref">Example 12: Network Access</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.13">
-                    <p id="section-toc.1-1.4.2.1.2.13.1"><a href="#section-4.1.13" class="auto internal xref">4.1.13</a>. <a href="#name-structured-data-messages-jo" class="internal xref">Structured data messages: JOSE/COSE</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.13.1"><a href="#section-4.1.13" class="auto internal xref">4.1.13</a>. <a href="#name-example-13-structured-data-" class="internal xref">Example 13: Structured data messages: JOSE/COSE</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-protocol-implementations" class="internal xref">Protocol implementations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-confidentiality" class="internal xref">Confidentiality</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-confidentiality" class="internal xref">Confidentiality</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-integrity" class="internal xref">Integrity</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-integrity" class="internal xref">Integrity</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-availability" class="internal xref">Availability</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-availability" class="internal xref">Availability</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-tls-server-availability" class="internal xref">TLS Server availability</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-tls-server-availability" class="internal xref">TLS Server availability</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
-                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-privacy" class="internal xref">Privacy</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-privacy" class="internal xref">Privacy</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.1">
-                    <p id="section-toc.1-1.5.2.5.2.1.1"><a href="#section-5.5.1" class="auto internal xref">5.5.1</a>.  <a href="#name-dns-scalability" class="internal xref">DNS Scalability</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.1">
+                    <p id="section-toc.1-1.6.2.5.2.1.1"><a href="#section-6.5.1" class="auto internal xref">6.5.1</a>.  <a href="#name-dns-scalability" class="internal xref">DNS Scalability</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.2">
-                    <p id="section-toc.1-1.5.2.5.2.2.1"><a href="#section-5.5.2" class="auto internal xref">5.5.2</a>.  <a href="#name-change-of-ownership-for-iot" class="internal xref">Change of ownership for IoT devices</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.2">
+                    <p id="section-toc.1-1.6.2.5.2.2.1"><a href="#section-6.5.2" class="auto internal xref">6.5.2</a>.  <a href="#name-change-of-ownership-for-iot" class="internal xref">Change of ownership for IoT devices</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1517,10 +1520,10 @@ No need to manage an allow-list in the load balancer.<a href="#section-4.1.2-3.2
           </ul>
 </section>
 </div>
-<div id="iot-device-to-cloud">
+<div id="example-4-iot-device-to-cloud">
 <section id="section-4.1.4">
-          <h4 id="name-iot-device-to-cloud">
-<a href="#section-4.1.4" class="section-number selfRef">4.1.4. </a><a href="#name-iot-device-to-cloud" class="section-name selfRef">IoT: Device to cloud</a>
+          <h4 id="name-example-4-iot-device-to-clo">
+<a href="#section-4.1.4" class="section-number selfRef">4.1.4. </a><a href="#name-example-4-iot-device-to-clo" class="section-name selfRef">Example 4: IoT: Device to cloud</a>
           </h4>
 <p id="section-4.1.4-1">Direct device-to-cloud communication is common in simple IoT applications.
 Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates.
@@ -1531,10 +1534,10 @@ A hardware manufacturer can provide a pre-established identity, with the certifi
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.<a href="#section-4.1.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="lorawan">
+<div id="example-5-lorawan">
 <section id="section-4.1.5">
-          <h4 id="name-lorawan">
-<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-lorawan" class="section-name selfRef">LoRaWAN</a>
+          <h4 id="name-example-5-lorawan">
+<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-example-5-lorawan" class="section-name selfRef">Example 5: LoRaWAN</a>
           </h4>
 <p id="section-4.1.5-1">For the end-device onboarding in LoRaWAN, the "network server" and the "join server" <span>[<a href="#RFC8376" class="cite xref">RFC8376</a>]</span> needs to establish mutual TLS authentication in order to exchange configuration parameters.
 Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack.
@@ -1543,10 +1546,10 @@ Self-signed certificate based mutual-TLS authentication method is the alternativ
 Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated.<a href="#section-4.1.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="edge-computing">
+<div id="example-6-edge-computing">
 <section id="section-4.1.6">
-          <h4 id="name-edge-computing">
-<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-edge-computing" class="section-name selfRef">Edge Computing</a>
+          <h4 id="name-example-6-edge-computing">
+<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-example-6-edge-computing" class="section-name selfRef">Example 6: Edge Computing</a>
           </h4>
 <p id="section-4.1.6-1"><span>[<a href="#I-D.hong-t2trg-iot-edge-computing" class="cite xref">I-D.hong-t2trg-iot-edge-computing</a>]</span> may require devices to mutually authenticate in the field.
 A practical example of this pattern is the edge computing in construction use case <span>[<a href="#I-D.hong-t2trg-iot-edge-computing" class="cite xref">I-D.hong-t2trg-iot-edge-computing</a>], <a href="https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-05#section-6.2.1" class="relref">Section 6.2.1</a></span>
@@ -1559,10 +1562,10 @@ the originating sensor, and the cloud application may authenticate the measureme
 which forwarded the information to the application.<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="domain-users">
+<div id="example-7-domain-users">
 <section id="section-4.1.7">
-          <h4 id="name-domain-users">
-<a href="#section-4.1.7" class="section-number selfRef">4.1.7. </a><a href="#name-domain-users" class="section-name selfRef">Domain Users</a>
+          <h4 id="name-example-7-domain-users">
+<a href="#section-4.1.7" class="section-number selfRef">4.1.7. </a><a href="#name-example-7-domain-users" class="section-name selfRef">Example 7: Domain Users</a>
           </h4>
 <p id="section-4.1.7-1">The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
 Domains may even choose to assign domain user identities to services, possibly with easily recognised identities like +mail+archive@domain.name.
@@ -1573,10 +1576,10 @@ Any DANCEr may however define alternate derivation procedures to obtain the DNS 
 <p id="section-4.1.7-3">There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.<a href="#section-4.1.7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sip-and-webrtc-inter-domain-privacy">
+<div id="example-8-sip-and-webrtc-inter-domain-privacy">
 <section id="section-4.1.8">
-          <h4 id="name-sip-and-webrtc-inter-domain">
-<a href="#section-4.1.8" class="section-number selfRef">4.1.8. </a><a href="#name-sip-and-webrtc-inter-domain" class="section-name selfRef">SIP and WebRTC inter-domain privacy</a>
+          <h4 id="name-example-8-sip-and-webrtc-in">
+<a href="#section-4.1.8" class="section-number selfRef">4.1.8. </a><a href="#name-example-8-sip-and-webrtc-in" class="section-name selfRef">Example 8: SIP and WebRTC inter-domain privacy</a>
           </h4>
 <p id="section-4.1.8-1">End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
 There are also SIP standards that build upon a trust chain anchored on the HTTP trust chain (SIP identity, STIR).
@@ -1588,10 +1591,10 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 <p id="section-4.1.8-3">For an example, read <span>[<a href="#I-D.johansson-sipcore-dane-sip" class="cite xref">I-D.johansson-sipcore-dane-sip</a>]</span>(SIPDANE).<a href="#section-4.1.8-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="dns-over-tls-client-authentication">
+<div id="example-9-dns-over-tls-client-authentication">
 <section id="section-4.1.9">
-          <h4 id="name-dns-over-tls-client-authent">
-<a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-dns-over-tls-client-authent" class="section-name selfRef">DNS over TLS client authentication</a>
+          <h4 id="name-example-9-dns-over-tls-clie">
+<a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-example-9-dns-over-tls-clie" class="section-name selfRef">Example 9: DNS over TLS client authentication</a>
           </h4>
 <p id="section-4.1.9-1">DNS-over-TLS client authentication is applicable to most portions of the
 transport segments of the DNS infrastructure.
@@ -1615,10 +1618,10 @@ internal zone, or to distinguish between subscribers to different performance ti
 <p id="section-4.1.9-5">In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.<a href="#section-4.1.9-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="smtp-starttls">
+<div id="example-10-smtp-starttls">
 <section id="section-4.1.10">
-          <h4 id="name-smtp-starttls">
-<a href="#section-4.1.10" class="section-number selfRef">4.1.10. </a><a href="#name-smtp-starttls" class="section-name selfRef">SMTP, STARTTLS</a>
+          <h4 id="name-example-10-smtp-starttls">
+<a href="#section-4.1.10" class="section-number selfRef">4.1.10. </a><a href="#name-example-10-smtp-starttls" class="section-name selfRef">Example 10: SMTP, STARTTLS</a>
           </h4>
 <p id="section-4.1.10-1">SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS <span>[<a href="#RFC7817" class="cite xref">RFC7817</a>]</span> command.
 When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in <span>[<a href="#RFC9525" class="cite xref">RFC9525</a>]</span>.
@@ -1628,10 +1631,10 @@ Support for this is very common and most email on the Internet is transmitted in
 There are many use cases, but a major one is often dealing with authenticated relaying of email.<a href="#section-4.1.10-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="ssh-client">
+<div id="example-11-ssh-client">
 <section id="section-4.1.11">
-          <h4 id="name-ssh-client">
-<a href="#section-4.1.11" class="section-number selfRef">4.1.11. </a><a href="#name-ssh-client" class="section-name selfRef">SSH client</a>
+          <h4 id="name-example-11-ssh-client">
+<a href="#section-4.1.11" class="section-number selfRef">4.1.11. </a><a href="#name-example-11-ssh-client" class="section-name selfRef">Example 11: SSH client</a>
           </h4>
 <p id="section-4.1.11-1">SSH servers have for some time been able to put their host keys into DNS using <span>[<a href="#RFC4255" class="cite xref">RFC4255</a>]</span>.<a href="#section-4.1.11-1" class="pilcrow">¶</a></p>
 <p id="section-4.1.11-2">In many SSH server implementations the list of users that is authorized to login to an account is given by listing their public keys in a per-user file ("authorized_keys").
@@ -1654,10 +1657,10 @@ Separation of authorization and authentication in this case would involve puttin
 Since SSH can trust CA certificates from X.509, those may be published for user authentication.<a href="#section-4.1.11-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="network-access">
+<div id="example-12-network-access">
 <section id="section-4.1.12">
-          <h4 id="name-network-access">
-<a href="#section-4.1.12" class="section-number selfRef">4.1.12. </a><a href="#name-network-access" class="section-name selfRef">Network Access</a>
+          <h4 id="name-example-12-network-access">
+<a href="#section-4.1.12" class="section-number selfRef">4.1.12. </a><a href="#name-example-12-network-access" class="section-name selfRef">Example 12: Network Access</a>
           </h4>
 <p id="section-4.1.12-1">Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.<a href="#section-4.1.12-1" class="pilcrow">¶</a></p>
@@ -1716,10 +1719,10 @@ The benefit for this use case is that a hosted RADIUS service may mutually authe
 </div>
 </section>
 </div>
-<div id="structured-data-messages-josecose">
+<div id="example-13-structured-data-messages-josecose">
 <section id="section-4.1.13">
-          <h4 id="name-structured-data-messages-jo">
-<a href="#section-4.1.13" class="section-number selfRef">4.1.13. </a><a href="#name-structured-data-messages-jo" class="section-name selfRef">Structured data messages: JOSE/COSE</a>
+          <h4 id="name-example-13-structured-data-">
+<a href="#section-4.1.13" class="section-number selfRef">4.1.13. </a><a href="#name-example-13-structured-data-" class="section-name selfRef">Example 13: Structured data messages: JOSE/COSE</a>
           </h4>
 <p id="section-4.1.13-1">JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>], <a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.5" class="relref">Section 4.1.5</a></span>, and COSE defines a field of the same name in <span>[<a href="#I-D.ietf-cose-x509" class="cite xref">I-D.ietf-cose-x509</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-cose-x509-09#section-2" class="relref">Section 2</a></span>.<a href="#section-4.1.13-1" class="pilcrow">¶</a></p>
 <p id="section-4.1.13-2">However, this URL field points to where the key can be found.
@@ -1731,116 +1734,143 @@ There is, as yet, no URI scheme which says that the key can be found via the DNS
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="protocol-implementations">
 <section id="section-5">
+      <h2 id="name-protocol-implementations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-protocol-implementations" class="section-name selfRef">Protocol implementations</a>
+      </h2>
+<p id="section-5-1">For each protocol implementation, a specific usage document needs to be published. In this document,
+the DANCE protocol requirements and usage needs to be specified (this is refered above as the "How to DANCE" document).
+These documents should as a minimum contain the following sections:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5-2.1">
+          <p id="section-5-2.1.1">Specifics on naming: How the name of the client is defined and how this is related to the name in
+a DNS zone. This defines the organization of the related DNS zone. Whether a flat namespace is used,
+or a way to use a DNS Zone hierarchy is applied to this usage. (see notes above on DNS zone design)<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.2">
+          <p id="section-5-2.2.1">Privacy: If the subject name is a personal identifier, how to protect that name from being exposed
+in the DNS zone. <span>[<a href="#RFC7929" class="cite xref">RFC7929</a>]</span> describes one way to handle privacy for personal identifiers in DNS.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.3">
+          <p id="section-5-2.3.1">TTL: Recommended TTL settings for records in this usage<a href="#section-5-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.4">
+          <p id="section-5-2.4.1">Security: Security considerations for this usage<a href="#section-5-2.4.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-6">
       <h2 id="name-security-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <div id="confidentiality">
-<section id="section-5.1">
+<section id="section-6.1">
         <h3 id="name-confidentiality">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-confidentiality" class="section-name selfRef">Confidentiality</a>
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-confidentiality" class="section-name selfRef">Confidentiality</a>
         </h3>
-<p id="section-5.1-1">DNS clients should use DNS over TLS with trusted DNS resolvers to protect the identity of authenticating peers.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">DNS clients should use DNS over TLS with trusted DNS resolvers to protect the identity of authenticating peers.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="integrity">
-<section id="section-5.2">
+<section id="section-6.2">
         <h3 id="name-integrity">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-integrity" class="section-name selfRef">Integrity</a>
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-integrity" class="section-name selfRef">Integrity</a>
         </h3>
-<p id="section-5.2-1">The integrity of public keys represented in DNS is most important.
+<p id="section-6.2-1">The integrity of public keys represented in DNS is most important.
 An altered public key can enable device impersonation, and the denial of existence for a valid identity can cause devices to become un-trusted by the network or the application.
-DNS records should be validated by the DNS stub resolver, using the DNSSEC protocol.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">Compartmentalizing failure domains within an application is a well-known architectural best practice.
+DNS records should be validated by the DNS stub resolver, using the DNSSEC protocol.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">Compartmentalizing failure domains within an application is a well-known architectural best practice.
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
-This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">The naming pattern suggested in <span>[<a href="#I-D.ietf-dance-client-auth" class="cite xref">I-D.ietf-dance-client-auth</a>]</span> includes
+This can prevent a compromised identity zone DNS server from presenting records essential for impersonating web sites under the organization’s domain name.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">The naming pattern suggested in <span>[<a href="#I-D.ietf-dance-client-auth" class="cite xref">I-D.ietf-dance-client-auth</a>]</span> includes
 an underscore label (_device).
 The underscore is not a valid character for names used in the Web PKI.
-This prevents the issuance of any Web PKI-validating certificates for these names.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2-4">This means that even were the authoritative DNS server compromised, it would not be possible to issue Web PKI certificates using, for instance, the <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> DNS-01 challenge.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
+This prevents the issuance of any Web PKI-validating certificates for these names.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">This means that even were the authoritative DNS server compromised, it would not be possible to issue Web PKI certificates using, for instance, the <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> DNS-01 challenge.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.2-5">An alternative underscore label _user separates the TLSA records with the domain CA from the TLSA records for devices.<a href="#section-6.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="availability">
-<section id="section-5.3">
+<section id="section-6.3">
         <h3 id="name-availability">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-availability" class="section-name selfRef">Availability</a>
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-availability" class="section-name selfRef">Availability</a>
         </h3>
-<p id="section-5.3-1">One of the advantages of DNS is that it has more than fourty years of demonstrated scaling.
+<p id="section-6.3-1">One of the advantages of DNS is that it has more than fourty years of demonstrated scaling.
 It is a distributed database with a caching mechanism, and properly configured, it has proven resilient
-to many kinds of outages and attacks.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">A key part of this availability is the proper use of Time To Live (TTL) values for resource records.
-A cache is allowed to hang on to the data for a set time, the TTL, after which it must do a new query to find out if the data has changed, or perhaps been deleted.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">There is therefore a tension between resilience (higher TTL values), and agility (lower TTL values).
+to many kinds of outages and attacks.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">A key part of this availability is the proper use of Time To Live (TTL) values for resource records.
+A cache is allowed to hang on to the data for a set time, the TTL, after which it must do a new query to find out if the data has changed, or perhaps been deleted.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-3">There is therefore a tension between resilience (higher TTL values), and agility (lower TTL values).
 A lower TTL value allows for revocation or replacement of a key to become known much faster.
-This allows for a more agile security posture.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
-<p id="section-5.3-4">The TTL value is not enforced, which may lead to unexpected responses, like a malicious server
+This allows for a more agile security posture.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4">The TTL value is not enforced, which may lead to unexpected responses, like a malicious server
 caching responses for a long time after the TTL for the record has expired. This may lead
 to a situation where a revocation by removing the record from DNS doesn't come in
-to effect as expected.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
-<p id="section-5.3-5">On the other hand, lower TTLs cause the queries to occur more often,
+to effect as expected.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.3-5">On the other hand, lower TTLs cause the queries to occur more often,
 which may reveal more information to an observer about which devices are active.
 Encrypted transports like DoT/DoH/DoQ make these queries far less visible.
 In addition to the on-path observer being able to see more, the resolver logs also may be a source of information.
-It also allows for more opportunities for an attacker to affect the response time of the queries.<a href="#section-5.3-5" class="pilcrow">¶</a></p>
+It also allows for more opportunities for an attacker to affect the response time of the queries.<a href="#section-6.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="tls-server-availability">
-<section id="section-5.4">
+<section id="section-6.4">
         <h3 id="name-tls-server-availability">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-tls-server-availability" class="section-name selfRef">TLS Server availability</a>
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-tls-server-availability" class="section-name selfRef">TLS Server availability</a>
         </h3>
-<p id="section-5.4-1">TLS servers supporting DANCE should implement a list of domains that are valid for client authentication,
+<p id="section-6.4-1">TLS servers supporting DANCE should implement a list of domains that are valid for client authentication,
 in order not to be open to DDOS attacks where a large number of clients force the server to do random DNS lookups.
-More implementation details are to be found in the protocol specific documents.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+More implementation details are to be found in the protocol specific documents.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="privacy">
-<section id="section-5.5">
+<section id="section-6.5">
         <h3 id="name-privacy">
-<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-privacy" class="section-name selfRef">Privacy</a>
+<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-privacy" class="section-name selfRef">Privacy</a>
         </h3>
-<p id="section-5.5-1">If the DNS owner name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
+<p id="section-6.5-1">If the DNS owner name of the identity proven by a certificate is directly or indirectly relatable to a person, privacy needs to be considered when forming the name of the DNS resource record for the certificate.
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
 When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
 The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
-If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">Further work has do be done in this area.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
+If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.5-2">Further work has do be done in this area.<a href="#section-6.5-2" class="pilcrow">¶</a></p>
 <div id="dns-scalability">
-<section id="section-5.5.1">
+<section id="section-6.5.1">
           <h4 id="name-dns-scalability">
-<a href="#section-5.5.1" class="section-number selfRef">5.5.1. </a><a href="#name-dns-scalability" class="section-name selfRef">DNS Scalability</a>
+<a href="#section-6.5.1" class="section-number selfRef">6.5.1. </a><a href="#name-dns-scalability" class="section-name selfRef">DNS Scalability</a>
           </h4>
-<p id="section-5.5.1-1">In the use case for IoT an implementation must be scalable to a large amount of devices.
+<p id="section-6.5.1-1">In the use case for IoT an implementation must be scalable to a large amount of devices.
 In many cases, identities may also be very short lived as revocation is performed by simply removing a DNS record.
-A zone will have to manage a large amount of changes as devices are constantly added and de-activated.<a href="#section-5.5.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.5.1-2">In these cases it is important to consider the architecture of the DNS zone and when possible use a tree-like structure with many subdomain parts, much like reverse DNS records or how telephone numbers are represented in the ENUM standard (RFC 6116).<a href="#section-5.5.1-2" class="pilcrow">¶</a></p>
-<p id="section-5.5.1-3">If an authoritative resolver were configured to respond quite slowly using TCP, (for instance, a
-<span>[<a href="#slowloris" class="cite xref">slowloris</a>]</span> attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.<a href="#section-5.5.1-3" class="pilcrow">¶</a></p>
-<p id="section-5.5.1-4">The availability of a client identity zone is essential to permitting clients to authenticate.
-If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
+A zone will have to manage a large amount of changes as devices are constantly added and de-activated.<a href="#section-6.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.5.1-2">In these cases it is important to consider the architecture of the DNS zone and when possible use a tree-like structure with many subdomain parts, much like reverse DNS records or how telephone numbers are represented in the ENUM standard (RFC 6116).<a href="#section-6.5.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.5.1-3">If an authoritative resolver were configured to respond quite slowly using TCP, (for instance, a
+<span>[<a href="#slowloris" class="cite xref">slowloris</a>]</span> attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.<a href="#section-6.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.5.1-4">The availability of a client identity zone is essential to permitting clients to authenticate.
+If the DNS infrastructure hosting client identities becomes unavailable, then the clients represented by that zone cannot be authenticated.<a href="#section-6.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="change-of-ownership-for-iot-devices">
-<section id="section-5.5.2">
+<section id="section-6.5.2">
           <h4 id="name-change-of-ownership-for-iot">
-<a href="#section-5.5.2" class="section-number selfRef">5.5.2. </a><a href="#name-change-of-ownership-for-iot" class="section-name selfRef">Change of ownership for IoT devices</a>
+<a href="#section-6.5.2" class="section-number selfRef">6.5.2. </a><a href="#name-change-of-ownership-for-iot" class="section-name selfRef">Change of ownership for IoT devices</a>
           </h4>
-<p id="section-5.5.2-1">One of the significant use cases is where the devices are identified by their manufacturer assigned identities.
+<p id="section-6.5.2-1">One of the significant use cases is where the devices are identified by their manufacturer assigned identities.
 A significant savings was that enterprises would not have to run their own (private) PKI systems, sometimes even one system per device type.
 But, with this usage style for DANCE there is no private PKI to run, and as a result there is no change of ownership required.
-The device continues to use the manufacturer assigned identity.<a href="#section-5.5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.5.2-2">The device OwnerOperator is therefore at risk if the device's manufacturer goes out of business, or decides that they no longer wish to manufacturer that device.
-Should that happen then the OwnerOperator of the device may be in trouble, and may find themselves having to replace the devices.<a href="#section-5.5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.5.2-3"><span>[<a href="#RFC8995" class="cite xref">RFC8995</a>], <a href="https://rfc-editor.org/rfc/rfc8995#section-10.4" class="relref">Section 10.4</a></span> (BRSKI) deals with concerns about manufacturers influence on devices.
+The device continues to use the manufacturer assigned identity.<a href="#section-6.5.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.5.2-2">The device OwnerOperator is therefore at risk if the device's manufacturer goes out of business, or decides that they no longer wish to manufacturer that device.
+Should that happen then the OwnerOperator of the device may be in trouble, and may find themselves having to replace the devices.<a href="#section-6.5.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.5.2-3"><span>[<a href="#RFC8995" class="cite xref">RFC8995</a>], <a href="https://rfc-editor.org/rfc/rfc8995#section-10.4" class="relref">Section 10.4</a></span> (BRSKI) deals with concerns about manufacturers influence on devices.
 In the case of BRSKI, the concern was limited to when the device ownership transfer was performed (the BRSKI transaction itself).
-There was no concern once the OwnerOperator had taken control over the device through an <span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]</span> voucher.<a href="#section-5.5.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.5.2-4">In the case of DANCE, the manufacturer is continuously involved with the day to day operation of the device.<a href="#section-5.5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.5.2-5">If this is of concern, then the OwnerOperator should perform some kind of transfer of ownership, such as using DPP, <span>[<a href="#RFC8995" class="cite xref">RFC8995</a>]</span>(BRSKI), <span>[<a href="#RFC9140" class="cite xref">RFC9140</a>]</span>(EAP-NOOB), and others yet to come.<a href="#section-5.5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.5.2-6">The DANCE method of using manufacturer assigned identities would therefore seem to be best used for devices which have a short lifetime: one much smaller than the uncertainty about the anticipated lifespan of the manufacturer.
-For instance, some kind of battery operated sensor which might be used in a large quantity at a construction site, and which can not be recharged.<a href="#section-5.5.2-6" class="pilcrow">¶</a></p>
+There was no concern once the OwnerOperator had taken control over the device through an <span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]</span> voucher.<a href="#section-6.5.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.5.2-4">In the case of DANCE, the manufacturer is continuously involved with the day to day operation of the device.<a href="#section-6.5.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.5.2-5">If this is of concern, then the OwnerOperator should perform some kind of transfer of ownership, such as using DPP, <span>[<a href="#RFC8995" class="cite xref">RFC8995</a>]</span>(BRSKI), <span>[<a href="#RFC9140" class="cite xref">RFC9140</a>]</span>(EAP-NOOB), and others yet to come.<a href="#section-6.5.2-5" class="pilcrow">¶</a></p>
+<p id="section-6.5.2-6">The DANCE method of using manufacturer assigned identities would therefore seem to be best used for devices which have a short lifetime: one much smaller than the uncertainty about the anticipated lifespan of the manufacturer.
+For instance, some kind of battery operated sensor which might be used in a large quantity at a construction site, and which can not be recharged.<a href="#section-6.5.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1848,22 +1878,22 @@ For instance, some kind of battery operated sensor which might be used in a larg
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-iana-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-6-1">This document has no IANA actions.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-references">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-7.1">
+<section id="section-8.1">
         <h3 id="name-normative-references">
-<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-dance-client-auth">[I-D.ietf-dance-client-auth]</dt>
@@ -1886,14 +1916,14 @@ For instance, some kind of battery operated sensor which might be used in a larg
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-7.2">
+<section id="section-8.2">
         <h3 id="name-informative-references">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.hong-t2trg-iot-edge-computing">[I-D.hong-t2trg-iot-edge-computing]</dt>
         <dd>
-<span class="refAuthor">Hong, J.</span>, <span class="refAuthor">Hong, Y.</span>, <span class="refAuthor">de Foy, X.</span>, <span class="refAuthor">Kovatsch, M.</span>, <span class="refAuthor">Schooler, E.</span>, and <span class="refAuthor">D. Kutscher</span>, <span class="refTitle">"IoT Edge Challenges and Functions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hong-t2trg-iot-edge-computing-05</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-05">https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Hong, J.</span>, <span class="refAuthor">Hong, Y.</span>, <span class="refAuthor">de Foy, X.</span>, <span class="refAuthor">Kovatsch, M.</span>, <span class="refAuthor">Schooler, E.</span>, and <span class="refAuthor">D. KUTSCHER</span>, <span class="refTitle">"IoT Edge Challenges and Functions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hong-t2trg-iot-edge-computing-05</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-05">https://datatracker.ietf.org/doc/html/draft-hong-t2trg-iot-edge-computing-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-cose-x509">[I-D.ietf-cose-x509]</dt>
         <dd>
@@ -1946,6 +1976,10 @@ For instance, some kind of battery operated sensor which might be used in a larg
 <dt id="RFC7817">[RFC7817]</dt>
         <dd>
 <span class="refAuthor">Melnikov, A.</span>, <span class="refTitle">"Updated Transport Layer Security (TLS) Server Identity Check Procedure for Email-Related Protocols"</span>, <span class="seriesInfo">RFC 7817</span>, <span class="seriesInfo">DOI 10.17487/RFC7817</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7817">https://www.rfc-editor.org/rfc/rfc7817</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7929">[RFC7929]</dt>
+        <dd>
+<span class="refAuthor">Wouters, P.</span>, <span class="refTitle">"DNS-Based Authentication of Named Entities (DANE) Bindings for OpenPGP"</span>, <span class="seriesInfo">RFC 7929</span>, <span class="seriesInfo">DOI 10.17487/RFC7929</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7929">https://www.rfc-editor.org/rfc/rfc7929</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8366">[RFC8366]</dt>
         <dd>
