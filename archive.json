@@ -1,7 +1,7 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-23T00:08:26.894481+00:00",
-  "repo": "ashdwilson/draft-dance-architecture",
+  "timestamp": "2024-10-20T01:35:22.368029+00:00",
+  "repo": "ietf-wg-dance/draft-dance-architecture",
   "labels": [
     {
       "name": "bug",
@@ -24,14 +24,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
@@ -39,7 +39,7 @@
       "color": "e4e669"
     },
     {
-      "name": "question",
+      "name": "question-for-wg",
       "description": "Further information is requested",
       "color": "d876e3"
     },
@@ -47,24 +47,1187 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "futurework",
+      "description": "",
+      "color": "8F35DA"
+    },
+    {
+      "name": "Merge-request exist",
+      "description": "",
+      "color": "97A16A"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOGUUnfc5KdRSr",
+      "title": "Architecture: Make sure client certs has a short DNS lifetime (TTL)",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/2",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "From the DANCE list:\r\n```\r\n\r\nOn 25 May 2022, at 14:23, Wes Hardaker wrote:\r\n\r\nMichael Richardson <[mcr+ietf@sandelman.ca](mailto:mcr+ietf@sandelman.ca)> writes:\r\n\r\nWe probably need to talk about this for client authentication.\r\n\r\nLet me turn that question around (or at least sideways): is the guidance\r\nfor a TTL and/or signature life *different* from a DANE record for a\r\nserver vs a client?\r\n\r\nExcellent question. I can\u2019t think of any difference from a security standpoint, but for DNS there is likely to be much less caching benefit for a client certificate than one that is used more broadly. So it might be reasonable to have shorter TTLs for client certificates.\r\n\r\n-Jim\r\n```",
+      "createdAt": "2022-05-26T07:06:43Z",
+      "updatedAt": "2022-12-05T14:10:38Z",
+      "closedAt": "2022-12-05T14:10:38Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "With a shorter TTL, revocation (deleting the DNS record) becomes effective much faster",
+          "createdAt": "2022-11-11T14:45:04Z",
+          "updatedAt": "2022-11-11T14:45:04Z"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOGUUnfc5WKS8b",
+      "title": "Oauth2 - from the architecture doc",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/6",
+      "state": "OPEN",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "wontfix",
+        "futurework"
+      ],
+      "body": "removed this from architecture:\r\n\r\n### Oauth2\r\n\r\n[This can be a broad topic. Should we include, or wait until a re-chartering to update?]",
+      "createdAt": "2022-11-11T14:18:58Z",
+      "updatedAt": "2022-12-18T20:46:05Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "OAuth2 does not look very special\r\n\r\n  - It relies on authentication, to the validating node\r\n  - Client DANE may well be used for authentication to that node\r\n  - It then passes an authorization token, to drive resource access\r\n",
+          "createdAt": "2022-11-14T12:23:33Z",
+          "updatedAt": "2022-11-14T12:23:33Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Keep in backlog for future work",
+          "createdAt": "2022-11-21T14:44:24Z",
+          "updatedAt": "2022-11-21T14:44:24Z"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOGUUnfc5WKTkG",
+      "title": "architecture: DNS over TLS client authentication",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/7",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "futurework"
+      ],
+      "body": "Anyone that can write text on this?",
+      "createdAt": "2022-11-11T14:20:46Z",
+      "updatedAt": "2024-04-06T13:48:19Z",
+      "closedAt": "2024-04-06T13:48:19Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Need a short text with ideas or we will just remove this for now.",
+          "createdAt": "2022-11-11T14:21:14Z",
+          "updatedAt": "2022-11-11T14:21:14Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "We'll mention this as a future use case in the current document and keep it in the backlog for later work.",
+          "createdAt": "2022-11-21T14:50:35Z",
+          "updatedAt": "2022-11-21T14:50:35Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Interim accept mention",
+          "createdAt": "2023-01-26T15:26:26Z",
+          "updatedAt": "2023-01-26T15:26:26Z"
+        },
+        {
+          "author": "bwoodcock",
+          "authorAssociation": "NONE",
+          "body": "Sorry, been swamped with other stuff.  Here's some text:\r\n\r\nDNS-over-TLS client authentication is applicable to most portions of the transport segments of the DNS infrastructure. \r\n\r\nFrom authoritative to authoritative secondary, it can be applied to XFR-over-TLS (\"XoT\") as an upgrade to TSIG, removing the need for out-of-band communication of shared secrets, currently a weak point in that portion of the infrastructure.\r\n\r\nFrom authoritative servers to recursive servers, in situations in which both are part of a common trust-group or have access to the same non-public or split-horizon zone data, client authentication allows authoritative servers to give selective access to specific recursive servers. Alternatively, some recursive servers could authenticate in order to gain access to non-content-related special services, such as a higher query rate-limit quota than is publicly available.\r\n\r\nBetween recursive resolvers and caching/forwarding or stub resolvers, authentication can be used to gain access to special services, such as subscription-based malware blocking, or visibility of corporate split-horizon internal zone, or to distinguish between subscribers to different performance tiers.\r\n\r\nIn the ideal implementation, client and server would bidirectionally authenticate, using DANE certificates to bootstrap TLS transport security.",
+          "createdAt": "2024-04-04T22:39:34Z",
+          "updatedAt": "2024-04-04T22:39:34Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Thank you Bob! Maybe we could specific \"DANE client certificates\" in the last sentence to be more specific.",
+          "createdAt": "2024-04-05T07:16:50Z",
+          "updatedAt": "2024-04-05T07:16:50Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOGUUnfc5WKUCf",
+      "title": "Architecture: SMTP, STARTTLS",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/8",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "There's an empty section for SMTP in the architecture document. Any ideas?",
+      "createdAt": "2022-11-11T14:22:11Z",
+      "updatedAt": "2024-08-07T15:27:50Z",
+      "closedAt": "2024-08-07T15:27:50Z",
+      "comments": [
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "There are two cases here;\r\n\r\n 1. mta2mta or `smtp` service; this could be constrained to one or a few public keys or certificates;\r\n 2. cli2mta, or `submission` service; this could be supported with a Root/Intermediate CA to avoid showing users in DNS and to avoid being dependent on DNS update times after userbase changes\r\n\r\nThe idea I proposed, of desktop/phone users as DANE Clients applies to 2. but I don't know about 1.\r\n",
+          "createdAt": "2022-11-14T12:18:49Z",
+          "updatedAt": "2022-11-14T12:18:49Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The details of how 1. (mta2mta) belong in the SMTP document, and the architecture does not need to say anything special.\r\n",
+          "createdAt": "2022-11-28T14:16:53Z",
+          "updatedAt": "2022-11-28T14:16:53Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Maybe something along the lines of\r\n\r\n\"SMTP services, both server2server using SMTP and client to server using submission) can benefit from DANCE client authentication. \"",
+          "createdAt": "2022-12-12T09:46:31Z",
+          "updatedAt": "2022-12-12T09:46:31Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Interim accept on oej text above",
+          "createdAt": "2023-01-26T15:28:18Z",
+          "updatedAt": "2023-01-26T15:28:18Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOGUUnfc5WKUOS",
+      "title": "Architecture: SSH client",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/9",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "Empty section. Any ideas?",
+      "createdAt": "2022-11-11T14:22:41Z",
+      "updatedAt": "2023-01-09T14:41:07Z",
+      "closedAt": "2023-01-09T14:41:07Z",
+      "comments": [
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I suppose this would be a good situation for the desktop client use case I brought up?\r\n\r\nI am playing with a format like\r\n\r\n```\r\n*._user.example.com. IN TLSA 2 0 0 ...\r\n```\r\n\r\nI will work it into a WG proposal.",
+          "createdAt": "2022-11-14T12:22:04Z",
+          "updatedAt": "2022-11-14T12:22:04Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There might be a wildcard in the policy (\"bob.example.com can login to account bob\", and *.example.com can login to matching account), but there isn't anything in the DNS involving wildcard.   There doesn't seem to be any architectural concerns here.\r\n",
+          "createdAt": "2022-11-28T14:19:21Z",
+          "updatedAt": "2022-11-28T14:19:21Z"
+        },
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The DNS example I gave wants to express authentication; the given TLSA record can validate a Root CA that covers any user that is not overridden at the wildcard level.  It applies regardless of the setup of a resource/service.\r\n\r\nI think what you are talking about with is authorisation, which is not something that belongs in DNS, but rather in resource/service-bound ACLs, expressing the local policy, which may vary among resources/services.\r\n\r\nAuthentication in Client DANE is a service towards external services/resources, whereas authorisation implements local policy to allow only specific identities in but reject others.\r\n\r\nAm I correctly reading your comment?",
+          "createdAt": "2022-11-28T14:37:30Z",
+          "updatedAt": "2022-11-28T14:37:30Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "In the architecture doc we need something very high-level and generic.\r\n\r\n\"For SSH there are DNS records where a client can verify the server, but there is no way for the server to validate the client using DNS. With DANCE, a client can indicate a SSH CA or a client key that can be validated using DNS. Implementation details requires a SSH specific DANCE document.\"",
+          "createdAt": "2022-12-12T09:44:43Z",
+          "updatedAt": "2022-12-12T09:44:43Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I think what you are talking about with is authorisation, which is not something that belongs in DNS, but rather in resource/service-bound ACLs, expressing the local policy, which may vary among resources/services.\r\n\r\nRight now, .ssh/authorized_keys provides both identity and authorization.\r\nA few years ago, Tatu came to the IETF in a panic of worry about how many big entities had cargo-culted lists of keys in the authorization file which they could not audit, or update.  So, a single layer of indirection would be good here.\r\n\r\nBeing able to say \"bob.example.com\" can login rather than \"ssh-rsa .... bob@example.com\" is a good thing.\r\n(It's good, even if you decide that the way to get resilience and security is for every server to become a local secondary for the zone, because AXFR updates. Obviously better if you DNSSEC too!)\r\n\r\nIf you could put \"admins.example.com\", and have a whole list of TLSA RRs for all the admins, that would be even better.\r\nAnd then, \"backups.example.com\" for the automated systems, etc...\r\n\r\n\r\n",
+          "createdAt": "2022-12-18T21:08:00Z",
+          "updatedAt": "2022-12-18T21:08:00Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOGUUnfc5WKUYj",
+      "title": "architecture: EAP-TLS with RADIUS",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/10",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "Empty section now. Any ideas?",
+      "createdAt": "2022-11-11T14:23:07Z",
+      "updatedAt": "2023-01-09T14:41:22Z",
+      "closedAt": "2023-01-09T14:41:22Z",
+      "comments": [
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Indeed, not EAP-TTLS; the tunnel for authentication is slower than a client cert, so this is a good showcase for Client DANE.",
+          "createdAt": "2022-11-14T12:20:55Z",
+          "updatedAt": "2022-11-14T12:20:55Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is indeed a valid use case.  No special concern.\r\nThere are two uses: 1) a client-id is passed in the TLS step, 2) a certificate is passed that has a dNSName, at which there is a TLSA RR with ?? in it.\r\n",
+          "createdAt": "2022-11-28T14:25:13Z",
+          "updatedAt": "2022-11-28T14:25:13Z"
+        },
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "...and the dNSName may 2a) start with a username or 2b) for reasons of username privacy, start with a wildcard name.  The case 2b) has an impact on the authentication, which cannot be simply a strcmp() and on the lookup which needs to wait until the certificate arrives as is also the case for 1).",
+          "createdAt": "2022-11-28T14:41:34Z",
+          "updatedAt": "2022-11-28T14:41:34Z"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOGUUnfc5WKUrY",
+      "title": "architecture: Network Access",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/11",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Empty section in architecture doc. Any ideas?",
+      "createdAt": "2022-11-11T14:23:54Z",
+      "updatedAt": "2022-11-28T14:25:39Z",
+      "closedAt": "2022-11-28T14:25:39Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Is a duplicate of #10 .",
+          "createdAt": "2022-11-28T14:25:39Z",
+          "updatedAt": "2022-11-28T14:25:39Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOGUUnfc5WKV7O",
+      "title": "Architecture: LoRaWan",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/12",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "@sandoche2k can you please write a one-paragraph simplified use-case for the arch document? Thanks.",
+      "createdAt": "2022-11-11T14:27:21Z",
+      "updatedAt": "2024-08-07T15:31:42Z",
+      "closedAt": "2024-08-07T15:31:42Z",
+      "comments": [
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Yes, I will do it by this weekend.\n\nOn Mon, Nov 28, 2022 at 3:26 PM Olle E. Johansson ***@***.***>\nwrote:\n\n> @sandoche2k <https://github.com/sandoche2k> can you please write a\n> one-paragraph simplified use-case for the arch document? Thanks.\n>\n> \u2014\n> Reply to this email directly, view it on GitHub\n> <https://github.com/ietf-wg-dance/draft-dance-architecture/issues/12>, or\n> unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/ABJ27NUQCYSAJLUBCXZJPBDWKS6ITANCNFSM6AAAAAAR5UXXDE>\n> .\n> You are receiving this because you were mentioned.Message ID:\n> ***@***.***>\n>\n",
+          "createdAt": "2022-11-29T05:39:11Z",
+          "updatedAt": "2022-11-29T05:39:11Z"
+        },
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Please find the simplified version https://github.com/ietf-wg-dance/draft-dance-architecture/pull/21",
+          "createdAt": "2022-12-05T05:33:05Z",
+          "updatedAt": "2022-12-05T05:33:05Z"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOGUUnfc5WKWVV",
+      "title": "Architecture: Object security JOSE COSE",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/13",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "There's some text in there, should we keep it, clarify a bit more?\r\n\r\n```\r\n## Object Security\r\n\r\nIssue #13\r\n\r\n### Structured data messages: JOSE/COSE\r\n\r\nJOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in [https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5](RFC7515), and COSE defines a field of the same name in [https://datatracker.ietf.org/doc/html/draft-ietf-cose-x509-08#section-2](draft-ietf-cose-x509) which can be used for out-of-band x.509 certificate discovery. By adopting DANE for out-of-band certificate discovery, CBOR and JSON data may be authenticated, even if the originating sending agent not have IP connectivity, provided that the sending agent's certificate is discoverable in DNS and the receiving agent has access to DNS.\r\n```",
+      "createdAt": "2022-11-11T14:28:38Z",
+      "updatedAt": "2022-12-05T13:57:28Z",
+      "closedAt": "2022-12-05T13:57:28Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "x5u describes a URL where a certificate can be found.\r\nWe should define a new tag which is just the DNS QNAME where the certificate can be found.\r\n",
+          "createdAt": "2022-11-28T14:27:49Z",
+          "updatedAt": "2022-11-28T14:27:49Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Mention in architecture, but do not provide any kind of IANA activity.\r\n",
+          "createdAt": "2022-11-28T14:30:41Z",
+          "updatedAt": "2022-11-28T14:30:41Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOGUUnfc5WKWrH",
+      "title": "architecture: Anomaly reporting",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/14",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "ashdwilson"
+      ],
+      "labels": [
+        "futurework"
+      ],
+      "body": "Missing text. Remove or add?\r\n\r\n```\r\n## Operational anomaly reporting\r\n\r\n### MUD reporting for improper provisioning\r\n\r\n### XARF for abuse reporting\r\n\r\n```",
+      "createdAt": "2022-11-11T14:29:43Z",
+      "updatedAt": "2024-08-07T15:48:52Z",
+      "closedAt": "2024-08-07T15:48:52Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "MUD situation is similiar to #13 , in that the key that signs a MUD file may need to retrieved from DNS.\\\r\nHow to find the DNS name for verification, and another specification needs to specify this.\r\nMention this in architecture.   We are looking for XARF expertise.\r\n",
+          "createdAt": "2022-11-28T14:33:36Z",
+          "updatedAt": "2022-11-28T14:33:36Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Remove text from draft",
+          "createdAt": "2023-01-26T15:31:31Z",
+          "updatedAt": "2023-01-26T15:31:31Z"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOGUUnfc5WKXYf",
+      "title": "Architecture: Change of device ownership",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/15",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "There was a brief discussion about this on the IETF 115 - can we elaborate?\r\n\r\nCurrent text in the draft:\r\n\r\n```\r\nWhat happens if an organization owning the client identity goes out of business? \r\nWhat\u2019s the best way to transfer an identifier to another zone? \r\n<note: there may be an opportunity here to take advantage of EST, or another protocol supporting certificate renewal, to allow client devices to rotate to another zone>\r\n```",
+      "createdAt": "2022-11-11T14:32:11Z",
+      "updatedAt": "2022-12-05T13:46:25Z",
+      "closedAt": "2022-12-05T13:46:25Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I personally see one case where DANCE relies on vendor DNS zone and the vendor disappears.\r\n\r\nAnother is that I\u2019m buying a thing, using the vendors records for bootstrapping then migrating the device into my own safe and comfortable DNS zone. Of course, if the vendor is gone before I get my hands on the thing, the thing is useless.\r\n\r\nBut is there a need to \u201ctransfer\u201d? Isn\u2019t that just me installing a new client cert and/or name in the thing?",
+          "createdAt": "2022-11-11T14:45:49Z",
+          "updatedAt": "2022-11-11T14:45:49Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "From email @mcr (\r\n\r\nOlle E. Johansson <[oej@edvina.net](mailto:oej@edvina.net)> wrote:\r\nWe had a very brief discussion of change of ownership in the 115\r\nsession, but had to move forward. I would like to open it again on the\r\nlist.\r\n\r\n```\r\nI think that the major use cases of DANCE is exactly where no change in\r\nownership (from manufacturer to OwnerOperator) occurs. We said how we didn't\r\nwant to force enterprises to run their own (private) PKI, and that's why we\r\nwant vendor-anchored DNS names.\r\n\r\nIf one wants to do a transfer of ownership, then one needs a protocol that\r\ndoes that. We have DPP, BRSKI(RFC8995), EAP-NOOB, and a few others.\r\n\r\nThere Security Considerations section of RFC8995 goes into the problem of\r\nwhat happens when the vendor dies.\r\n```\r\n\r\nWhat happens if an organization owning the client identity goes out of business?\r\nWhat\u2019s the best way to transfer an identifier to another zone?\r\n<note: there may be an opportunity here to take advantage of EST, or\r\nanother protocol supporting certificate renewal, to allow client\r\ndevices to rotate to another zone>\r\n\r\n`Yes, I'd use EST, and also look at draft-ietf-ACME-integrations.`\r\n\r\nI personally see one case where DANCE relies on vendor DNS zone and the vendor disappears.\r\n\r\nAnother is that I\u2019m buying a thing, using the vendors records for\r\nbootstrapping then migrating the device into my own safe and\r\ncomfortable DNS zone. Of course, if the vendor is gone before I get my\r\nhands on the thing, the thing is useless.\r\n\r\n```\r\nThe thing is probably also useless/dangerous because it gets no further\r\npatches. True ownership transfer involves changing the software update key\r\ntoo :-)\r\n\r\n```\r\nBut is there a need to \u201ctransfer\u201d? Isn\u2019t that just me installing a new\r\nclient cert and/or name in the thing?\r\n\r\n`It could be.`",
+          "createdAt": "2022-11-14T07:54:59Z",
+          "updatedAt": "2022-11-14T07:54:59Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I think this needs to be in a dedicated IoT document in detail and just mentioned in architecture.",
+          "createdAt": "2022-11-14T07:55:26Z",
+          "updatedAt": "2022-11-14T07:55:26Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The use of DANCE where a client identifier from the manufacturer is used, is precisely the case where \r\nno change in ownership is desired.  The continued use of the device depends upon the continued existence of the manufacturer.  (This does not preclude third parties from providing some kind of escrow service that replaces the manufacturer.)\r\n",
+          "createdAt": "2022-11-28T14:43:54Z",
+          "updatedAt": "2022-11-28T14:43:54Z"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOGUUnfc5YA3RD",
+      "title": "URI scheme needed for DNS lookup",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/22",
+      "state": "CLOSED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [
+        "question-for-wg",
+        "futurework"
+      ],
+      "body": "JOSE/COSE and other mechanisms that point to certificates by URI (x5u), but there is not a URI scheme that says to look up the certificate *in* DNS.\r\nRFC4501 maybe be an appropriate RFC to reference.\r\nWhat would port 853 mean in this RFC?\r\n\r\n",
+      "createdAt": "2022-12-05T13:53:50Z",
+      "updatedAt": "2024-08-07T15:51:42Z",
+      "closedAt": "2024-08-07T15:51:42Z",
+      "comments": []
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOGUUnfc5YA9Aj",
+      "title": "using stale data for security decisions",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/23",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "enhancement",
+        "futurework"
+      ],
+      "body": "When DNS is blocked (by attackers or network failures), it may be permissible to use stale data from the cache, beyond it's TTL best-before-date.\r\nCreate a new section in the architecture about this, reference this in Security Considerations.\r\n\r\nServing stale data RFC8767.\r\n",
+      "createdAt": "2022-12-05T14:03:49Z",
+      "updatedAt": "2024-08-07T15:52:20Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOGUUnfc5bfkWu",
+      "title": "Terminology",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/28",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "question-for-wg"
+      ],
+      "body": "Do we need more terminology in the architecture doc?\r\n\r\nComment on line 78:\r\n\r\n\"**This section will be interesting to define. We have great examples of identity terminology in the https://datatracker.ietf.org/doc/html/draft-sarikaya-t2trg-sbootstrapping-06 document, but this document also admits that there is semantic drift on terms like \u201cbootstrapping\u201d, depending on who\u2019s talking.**\"",
+      "createdAt": "2023-01-16T14:08:27Z",
+      "updatedAt": "2024-08-07T15:42:27Z",
+      "closedAt": "2024-08-07T15:42:27Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Interim: Make sure Architecture has all the terminology definitions from the other WG docs.",
+          "createdAt": "2023-01-26T15:34:15Z",
+          "updatedAt": "2023-01-26T15:34:15Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "This is still not resolved.",
+          "createdAt": "2024-05-29T06:42:00Z",
+          "updatedAt": "2024-05-29T06:42:00Z"
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOGUUnfc5_J4hV",
+      "title": "A security considerations section is needed",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/32",
+      "state": "CLOSED",
+      "author": "hardaker",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-13T23:27:25Z",
+      "updatedAt": "2024-02-13T23:28:02Z",
+      "closedAt": "2024-02-13T23:28:01Z",
+      "comments": [
+        {
+          "author": "hardaker",
+          "authorAssociation": "NONE",
+          "body": "Whoops; I'm blind and scrolled past it.",
+          "createdAt": "2024-02-13T23:28:01Z",
+          "updatedAt": "2024-02-13T23:28:01Z"
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "I_kwDOGUUnfc6KbpA6",
+      "title": "Miss-spelling",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/35",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "In section 4.1 on the third line \"owner\" is spelled \"onwer\"\r\n\r\n",
+      "createdAt": "2024-05-29T06:45:04Z",
+      "updatedAt": "2024-05-29T19:06:15Z",
+      "closedAt": "2024-05-29T19:06:15Z",
+      "comments": []
+    },
+    {
+      "number": 38,
+      "id": "I_kwDOGUUnfc6LuNeF",
+      "title": "Nits to fix",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/38",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "```\r\n  == Missing Reference: 'XXXrefereceXXX' is mentioned on line 785, but not\r\n     defined\r\n\r\n  == Unused Reference: 'I-D.johansson-sipcore-dane-sip' is defined on line\r\n     875, but no explicit reference was found in the text\r\n\r\n  == Unused Reference: 'RFC9140' is defined on line 932, but no explicit\r\n     reference was found in the text\r\n\r\n```",
+      "createdAt": "2024-06-10T14:59:55Z",
+      "updatedAt": "2024-08-21T15:21:29Z",
+      "closedAt": "2024-08-21T15:21:28Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "RFC 9140 is fixed already in other MR",
+          "createdAt": "2024-08-20T19:04:12Z",
+          "updatedAt": "2024-08-20T19:04:12Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "\"XXXrefereceXXX\" is fixed in another MR.",
+          "createdAt": "2024-08-20T19:04:45Z",
+          "updatedAt": "2024-08-20T19:04:45Z"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "I_kwDOGUUnfc6M4ZuJ",
+      "title": "Add reference to RFC 5280",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/39",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [],
+      "body": "From email from Tim Wicinski:\r\n\r\n\"In 4.1 Overview, there is a use of terms:\r\n\r\nsubjectAltName\r\ndNSName\r\nrfc822Name\r\n\r\nbut with no reference to 5280\"",
+      "createdAt": "2024-06-20T06:06:27Z",
+      "updatedAt": "2024-08-08T06:32:20Z",
+      "closedAt": "2024-08-08T06:32:20Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Done.",
+          "createdAt": "2024-08-08T06:32:20Z",
+          "updatedAt": "2024-08-08T06:32:20Z"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "I_kwDOGUUnfc6M4aXN",
+      "title": "Change title of 4.1 Overview",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/40",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Tim Wicinski in email to wg list:\r\n\r\n\"Also \"\u20284. Client Authentication\",  If we look at these section headers:\r\n\r\n4.1. Overview\u2028\r\n4.1.1. Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance\u2028\r\n4.1.1.1. Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application\r\n4.1.1.2. Example 3: TLS user authentication for an LDAP query\r\n\r\nPerhaps \"Overview\" should be \"TLS Authentication\" \r\n\r\nand there should be a small paragraph along the lines of:\r\n\r\n\"There are a variety of authentication methods available for client/server communication. \" \r\n\"",
+      "createdAt": "2024-06-20T06:08:20Z",
+      "updatedAt": "2024-08-07T15:46:47Z",
+      "closedAt": "2024-08-07T15:46:47Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Section 4.1 contains a lot of usage examples, so maybe \"DANCE usage examples\" would be a more descriptive title",
+          "createdAt": "2024-06-20T06:09:42Z",
+          "updatedAt": "2024-06-20T06:09:42Z"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "id": "I_kwDOGUUnfc6M4bUo",
+      "title": "4.1.7 Missing link to BCP",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/41",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Tim Wicinski in email to wg list:\r\n\r\n\"In \"4.1.7 \" the text says \"Current BCP for authentication between DNS infrastructure\" \r\n\r\nBut no Link? \"",
+      "createdAt": "2024-06-20T06:11:03Z",
+      "updatedAt": "2024-08-21T15:29:37Z",
+      "closedAt": "2024-08-21T15:29:37Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Change to say \"current best practice\"",
+          "createdAt": "2024-08-07T15:57:14Z",
+          "updatedAt": "2024-08-07T15:57:14Z"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "I_kwDOGUUnfc6QvVJp",
+      "title": "Secdir early review of draft-ietf-dance-architecture-06",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/43",
+      "state": "CLOSED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "\r\nReviewer: Magnus Nystr\u00f6m\r\nReview result: Not Ready\r\n\r\nLike Ines Robles, I find this document not ready for publication, given several\r\nopen questions still remaining in the document itself, as well as, apparently,\r\nexternally recorded issues. As such, my review here is more an attempt to\r\nprovide feedback to the authors. - The approach is interesting but, to my\r\nknowledge, similar attempts to leverage DNS has been proposed earlier (see\r\ne.g., https://hal.science/hal-03798465/ - not sure if this document builds on\r\nthat work) and it could be interesting to compare with earlier proposals and\r\nwhy this one would stand a better chance of succeeding. - As mentioned in the\r\ndocument, requesting a TLS server to perform DNS lookup actions based on an\r\nunauthenticated request seems prone to dDoS attacks, and it would be good if\r\nthe document could describe in some more detail how DANCE-enabled TLS servers\r\ncould protect against this. - The document touches on aspects of lifecycle\r\nmanagement for these certificates (e.g., \"revocation is performed by simply\r\nremoving a DNS record,' or complexities when a device manufacturer no longer\r\nsupports or maintains the DNS entries). Would it make sense to have a fuller\r\ndiscussion around lifecycle management of certificates in the context of DANCE?\r\nI look forward to future revisions of this document.\r\n\r\n\r\n",
+      "createdAt": "2024-07-24T19:31:57Z",
+      "updatedAt": "2024-10-18T14:43:48Z",
+      "closedAt": "2024-10-18T14:43:47Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I find these issues in the above text\r\n* dDOS attack vector\r\n* Add lifecycle management discussion\r\n\r\nAre these topics for the architecture",
+          "createdAt": "2024-08-07T15:09:25Z",
+          "updatedAt": "2024-08-07T15:09:59Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Add some text on ddos:\r\n\r\n\"TLS servers supporting DANCE should implement a list of domains that are valid for client authentication, in order not to be open to DDOS attacks where a large number of clients force the server to do random DNS lookups. More implementation details are to be found in the protocol specific documents.\"",
+          "createdAt": "2024-08-07T15:13:40Z",
+          "updatedAt": "2024-08-21T15:24:36Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "We have another ticket on revocation and TTL, indirectly talking about lifecycle for certs.",
+          "createdAt": "2024-08-21T13:04:59Z",
+          "updatedAt": "2024-08-21T13:04:59Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "The text above is actually merged into the doc",
+          "createdAt": "2024-08-21T15:26:16Z",
+          "updatedAt": "2024-08-21T15:26:16Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "add citation https://hal.science/hal-03798465/",
+          "createdAt": "2024-08-21T15:28:40Z",
+          "updatedAt": "2024-08-21T15:28:40Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "We're done",
+          "createdAt": "2024-10-18T14:43:47Z",
+          "updatedAt": "2024-10-18T14:43:47Z"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOGUUnfc6SQX23",
+      "title": "architecture references are empty",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/44",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [
+        "futurework"
+      ],
+      "body": "Put some references in!",
+      "createdAt": "2024-08-07T15:25:41Z",
+      "updatedAt": "2024-10-18T14:42:48Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "We need to connect the docs to each other. Add anchor text, or something",
+          "createdAt": "2024-09-04T15:13:59Z",
+          "updatedAt": "2024-09-04T15:13:59Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@mcr to review other documents and expanded text.\r\n",
+          "createdAt": "2024-09-04T15:14:19Z",
+          "updatedAt": "2024-09-04T15:14:19Z"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOGUUnfc6SQh5z",
+      "title": "add reference for slowloris",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/49",
+      "state": "CLOSED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-07T15:46:15Z",
+      "updatedAt": "2024-08-21T15:33:40Z",
+      "closedAt": "2024-08-21T15:33:40Z",
+      "comments": []
+    },
+    {
+      "number": 52,
+      "id": "I_kwDOGUUnfc6SRc7e",
+      "title": "Iotdir: Add requirements on \"how to dance\"",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/52",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "1- Section 2, How to Dance with Entity: \"... delegates many details of how\r\nDANCE can be used...\"  -> It would be nice to add examples of which details,\r\ne.g. \"...details such as protocol-specific configurations, security mechanisms,\r\nand interoperability considerations...\"\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:09:46Z",
+      "updatedAt": "2024-10-18T13:16:27Z",
+      "closedAt": "2024-10-18T13:16:27Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Could there have been an I-D, a template on how to DANCE? @hardaker might know?",
+          "createdAt": "2024-08-21T15:43:28Z",
+          "updatedAt": "2024-08-21T15:43:43Z"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "I_kwDOGUUnfc6SRdJK",
+      "title": "IotDIR: rewrite identity provisioning",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/53",
+      "state": "OPEN",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "2- Section 2, Identity provisioning: \"... in some circumstances, a\r\nmanufacturer...\"  -> Could examples of these circumstances be added? For\r\ninstance, \"examples include manufacturer-initiated key generation.\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:10:21Z",
+      "updatedAt": "2024-10-18T14:40:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\"In some circumstances, a manufacturer may also publish device identity records in DNS.\r\nIn this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.\r\n\"",
+          "createdAt": "2024-08-21T15:45:49Z",
+          "updatedAt": "2024-08-21T15:45:49Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@oej, @shuque I don't really know what the circumstances are.  When life is good?\r\n",
+          "createdAt": "2024-09-16T21:05:00Z",
+          "updatedAt": "2024-09-16T21:05:00Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Rewritten as examples with a bullet list",
+          "createdAt": "2024-10-18T14:40:33Z",
+          "updatedAt": "2024-10-18T14:40:33Z"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "I_kwDOGUUnfc6SRdnV",
+      "title": "IoTDir: Clarify \"security domain\" in section 2",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/54",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "3- Section 2, Suggestion to complete what it seems to be an open topic: \"Is the\r\nsecurity domain defined by how broadly the identity is recognized, or by the\r\nbreadth of the application or network access policy?\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:11:38Z",
+      "updatedAt": "2024-10-18T14:42:12Z",
+      "closedAt": "2024-10-18T14:42:12Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "```\r\n[Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]\r\n```\r\n",
+          "createdAt": "2024-08-21T15:48:44Z",
+          "updatedAt": "2024-08-21T15:48:44Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Remove the question.",
+          "createdAt": "2024-08-21T15:49:15Z",
+          "updatedAt": "2024-08-21T15:49:15Z"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "I_kwDOGUUnfc6SRd2f",
+      "title": "IotDIR: Complete TBD values",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/55",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "shuque"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "4- Section 4.1.1 and 4.1.1.1: Suggestion to complete the TBD values with\r\nfurther description where to find them.\r\n\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:12:16Z",
+      "updatedAt": "2024-10-18T14:41:52Z",
+      "closedAt": "2024-10-18T14:41:52Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I think we cleared these out after review, but need to validate",
+          "createdAt": "2024-08-07T18:12:32Z",
+          "updatedAt": "2024-08-07T18:12:32Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "\"- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.\"\r\n\r\nChange texts (two places)",
+          "createdAt": "2024-08-21T15:51:59Z",
+          "updatedAt": "2024-08-21T15:51:59Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This would be a DANE equivalent to RFC9440.\r\n",
+          "createdAt": "2024-08-21T15:52:58Z",
+          "updatedAt": "2024-08-21T15:52:58Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Removed \"TBD\" - these are detailed in the other draft and isn't needed here.",
+          "createdAt": "2024-10-18T13:29:44Z",
+          "updatedAt": "2024-10-18T13:29:44Z"
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "I_kwDOGUUnfc6SReVc",
+      "title": "IotDIR: Maybe add broadcast",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/56",
+      "state": "OPEN",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "enhancement",
+        "wontfix",
+        "futurework"
+      ],
+      "body": "7- Question, Section 3: Does it make sense to add broadcasting as a\r\ncommunication pattern?\r\n\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:13:35Z",
+      "updatedAt": "2024-08-21T15:57:08Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "While it does make sense, I don't see us adding more examples at this stage.",
+          "createdAt": "2024-08-08T06:30:51Z",
+          "updatedAt": "2024-08-08T06:30:51Z"
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "id": "I_kwDOGUUnfc6SRejY",
+      "title": "IotDIR: Federated identity management",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/57",
+      "state": "OPEN",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "enhancement",
+        "wontfix",
+        "futurework"
+      ],
+      "body": "\r\n8- Question: What about to apply DANE DNS to Federated Identity Management?\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
+      "createdAt": "2024-08-07T18:14:09Z",
+      "updatedAt": "2024-08-21T15:57:26Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Maybe something we can label as future work",
+          "createdAt": "2024-08-07T18:14:21Z",
+          "updatedAt": "2024-08-07T18:14:21Z"
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "id": "I_kwDOGUUnfc6SRex3",
+      "title": "Iotdir: Nits",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/58",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "Nits:\r\n\r\n- Section 4.1.9.1.: tbe --> the\r\n\r\n- The terms \"Dance\" and \"DANCE\" are used in the text. It would be preferable to\r\nuse a consistent form throughout the document.\r\n\r\n",
+      "createdAt": "2024-08-07T18:14:47Z",
+      "updatedAt": "2024-09-04T15:12:05Z",
+      "closedAt": "2024-09-04T15:12:05Z",
+      "comments": []
+    },
+    {
+      "number": 59,
+      "id": "I_kwDOGUUnfc6SRfYt",
+      "title": "DNSDIR:  Clarify DNSsec usage",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/59",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "I'd prefer some parts around DNSSEC better clarified.  The 5.2 integrity\r\nsection mentions (twice) a compromise of servers that *host* a zone.  I\r\nconsider \"host\" a misleading word here, as the important part for integrity is\r\nonly the server that signs the zone.  (servers that serve the zones would be\r\nmore about 5.3 availability)\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-dnsdir-early-cunat-2024-07-19/",
+      "createdAt": "2024-08-07T18:16:28Z",
+      "updatedAt": "2024-08-21T15:40:41Z",
+      "closedAt": "2024-08-21T15:40:41Z",
+      "comments": []
+    },
+    {
+      "number": 60,
+      "id": "I_kwDOGUUnfc6SRfvS",
+      "title": "DNSdir: Note about TTL and revocation",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/60",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "Similarly, in 5.3 a connection is made between key revocation/rotation and TTL.\r\n But it should be noted that TTL values are not really secured, so e.g. a MITM\r\ncan keep serving old records until their *signatures* expire.  This tradeoff\r\naround expirations is somewhat similar to the one around TTLs, though.\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-dnsdir-early-cunat-2024-07-19/",
+      "createdAt": "2024-08-07T18:17:25Z",
+      "updatedAt": "2024-09-04T15:11:44Z",
+      "closedAt": "2024-09-04T15:11:44Z",
+      "comments": []
+    },
+    {
+      "number": 61,
+      "id": "I_kwDOGUUnfc6SRgHI",
+      "title": "DNSdir: Expand text on DNS zone construction",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/61",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "> In these cases it is important to consider the architecture of the\r\n> DNS zone and when possible use a tree-like structure with many\r\n> subdomain parts, much like reverse DNS records or how telephone\r\n> numbers are represented in the ENUM standard ([RFC 6116](https://datatracker.ietf.org/doc/rfc6116/)).\r\n> [...] We may want to have a discussion [...]\r\n\r\nI don't have any real data at hand, but from what I've heard this splitting up\r\ninto not-too-huge zones can help with speed of updates in some server\r\nimplementations.  So this \"adding of dots\" into the proposed naming schemes can\r\nbe an aspect to consider; a particular zone owner can then choose whether to\r\nsplit zones at some dots or not.\r\n\r\nNote that this tradeoff will surely increase the total number of queries from\r\nresolvers, be it for QNAME minimization or to obtain the DNSSEC chain that got\r\nlonger by inserting zone cuts.  Various large zones do exist in the wild\r\nalready, say signed ccTLDs with million(s) of records and update time within\r\nseveral minutes.\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-dnsdir-early-cunat-2024-07-19/",
+      "createdAt": "2024-08-07T18:18:23Z",
+      "updatedAt": "2024-10-18T13:16:28Z",
+      "closedAt": "2024-10-18T13:16:28Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Good feedback, but does it lead to any text changes? I think not.",
+          "createdAt": "2024-08-08T06:29:24Z",
+          "updatedAt": "2024-08-08T06:29:24Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "The original text was written after consultation with a member of the  DNS directorate. I checked with another DNS guru and I think the text is fine, but we can clarify that each implementation spec (\"How to dance\") needs to clarify how names are handled in DNS.",
+          "createdAt": "2024-08-21T13:03:11Z",
+          "updatedAt": "2024-08-21T13:03:11Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Whether or not it is more efficient or not, depends upon the implementation of the server.\r\nA general purpose server might be less efficient for a flat domain, and may benefit from additional \"dots\"",
+          "createdAt": "2024-08-21T15:12:23Z",
+          "updatedAt": "2024-08-21T15:12:23Z"
+        },
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "This is handled by a pull request \r\nhttps://github.com/ietf-wg-dance/draft-dance-architecture/pull/69",
+          "createdAt": "2024-09-04T15:41:32Z",
+          "updatedAt": "2024-09-04T15:41:32Z"
+        }
+      ]
+    },
+    {
+      "number": 62,
+      "id": "I_kwDOGUUnfc6SRgfO",
+      "title": "DNSdir nit: DNS server indirect DOS attack",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/62",
+      "state": "OPEN",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "wontfix"
+      ],
+      "body": "> If an authoritative resolver were configured to respond quite slowly\r\n> (think slow loris [XXXrefereceXXX]), is it possible to cause a DoS on\r\n> the TLS server via complete exhaustion of TCP connections?\r\n\r\nNit: I'd say this is tangential.  There are many ways of attempting DoS, with\r\nrisks increasing for public servers and/or resolvers.  I fail to see why single\r\nout this one particular attack approach in this RFC.  (BTW, what's\r\n\"authoritative resolver\" anyway?)\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-dnsdir-early-cunat-2024-07-19/",
+      "createdAt": "2024-08-07T18:19:21Z",
+      "updatedAt": "2024-08-15T17:43:32Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I do not see any need for action on this.",
+          "createdAt": "2024-08-08T06:28:00Z",
+          "updatedAt": "2024-08-08T06:28:00Z"
+        }
+      ]
+    },
+    {
+      "number": 68,
+      "id": "I_kwDOGUUnfc6VWX3R",
+      "title": "Check RFC822name possible update",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/68",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "Merge-request exist"
+      ],
+      "body": "Maybe we need to update this text (line 180)\r\n\r\n\"(PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid & dNSName, but it is limited to ASCII and suggests email only).\"",
+      "createdAt": "2024-09-04T15:18:34Z",
+      "updatedAt": "2024-10-18T14:41:39Z",
+      "closedAt": "2024-10-18T14:41:39Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "https://www.rfc-editor.org/info/rfc9598",
+          "createdAt": "2024-09-04T15:49:22Z",
+          "updatedAt": "2024-09-04T15:49:22Z"
+        }
+      ]
+    },
+    {
+      "number": 73,
+      "id": "I_kwDOGUUnfc6a0zrR",
+      "title": "Update upload artifact to v4",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/73",
+      "state": "CLOSED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-18T13:33:36Z",
+      "updatedAt": "2024-10-18T14:44:20Z",
+      "closedAt": "2024-10-18T14:44:20Z",
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Fixed",
+          "createdAt": "2024-10-18T14:44:20Z",
+          "updatedAt": "2024-10-18T14:44:20Z"
+        }
+      ]
+    }
+  ],
   "pulls": [
     {
       "number": 1,
       "id": "PR_kwDOGUUnfc4u1quW",
       "title": "Add privacy considerations",
-      "url": "https://github.com/ashdwilson/draft-dance-architecture/pull/1",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/1",
       "state": "MERGED",
       "author": "oej",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Add privacy considerations as raised on the mailing list.",
       "createdAt": "2021-11-22T09:16:48Z",
       "updatedAt": "2021-11-22T13:24:47Z",
-      "baseRepository": "ashdwilson/draft-dance-architecture",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
       "baseRefName": "main",
       "baseRefOid": "77977030986208bb245f690ee0f715738ef787f4",
       "headRepository": "oej/draft-dance-architecture",
@@ -75,6 +1238,1811 @@
       "mergedBy": "ashdwilson",
       "mergeCommit": {
         "oid": "3a2daf003a76098df4e7245fed24af08aab4f382"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOGUUnfc48RJ9E",
+      "title": "get draft renamed and tag for -00",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/3",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "added mcr as co-author.\r\nplease also give me permissions to ietf-wg-dance!",
+      "createdAt": "2022-07-28T17:53:39Z",
+      "updatedAt": "2022-07-28T17:55:35Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "f4c79f682223c9be0aacaf590d15198887317532",
+      "headRepository": "mcr/draft-dance-architecture",
+      "headRefName": "main",
+      "headRefOid": "4ebf85ff63c0a52eabd7589a16421a51cb62f6c7",
+      "closedAt": "2022-07-28T17:55:35Z",
+      "mergedAt": "2022-07-28T17:55:35Z",
+      "mergedBy": "shuque",
+      "mergeCommit": {
+        "oid": "b9e25457d879136c49c0c2fb3f0a13224c54655c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOGUUnfc48YRZ4",
+      "title": "Added LoRaWAN Use Case section",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/4",
+      "state": "CLOSED",
+      "author": "sandoche2k",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-31T10:31:17Z",
+      "updatedAt": "2022-12-02T13:22:39Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "b9e25457d879136c49c0c2fb3f0a13224c54655c",
+      "headRepository": null,
+      "headRefName": "Add-LoRaWAN-Usecase",
+      "headRefOid": "47ac061630938366cb9d7dc00d544b86252ed3bb",
+      "closedAt": "2022-12-02T13:20:30Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "Sorry for not noticing your pull request earlier. My personal goal is to simplify the architecture docs and remove application-specific details that will have to go into individual protocol-specific documents. We'll take a discussion in the group during IETF this week and see what we'll do. The text will be used somewhere :-)",
+          "createdAt": "2022-11-07T10:32:25Z",
+          "updatedAt": "2022-11-07T10:32:25Z"
+        },
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks for the feedback. After the discussion, I will update the text and make a new PR",
+          "createdAt": "2022-11-07T10:47:33Z",
+          "updatedAt": "2022-11-07T10:47:33Z"
+        },
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "After a discussion with @oej,  I am closing this PR, since will write a common text for LoRaWAN use case which removes application-specific details",
+          "createdAt": "2022-12-02T13:22:39Z",
+          "updatedAt": "2022-12-02T13:22:39Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOGUUnfc5CtHCC",
+      "title": "Adding a very thin file for implementation-profile-guide",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/5",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Copied the arch draft file and cleaned up. Left terminology for now.",
+      "createdAt": "2022-11-11T13:47:23Z",
+      "updatedAt": "2022-12-05T13:38:44Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "b9e25457d879136c49c0c2fb3f0a13224c54655c",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "add-imp-profile",
+      "headRefOid": "f74d2f3437cacb2878dde793d6be9fbe08e7486b",
+      "closedAt": "2022-12-05T13:38:44Z",
+      "mergedAt": "2022-12-05T13:38:44Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "174d284a3d9dba7ea6b301e35b4cd10fbf9f6c0a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOGUUnfc5CtV9X",
+      "title": "Adding issue id's in text, small clean up",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/16",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Work in progress to clean up the architecture document. ",
+      "createdAt": "2022-11-11T14:43:08Z",
+      "updatedAt": "2022-12-12T08:54:39Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "2f8baf6531efd5fd9b2a2cf70f1f7437a6facf20",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "fall-cleaning",
+      "headRefOid": "06606b3edf79cda4e41ee2b86c4227ca64f07042",
+      "closedAt": "2022-12-12T08:54:27Z",
+      "mergedAt": "2022-12-12T08:54:27Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "fa0c684510c97c1d92dbfda4ed35317de5086b25"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5HzTWx",
+          "commit": {
+            "abbreviatedOid": "1790bb8"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T14:16:52Z",
+          "updatedAt": "2022-12-05T14:16:53Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\nThe client sets up a TLS connection to a server, attaches a client certificate with a subjectAltName dNSName indicating the name of the client. \r\nIn the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate. \r\nIf the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.\r\n```",
+              "createdAt": "2022-12-05T14:16:52Z",
+              "updatedAt": "2022-12-05T14:16:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5HzTw5",
+          "commit": {
+            "abbreviatedOid": "229e028"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T14:17:53Z",
+          "updatedAt": "2022-12-05T14:17:53Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\r\n{{I-D.johansson-sipcore-dane-sip}}(SIPDANE)\r\n```",
+              "createdAt": "2022-12-05T14:17:53Z",
+              "updatedAt": "2022-12-05T14:17:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5HzUEu",
+          "commit": {
+            "abbreviatedOid": "cda3a0a"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T14:18:39Z",
+          "updatedAt": "2022-12-05T14:18:40Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\r\n{{?I-D.johansson-sipcore-dane-sip}}(SIPDANE)\r\n```",
+              "createdAt": "2022-12-05T14:18:39Z",
+              "updatedAt": "2022-12-05T14:18:40Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOGUUnfc5ESkeL",
+      "title": "SC section on change of ownership",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/17",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #15 ",
+      "createdAt": "2022-12-05T03:50:00Z",
+      "updatedAt": "2022-12-05T13:46:24Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "935bae20ef4271506c222e9ad830102f29bb56a4",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "change-of-device-ownership",
+      "headRefOid": "b482abbb73f361e9b06f364dc3b36ee16b53044e",
+      "closedAt": "2022-12-05T13:46:24Z",
+      "mergedAt": "2022-12-05T13:46:24Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "51602d7d3fd129f775963306c164618188a0dc7f"
+      },
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "DANCE client authentication document has some discussion that might need to be synchronized with.\r\n",
+          "createdAt": "2022-12-05T13:42:54Z",
+          "updatedAt": "2022-12-05T13:44:48Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5HzGi2",
+          "commit": {
+            "abbreviatedOid": "8743a7d"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T13:45:40Z",
+          "updatedAt": "2022-12-05T13:45:41Z",
+          "comments": [
+            {
+              "originalPosition": 2,
+              "body": "```suggestion\r\n### Change of ownership for IoT devices\r\n```",
+              "createdAt": "2022-12-05T13:45:41Z",
+              "updatedAt": "2022-12-05T13:45:41Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOGUUnfc5ESl2T",
+      "title": "rewrite JOSE/COSE section with correct references, and note that x5u \u2026",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/18",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026can not, by itself, provide the needed lookup\r\nclose #13 ",
+      "createdAt": "2022-12-05T03:56:30Z",
+      "updatedAt": "2022-12-05T13:57:28Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "935bae20ef4271506c222e9ad830102f29bb56a4",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "object-security-x5u",
+      "headRefOid": "3b30cfd5615ac2e58ca16cd5715e47b6bc5a991b",
+      "closedAt": "2022-12-05T13:57:28Z",
+      "mergedAt": "2022-12-05T13:57:28Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "5967591c2c3f0b8cbffbf0852235984a92a6aed0"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5HzKyU",
+          "commit": {
+            "abbreviatedOid": "2a8b9ae"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T13:55:58Z",
+          "updatedAt": "2022-12-05T13:56:00Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\r\nIn order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS. \r\n(Open Issue #22, about {{RFC4501}})\r\n```",
+              "createdAt": "2022-12-05T13:55:59Z",
+              "updatedAt": "2022-12-05T13:56:00Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOGUUnfc5ESmtd",
+      "title": "added How to Dance/DANCEr to definitions",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/19",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-12-05T04:00:23Z",
+      "updatedAt": "2022-12-05T13:35:08Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "935bae20ef4271506c222e9ad830102f29bb56a4",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "dancing-with-dancers",
+      "headRefOid": "dbce47d182af5d8824df35496523fee216e1f815",
+      "closedAt": "2022-12-05T13:35:08Z",
+      "mergedAt": "2022-12-05T13:35:08Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "46212cbf03fb2cd25885e97feb6761ab4880bc7e"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOGUUnfc5ESo3O",
+      "title": "add TTL discussion to Availability section",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/20",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #2 ",
+      "createdAt": "2022-12-05T04:06:18Z",
+      "updatedAt": "2022-12-05T14:10:37Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "935bae20ef4271506c222e9ad830102f29bb56a4",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "short-ttls-are-desireable",
+      "headRefOid": "99a6b8ff76e359b5c1921c0c41b92da88cdaf382",
+      "closedAt": "2022-12-05T14:10:37Z",
+      "mergedAt": "2022-12-05T14:10:37Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "2f8baf6531efd5fd9b2a2cf70f1f7437a6facf20"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5HzP6D",
+          "commit": {
+            "abbreviatedOid": "e631248"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-05T14:08:18Z",
+          "updatedAt": "2022-12-05T14:08:18Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nOn the other hand, lower TTLs cause the queries to occur more often, which may reveal more information to an observer about which devices are active.\r\nEncrypted transports like DoT/DoH/DoQ make these queries far less visible.\r\nIn addition to the on-path observer being able to see more, the resolver logs also may be a source of information.\r\n```",
+              "createdAt": "2022-12-05T14:08:18Z",
+              "updatedAt": "2022-12-05T14:10:12Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOGUUnfc5ETBFu",
+      "title": "Added a simplified version of LoRaWAN USe-Case",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/21",
+      "state": "MERGED",
+      "author": "sandoche2k",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [],
+      "body": "Simplified LoRaWAN Use Case version",
+      "createdAt": "2022-12-05T05:31:04Z",
+      "updatedAt": "2023-01-16T14:05:57Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "dc44415750d6aa5204b4b048c97c3187bf7523a4",
+      "headRepository": "sandoche2k/draft-dance-architecture",
+      "headRefName": "Add-simplified-LoRaWAN-Use-Case",
+      "headRefOid": "1440c4185e8995090f26e0447ed3f046235f3ce7",
+      "closedAt": "2023-01-16T14:05:57Z",
+      "mergedAt": "2023-01-16T14:05:57Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "2a894c4f43d79329675cb90c523682a0209b3959"
+      },
+      "comments": [
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@oej I have simplified the text by removing application-specific parameters.  ",
+          "createdAt": "2022-12-05T05:32:09Z",
+          "updatedAt": "2022-12-05T05:32:09Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Too much text for the architecture document, seems like the start of a DANCEr document.",
+          "createdAt": "2022-12-05T14:20:17Z",
+          "updatedAt": "2022-12-05T14:20:17Z"
+        },
+        {
+          "author": "sandoche2k",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@mcr further simplified the LoRaWAN use-case",
+          "createdAt": "2022-12-06T06:29:30Z",
+          "updatedAt": "2022-12-06T06:29:30Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5ID1us",
+          "commit": {
+            "abbreviatedOid": "58c6de5"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-07T19:02:47Z",
+          "updatedAt": "2022-12-07T19:02:47Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\n\r\n```",
+              "createdAt": "2022-12-07T19:02:47Z",
+              "updatedAt": "2022-12-07T19:02:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5ID16B",
+          "commit": {
+            "abbreviatedOid": "58c6de5"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-12-07T19:03:22Z",
+          "updatedAt": "2022-12-07T19:03:22Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5I5RO1",
+          "commit": {
+            "abbreviatedOid": "58c6de5"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-12-19T14:12:19Z",
+          "updatedAt": "2022-12-19T14:12:20Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\nFor the end-device onboarding in LoRaWAN, the \"network server\" and the \"join server\" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters. Certificate Authority based mutual TLS authentication doesn't work in LoRaWAN due to the non availability of the CA trust store in the LoRaWAN network stack. Self-signed certificate based mutual-TLS authentication method is the alternative solution.\r\n```",
+              "createdAt": "2022-12-19T14:12:19Z",
+              "updatedAt": "2022-12-19T14:12:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5KhKOe",
+          "commit": {
+            "abbreviatedOid": "58c6de5"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "This looks good. ",
+          "createdAt": "2023-01-16T13:51:10Z",
+          "updatedAt": "2023-01-16T13:51:10Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5KhPE0",
+          "commit": {
+            "abbreviatedOid": "b72ca92"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-01-16T14:03:27Z",
+          "updatedAt": "2023-01-16T14:03:27Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOGUUnfc5GgM7l",
+      "title": "text about EAP-TLS use of client side certificates",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/24",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #10 \r\n",
+      "createdAt": "2023-01-02T19:27:00Z",
+      "updatedAt": "2023-01-09T15:37:06Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "fa0c684510c97c1d92dbfda4ed35317de5086b25",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "eap-tls-dnsname",
+      "headRefOid": "87e809b815f0b8a50397ded0af45f1f6aadd16ce",
+      "closedAt": "2023-01-09T14:41:21Z",
+      "mergedAt": "2023-01-09T14:41:21Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "fd686f74b02ed3658287f1c35bc95d2dfa354bfe"
+      },
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@alandekok could maybe review.\r\nProbably there are more references we need to insert, but I'm not good on the 802.xxx ones, and I think we need to pass through the document fixing those.",
+          "createdAt": "2023-01-02T19:29:23Z",
+          "updatedAt": "2023-01-02T19:32:59Z"
+        },
+        {
+          "author": "alandekok",
+          "authorAssociation": "NONE",
+          "body": "RFC 3748 says:\r\n\r\n```\r\n       EAP methods can assume a minimum EAP MTU of 1020 octets in the\r\n       absence of other information.\r\n```\r\n\r\nEAP-TLS also requires exchange of the full certificate chain (up to the CA).   From RFC 5216:\r\n\r\n```\r\n   In contrast to the EAP-TLS server, the EAP-TLS peer may not have\r\n   Internet connectivity.  Therefore, the EAP-TLS server SHOULD provide\r\n   its entire certificate chain minus the root to facilitate certificate\r\n   validation by the peer.\r\n```\r\n\r\nAnd then for the client cert:\r\n\r\n```\r\n  The certificate message contains a public key certificate chain for\r\n   either a key exchange public key (such as an RSA or Diffie-Hellman\r\n   key exchange public key) or a signature public key (such as an RSA or\r\n   Digital Signature Standard (DSS) signature public key). \r\n```\r\n\r\nIn practice, this always happens.\r\n\r\nThis means that if (a) certificates are big, and (b) there are lots of them, it's possible to have ~50 round trips.  Which is annoying.\r\n\r\nThere has been discussion about fixing this, but no progress.",
+          "createdAt": "2023-01-02T19:37:46Z",
+          "updatedAt": "2023-01-02T19:37:46Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> RFC 3748 says:\r\n> \r\n> ```\r\n>        EAP methods can assume a minimum EAP MTU of 1020 octets in the\r\n>        absence of other information.\r\n> ```\r\n\r\nThat's the minimum, but which I guess leads to a maximum number of segments to send a 2-kilobyte certificate.\r\n\r\n> And then for the client cert:\r\n> \r\n> ```\r\n>   The certificate message contains a public key certificate chain for\r\n>    either a key exchange public key (such as an RSA or Diffie-Hellman\r\n>    key exchange public key) or a signature public key (such as an RSA or\r\n>    Digital Signature Standard (DSS) signature public key). \r\n> ```\r\n> \r\n> In practice, this always happens.\r\n\r\nsorry, what is \"this\" in this context?\r\n\r\n> \r\n> This means that if (a) certificates are big, and (b) there are lots of them, it's possible to have ~50 round trips. Which is annoying.\r\n> \r\n> There has been discussion about fixing this, but no progress.\r\n\r\nDANCE can't eliminate the server certificates, but we think we can eliminate the client certificate.\r\n",
+          "createdAt": "2023-01-05T21:38:56Z",
+          "updatedAt": "2023-01-05T21:38:56Z"
+        },
+        {
+          "author": "alandekok",
+          "authorAssociation": "NONE",
+          "body": "NIT: eduroam is always lowercase.  Why?  I dunno...",
+          "createdAt": "2023-01-09T15:37:06Z",
+          "updatedAt": "2023-01-09T15:37:06Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5J8cH8",
+          "commit": {
+            "abbreviatedOid": "3b450ba"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-01-09T14:28:12Z",
+          "updatedAt": "2023-01-09T14:28:13Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\nWhile there are EAP protocols that do not involve certificates, such as EAPSIM ({{?RFC4186}}, the use of symmetric key mechanisms as the \"network key\" is common in many homes. \r\nThe use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{I-D.ietf-madinas-use-cases}}.\r\n```",
+              "createdAt": "2023-01-09T14:28:12Z",
+              "updatedAt": "2023-01-09T14:28:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5J8cwV",
+          "commit": {
+            "abbreviatedOid": "1118bda"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-01-09T14:29:42Z",
+          "updatedAt": "2023-01-09T14:29:43Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nTo keep it simple the EAP \"window\" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.\r\n{{?RFC3748}} does guarantee a minimum payload of 1020 bytes.\r\n```",
+              "createdAt": "2023-01-09T14:29:42Z",
+              "updatedAt": "2023-01-09T14:29:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5J8dsR",
+          "commit": {
+            "abbreviatedOid": "f79dc48"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-01-09T14:32:02Z",
+          "updatedAt": "2023-01-09T14:32:02Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\nIn worst case scenarios, which are common with EDUROAM {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.\r\nThe authenticating system (the \"authentication server\" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.\r\nTransferring the client certificate is redundant.\r\n```",
+              "createdAt": "2023-01-09T14:32:02Z",
+              "updatedAt": "2023-01-09T14:32:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5J8et5",
+          "commit": {
+            "abbreviatedOid": "87e809b"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Looks good",
+          "createdAt": "2023-01-09T14:34:37Z",
+          "updatedAt": "2023-01-09T14:34:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOGUUnfc5G-sj6",
+      "title": "added description of benefits of using DNS for SSH client keys",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/25",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #9 ",
+      "createdAt": "2023-01-09T14:02:43Z",
+      "updatedAt": "2023-01-09T14:41:51Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "fa0c684510c97c1d92dbfda4ed35317de5086b25",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "ssh-client-named",
+      "headRefOid": "969d9089e3eca6d01371a809e58641eed79507c5",
+      "closedAt": "2023-01-09T14:41:05Z",
+      "mergedAt": "2023-01-09T14:41:05Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "d2b7a2dac50d1b0ffd75cda52ee2c431604825ed"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5J8hEO",
+          "commit": {
+            "abbreviatedOid": "e130921"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-01-09T14:39:51Z",
+          "updatedAt": "2023-01-09T14:39:52Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nSeparation of authorization and authentication in this case would involve putting the key material in a third place, such as in a DANE record in DNS, and then listing only the DNS name in the authorization file:\r\n\r\n* A user who wants to update their key need only update DNS in that case.\r\n\r\n* A user who has lost access to their key, but can still update DNS (or can have a colleague update it) would more easily be able to recover.\r\n\r\n* An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.\r\n```",
+              "createdAt": "2023-01-09T14:39:52Z",
+              "updatedAt": "2023-01-09T14:39:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc5J8hcT",
+          "commit": {
+            "abbreviatedOid": "969d908"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Reviewed in weekly meeting",
+          "createdAt": "2023-01-09T14:40:39Z",
+          "updatedAt": "2023-01-09T14:40:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOGUUnfc5HeBVQ",
+      "title": "Adding line breaks",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/26",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Adding line breaks where lines where far too long...",
+      "createdAt": "2023-01-16T13:57:59Z",
+      "updatedAt": "2023-01-16T14:00:45Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40cd6ba09d116ec27a3829f222c3f9f6a953ada8",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "line-break-fixing",
+      "headRefOid": "191136792767c73f3ab642dfe45f0c67ab5f490c",
+      "closedAt": "2023-01-16T14:00:45Z",
+      "mergedAt": "2023-01-16T14:00:44Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "dc44415750d6aa5204b4b048c97c3187bf7523a4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5KhNZz",
+          "commit": {
+            "abbreviatedOid": "1911367"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "rich diff shows no diff, so it worked.",
+          "createdAt": "2023-01-16T13:59:35Z",
+          "updatedAt": "2023-01-16T13:59:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOGUUnfc5HeCDL",
+      "title": "Remove extra doc that needs a separate repository",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/27",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Remove the outline of the \"how-to-dance\" doc from this repository",
+      "createdAt": "2023-01-16T13:59:43Z",
+      "updatedAt": "2023-01-16T14:06:36Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40cd6ba09d116ec27a3829f222c3f9f6a953ada8",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "remote-extra-doc",
+      "headRefOid": "6b8c07462c6b65e6033164fa9bd08cc2cf2deadb",
+      "closedAt": "2023-01-16T14:06:36Z",
+      "mergedAt": "2023-01-16T14:06:36Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "56123699ee6520914ff537800f22c5701c10d2a5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc5KhNoF",
+          "commit": {
+            "abbreviatedOid": "6b8c074"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-01-16T14:00:11Z",
+          "updatedAt": "2023-01-16T14:00:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOGUUnfc5Irpae",
+      "title": "Client identity",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/29",
+      "state": "MERGED",
+      "author": "vanrein",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "These changes allow what we have in mind for user identification with X.509 certificates.  Even domain services could be named and included in the scheme.\r\n\r\nThere is a `_user` label that distinguishes this usage pattern from `_device` naming.  The TLSA record is supposed to be a CA, so the user identity is not published in DNS.\r\n\r\nAn example is given for an LDAP client with access rights based on the domain user identity &mdash; which may be from a local or remote domain.  (Realm Crossover.)",
+      "createdAt": "2023-01-27T14:25:48Z",
+      "updatedAt": "2024-03-25T05:09:48Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "56123699ee6520914ff537800f22c5701c10d2a5",
+      "headRepository": "arpa2/draft-dance-architecture",
+      "headRefName": "client-identity",
+      "headRefOid": "8358a33bfb7e8ca00c802879a18e630cda59c857",
+      "closedAt": "2024-03-25T05:09:48Z",
+      "mergedAt": "2024-03-25T05:09:48Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "c9296d5bb123dc7097df415bd0f05c237a0714eb"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOGUUnfc5Ir5IT",
+      "title": "Edits proposals",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/30",
+      "state": "CLOSED",
+      "author": "vanrein",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Hoping not to rake up past discussions, here are a few suggestions for change.  Each change is in a separate commit, to allow for cherry picking.",
+      "createdAt": "2023-01-27T15:13:58Z",
+      "updatedAt": "2024-03-25T06:00:24Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "56123699ee6520914ff537800f22c5701c10d2a5",
+      "headRepository": "arpa2/draft-dance-architecture",
+      "headRefName": "edits-proposals",
+      "headRefOid": "e3fc18d8a23f1ff776d5f1399f258ff0692df390",
+      "closedAt": "2024-03-25T06:00:23Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "THanks! We'll take a look and process this.",
+          "createdAt": "2023-01-27T15:24:18Z",
+          "updatedAt": "2023-01-27T15:24:18Z"
+        },
+        {
+          "author": "vanrein",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I am doubting now about https://github.com/ietf-wg-dance/draft-dance-architecture/pull/30/commits/0bd637e256233688002d7056f644fa4ce923f8a9 because I was assuming that the CA would always be learnt from TLSA records.  Checking on TLS 1.3, I found that at least that version makes the CA list optional.",
+          "createdAt": "2023-01-27T15:26:04Z",
+          "updatedAt": "2023-01-27T15:26:04Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi, sorry to take so long.\r\nI don't understand why you are removing the definition of Identity provisioning.\r\nI also am uncertain if, in the architecture, we should do IANA allocations.\r\nSo I'm going to hand merge everything else.",
+          "createdAt": "2024-03-25T05:12:18Z",
+          "updatedAt": "2024-03-25T05:12:18Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closed, merged manually. Thank you Rick.",
+          "createdAt": "2024-03-25T06:00:24Z",
+          "updatedAt": "2024-03-25T06:00:24Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOGUUnfc5NCb9I",
+      "title": "Add text for email",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/31",
+      "state": "CLOSED",
+      "author": "jrlevine",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Submission and SMTP scenarios",
+      "createdAt": "2023-03-28T07:27:27Z",
+      "updatedAt": "2024-03-11T01:09:10Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "56123699ee6520914ff537800f22c5701c10d2a5",
+      "headRepository": null,
+      "headRefName": "main",
+      "headRefOid": "9acedf56869d304b5bdff63415ea2e353ec852e4",
+      "closedAt": "2024-03-11T01:09:10Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOGUUnfc5r2YFV",
+      "title": "Dancing with DNS",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/33",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #7 ",
+      "createdAt": "2024-04-05T14:03:08Z",
+      "updatedAt": "2024-04-06T13:48:18Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "909382f602a7cdb3fcc1b61bf6ac389f003fe794",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "dancing-with-dns",
+      "headRefOid": "8098d92a1e5429cc02488ecc25c11ecf60310f64",
+      "closedAt": "2024-04-06T13:48:18Z",
+      "mergedAt": "2024-04-06T13:48:18Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "4b565f64d77425afa02c4c88b0edad14f30c9152"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc52Ns9q",
+          "commit": {
+            "abbreviatedOid": "c05556d"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-05T14:05:46Z",
+          "updatedAt": "2024-04-05T14:05:46Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\nIn the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.\r\n```",
+              "createdAt": "2024-04-05T14:05:46Z",
+              "updatedAt": "2024-04-05T14:05:46Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOGUUnfc5tpSOk",
+      "title": "added STARTTLS use case, close #8",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/34",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #8 ",
+      "createdAt": "2024-04-24T19:55:05Z",
+      "updatedAt": "2024-08-07T15:27:50Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "e06c1b0701acb9e4288bd2009a3c463457a0e488",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "dancing-with-smtp",
+      "headRefOid": "3356ca72515dee35120984481f76f4c9486a229f",
+      "closedAt": "2024-08-07T15:27:49Z",
+      "mergedAt": "2024-08-07T15:27:49Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "b246a40a1dcab96bdd64e86c7292cf4f0ee2c6a3"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6Epsdf",
+          "commit": {
+            "abbreviatedOid": "c1f0386"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-07T15:22:37Z",
+          "updatedAt": "2024-08-07T15:22:37Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nWhen upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{RFC9525}}.\r\n```",
+              "createdAt": "2024-08-07T15:22:37Z",
+              "updatedAt": "2024-08-07T15:22:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6Epu2h",
+          "commit": {
+            "abbreviatedOid": "7eb66c1"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-07T15:26:40Z",
+          "updatedAt": "2024-08-07T15:26:41Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\nFor mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.\r\nThere are many use cases, but a major one is often dealing with authenticated relaying of email.\r\n```",
+              "createdAt": "2024-08-07T15:26:40Z",
+              "updatedAt": "2024-08-07T15:26:41Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOGUUnfc5w1-vk",
+      "title": "Fix spelling issue",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/36",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #35",
+      "createdAt": "2024-05-29T07:07:03Z",
+      "updatedAt": "2024-05-29T19:06:40Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "e8083a962622c5c0ec8ca2a6e4d1a0505eae934e",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "spelling",
+      "headRefOid": "66cd800249e6eabb6fe640d89c1f385a18f51965",
+      "closedAt": "2024-05-29T19:06:39Z",
+      "mergedAt": "2024-05-29T19:06:39Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "ff704d9e74b2a0254784229b043f448d490f84a2"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOGUUnfc5w2AH7",
+      "title": "Remove old comment from terminology section",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/37",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #28",
+      "createdAt": "2024-05-29T07:10:36Z",
+      "updatedAt": "2024-05-29T19:08:09Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "e8083a962622c5c0ec8ca2a6e4d1a0505eae934e",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "terminology",
+      "headRefOid": "7bf228654beac004d71feda14fb030655c5cdc14",
+      "closedAt": "2024-05-29T19:08:09Z",
+      "mergedAt": "2024-05-29T19:08:09Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "891ef26ca10d2270f9d975ef2d1c5036af8b41fb"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOGUUnfc51Ybqc",
+      "title": "fix typos",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/42",
+      "state": "MERGED",
+      "author": "vcunat",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Feel free to do whatever with the typos.\r\n\r\nIn the first case, some reformulation could be done instead, but for this commit I chose a minimal change.",
+      "createdAt": "2024-07-15T12:38:07Z",
+      "updatedAt": "2024-07-16T13:00:16Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "891ef26ca10d2270f9d975ef2d1c5036af8b41fb",
+      "headRepository": "vcunat/draft-ietf-dance-architecture",
+      "headRefName": "typos",
+      "headRefOid": "21ac3208b639d30973e00c652b06cb159bd17ede",
+      "closedAt": "2024-07-16T12:29:57Z",
+      "mergedAt": "2024-07-16T12:29:57Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "e06c1b0701acb9e4288bd2009a3c463457a0e488"
+      },
+      "comments": [
+        {
+          "author": "moonshiner",
+          "authorAssociation": "NONE",
+          "body": "I don't count but these look good to me",
+          "createdAt": "2024-07-15T17:55:12Z",
+          "updatedAt": "2024-07-15T17:55:12Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOGUUnfc53un1-",
+      "title": "Add text on DDos for TLS servers",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/45",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "As pointed out in SECDIR review",
+      "createdAt": "2024-08-07T15:28:03Z",
+      "updatedAt": "2024-08-07T15:29:47Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "b246a40a1dcab96bdd64e86c7292cf4f0ee2c6a3",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "add-ddos",
+      "headRefOid": "2bc990b51c8013d4436d7212effa2521fa92b4ae",
+      "closedAt": "2024-08-07T15:29:47Z",
+      "mergedAt": "2024-08-07T15:29:47Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "f319a8300ca9cf9b95379c86f635a400c92c68f6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6EpwEq",
+          "commit": {
+            "abbreviatedOid": "1fa00eb"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-07T15:28:51Z",
+          "updatedAt": "2024-08-07T15:28:52Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\nMore implementation details are to be found in the protocol specific documents.\r\n```",
+              "createdAt": "2024-08-07T15:28:51Z",
+              "updatedAt": "2024-08-07T15:28:52Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOGUUnfc53upYq",
+      "title": "Remove some comments",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/46",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-07T15:31:10Z",
+      "updatedAt": "2024-08-07T15:41:05Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "f319a8300ca9cf9b95379c86f635a400c92c68f6",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "remove-comments",
+      "headRefOid": "fa0ba56f465b1b664a8c9c4025a37cb3161171eb",
+      "closedAt": "2024-08-07T15:41:05Z",
+      "mergedAt": "2024-08-07T15:41:05Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "f8b9e3ed38929243a375c7ae8bbf31ae0df6ffca"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOGUUnfc53usAx",
+      "title": "fix references to be normative",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/47",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-07T15:37:12Z",
+      "updatedAt": "2024-08-07T15:40:03Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "f319a8300ca9cf9b95379c86f635a400c92c68f6",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "fix-normative-reference",
+      "headRefOid": "7b8ed025e28d7f15ce7c04bde227a491a84b7fc2",
+      "closedAt": "2024-08-07T15:40:03Z",
+      "mergedAt": "2024-08-07T15:40:03Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "7e2801eb6b2924521f05e231d96b20603afb5c8e"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 48,
+      "id": "PR_kwDOGUUnfc53uupF",
+      "title": "Sorting out markdown heading levels",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/48",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #40 ",
+      "createdAt": "2024-08-07T15:43:34Z",
+      "updatedAt": "2024-08-07T15:46:46Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "f8b9e3ed38929243a375c7ae8bbf31ae0df6ffca",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-40",
+      "headRefOid": "4461954c9ae95ad036aa49abf29e5d6452d6dda9",
+      "closedAt": "2024-08-07T15:46:46Z",
+      "mergedAt": "2024-08-07T15:46:46Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "8190b3f60f7b511b2bac85be10e02000594ce196"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOGUUnfc53uzta",
+      "title": "Add reference to 5280",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/50",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes issue #39",
+      "createdAt": "2024-08-07T15:55:45Z",
+      "updatedAt": "2024-08-21T15:30:09Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "8190b3f60f7b511b2bac85be10e02000594ce196",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-39",
+      "headRefOid": "ab773067960d56df7874dc0645ea9d1277ea4558",
+      "closedAt": "2024-08-21T15:30:09Z",
+      "mergedAt": "2024-08-21T15:30:09Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "6b1f2e099eb488a23329005546f7c6b09b8227af"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOGUUnfc53u1EN",
+      "title": "Don't use \"BCP\" when there is not published official BCP",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/51",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #41",
+      "createdAt": "2024-08-07T15:58:45Z",
+      "updatedAt": "2024-08-21T15:29:22Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "8190b3f60f7b511b2bac85be10e02000594ce196",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-41",
+      "headRefOid": "2d5ac2429f32a9cd375dc401fa9857d5c2b3f8b0",
+      "closedAt": "2024-08-21T15:29:22Z",
+      "mergedAt": "2024-08-21T15:29:22Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "75bf8906d6fdbd2cf4698507e8efa2b34b036c68"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 63,
+      "id": "PR_kwDOGUUnfc54fsoS",
+      "title": "provide a reference to Slowlaris attack",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/63",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #49",
+      "createdAt": "2024-08-15T18:11:59Z",
+      "updatedAt": "2024-08-21T15:33:32Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d99c56094b24ee906446ae48e1b4ba21e603def2",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "slowlaris-reference",
+      "headRefOid": "3ea6380195b0b47da20b354ac107e32db7de3694",
+      "closedAt": "2024-08-21T15:33:29Z",
+      "mergedAt": "2024-08-21T15:33:29Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "ca529b42286b485c8e0f485f16f308fe017d0c56"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6Fk_iN",
+          "commit": {
+            "abbreviatedOid": "4ae3c4b"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Go ahead",
+          "createdAt": "2024-08-15T18:29:12Z",
+          "updatedAt": "2024-08-15T18:29:12Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6GLq1P",
+          "commit": {
+            "abbreviatedOid": "4ae3c4b"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Merge it",
+          "createdAt": "2024-08-21T15:31:01Z",
+          "updatedAt": "2024-08-21T15:31:01Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6GLrdQ",
+          "commit": {
+            "abbreviatedOid": "4ae3c4b"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-21T15:32:06Z",
+          "updatedAt": "2024-08-21T15:32:33Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n  slowloris:\r\n    target: \"https://en.wikipedia.org/wiki/Slowloris_(computer_security)\"\r\n    title: \"Slowloris Attack\"\r\n    date: 2024-08-15\r\n```",
+              "createdAt": "2024-08-21T15:32:06Z",
+              "updatedAt": "2024-08-21T15:32:33Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nIf an authoritative resolver were configured to respond quite slowly using TCP, (for instance, a\r\n{{slowloris}} attack), it possible that this would cause a TLS server to exhaust all it's TCP sockets.\r\n```",
+              "createdAt": "2024-08-21T15:32:26Z",
+              "updatedAt": "2024-08-21T15:32:33Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 64,
+      "id": "PR_kwDOGUUnfc54fvVu",
+      "title": "slight rewrite of explanation of _ underscore protection",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/64",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #59 ",
+      "createdAt": "2024-08-15T18:19:35Z",
+      "updatedAt": "2024-08-21T15:40:43Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d99c56094b24ee906446ae48e1b4ba21e603def2",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "clarify-dnssec-usage",
+      "headRefOid": "0c68e631e5b20b994687772c4ebd62a68a05aaa8",
+      "closedAt": "2024-08-21T15:40:40Z",
+      "mergedAt": "2024-08-21T15:40:40Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "eff5e279e8f9376f66e27feb78dcf556fb9f6072"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6FlBIz",
+          "commit": {
+            "abbreviatedOid": "84b86eb"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-08-15T18:32:44Z",
+          "updatedAt": "2024-08-15T18:33:19Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "\"for in names\" - maybe remove the \"in\"",
+              "createdAt": "2024-08-15T18:32:44Z",
+              "updatedAt": "2024-08-15T18:33:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6GLs-q",
+          "commit": {
+            "abbreviatedOid": "84b86eb"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-21T15:34:46Z",
+          "updatedAt": "2024-08-21T15:34:46Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nThe underscore is not a valid character for names used in the Web PKI.\r\n```",
+              "createdAt": "2024-08-21T15:34:46Z",
+              "updatedAt": "2024-08-21T15:34:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6GLtzS",
+          "commit": {
+            "abbreviatedOid": "b32c072"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "ok",
+          "createdAt": "2024-08-21T15:36:11Z",
+          "updatedAt": "2024-08-21T15:36:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGUUnfc6GLvFT",
+          "commit": {
+            "abbreviatedOid": "b32c072"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-21T15:38:27Z",
+          "updatedAt": "2024-08-21T15:38:28Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nThe naming pattern suggested in {{I-D.ietf-dance-client-auth}} includes\r\n```",
+              "createdAt": "2024-08-21T15:38:27Z",
+              "updatedAt": "2024-08-21T15:38:41Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 65,
+      "id": "PR_kwDOGUUnfc545LvD",
+      "title": "Expand text on TTL usage",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/65",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #60",
+      "createdAt": "2024-08-20T18:48:56Z",
+      "updatedAt": "2024-09-04T15:08:26Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d99c56094b24ee906446ae48e1b4ba21e603def2",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-60",
+      "headRefOid": "a958ef75950c0d81fd04c29e688949586713af5e",
+      "closedAt": "2024-09-04T15:08:26Z",
+      "mergedAt": "2024-09-04T15:08:26Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "b93de6997e8b1492c472b74cd4ee7d6be4b979a7"
+      },
+      "comments": [
+        {
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "body": "I am not sure this is the perfect text, but it's a start to work from.",
+          "createdAt": "2024-08-20T18:56:19Z",
+          "updatedAt": "2024-08-20T18:56:19Z"
+        },
+        {
+          "author": "shuque",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Regarding \"The TTL value is not enforced, which may lead to unexpected responses, like a malicious server\r\ncaching responses for a long time after the TTL for the record has expired\".\r\n\r\nI think you mean that respecting the TTL value cannot be enforced, right? This is true, however, I'm wondering why this will lead to a problem. It is in the interest of the server to make sure it authenticates its clients correctly (including checking revocation), so it would only be shooting itself in the foot. If the server is actually compromised by an adversary, there are likely bigger issues to worry about.\r\n",
+          "createdAt": "2024-08-28T14:42:34Z",
+          "updatedAt": "2024-08-28T14:42:34Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 66,
+      "id": "PR_kwDOGUUnfc545OZx",
+      "title": "Fix nits",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/66",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [],
+      "body": "- typo\r\n- Make sure \"DANCE\" is used with upper case\r\n\r\nClose issue #58",
+      "createdAt": "2024-08-20T18:55:20Z",
+      "updatedAt": "2024-08-20T19:15:56Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d99c56094b24ee906446ae48e1b4ba21e603def2",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-58",
+      "headRefOid": "da026a4e2b1f7bf0a1a202e36539fff5ce42cf7a",
+      "closedAt": "2024-08-20T19:15:56Z",
+      "mergedAt": "2024-08-20T19:15:56Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "e0c24ea02853b96ef47e3647d8fb4d5d948fce07"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6GC0k7",
+          "commit": {
+            "abbreviatedOid": "da026a4"
+          },
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-20T19:15:51Z",
+          "updatedAt": "2024-08-20T19:15:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "id": "PR_kwDOGUUnfc545TFl",
+      "title": "Move reference to SIP Dane draft into sentence",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/67",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Close issue #38 ",
+      "createdAt": "2024-08-20T19:06:13Z",
+      "updatedAt": "2024-08-21T15:21:36Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d99c56094b24ee906446ae48e1b4ba21e603def2",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-38",
+      "headRefOid": "87354bb43a188fe29d0d0b8e7aed740f5eaf96f5",
+      "closedAt": "2024-08-21T15:20:53Z",
+      "mergedAt": "2024-08-21T15:20:53Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "51fa327d3a1a467ce488bac014ffc7c1de195f10"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 69,
+      "id": "PR_kwDOGUUnfc56al8i",
+      "title": "Add requirements on \"how to dance\"",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/69",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [
+        "enhancement"
+      ],
+      "body": "closes #52 \r\ncloses #61 \r\n\r\n- Adds example headers on all examples\r\n- Add initial text on requirements on \"how to dance\"\r\n",
+      "createdAt": "2024-09-04T15:39:57Z",
+      "updatedAt": "2024-10-18T13:16:27Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "b93de6997e8b1492c472b74cd4ee7d6be4b979a7",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-52",
+      "headRefOid": "10aebf574329ec9fb913d0537fbbe9625bc5923d",
+      "closedAt": "2024-10-18T13:16:26Z",
+      "mergedAt": "2024-10-18T13:16:26Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "156ab217ecdb8f389aa8229db9bf0761fb2cd759"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 70,
+      "id": "PR_kwDOGUUnfc57rWqH",
+      "title": "added reference to Sandoche paper; but not sure where to reference it",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/70",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #43\r\nnot sure where to reference this paper.\r\n",
+      "createdAt": "2024-09-16T21:24:32Z",
+      "updatedAt": "2024-10-18T13:16:49Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "b93de6997e8b1492c472b74cd4ee7d6be4b979a7",
+      "headRepository": "ietf-wg-dance/draft-dance-architecture",
+      "headRefName": "cite-afnic-paper",
+      "headRefOid": "179f02e30d765c6f1a734e3cfe48b8664a915422",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGUUnfc6NvjP1",
+          "commit": {
+            "abbreviatedOid": "179f02e"
+          },
+          "author": "oej",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T13:16:49Z",
+          "updatedAt": "2024-10-18T13:16:49Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "id": "PR_kwDOGUUnfc5_Gqsc",
+      "title": "Add reference to new RFC for internationalised email addresses",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/71",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "oej"
+      ],
+      "labels": [],
+      "body": "\r\n\r\nCloses #68",
+      "createdAt": "2024-10-18T13:26:26Z",
+      "updatedAt": "2024-10-18T14:41:38Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "3decbfca38fdf45ee3781f19c46d4b85f491deed",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-68",
+      "headRefOid": "eb957c1d58663bc21ebb8b765f2c077dfb2dfd8b",
+      "closedAt": "2024-10-18T14:41:38Z",
+      "mergedAt": "2024-10-18T14:41:38Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "91fdb634caee4770ecf04a307fe72002b5ffebf2"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 72,
+      "id": "PR_kwDOGUUnfc5_GsXS",
+      "title": "Remove \"TBD\" as these are documented in the other draft",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/72",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #55",
+      "createdAt": "2024-10-18T13:30:03Z",
+      "updatedAt": "2024-10-18T14:41:51Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "3decbfca38fdf45ee3781f19c46d4b85f491deed",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-55",
+      "headRefOid": "f3bec65e56bc008a583b57969753bb94cc2114bb",
+      "closedAt": "2024-10-18T14:41:51Z",
+      "mergedAt": "2024-10-18T14:41:51Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "b6777f97685690e25c8db989ca9eec5e07833971"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 74,
+      "id": "PR_kwDOGUUnfc5_GvGD",
+      "title": "Upgrade upload-artifact to v4",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/74",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes issue #73",
+      "createdAt": "2024-10-18T13:36:00Z",
+      "updatedAt": "2024-10-18T13:42:17Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "156ab217ecdb8f389aa8229db9bf0761fb2cd759",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-73",
+      "headRefOid": "fb6a8f938073629bce6a22f32e76adabeb381d68",
+      "closedAt": "2024-10-18T13:42:17Z",
+      "mergedAt": "2024-10-18T13:42:17Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "3decbfca38fdf45ee3781f19c46d4b85f491deed"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 75,
+      "id": "PR_kwDOGUUnfc5_Gz_z",
+      "title": "remove open question",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/75",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Close #54",
+      "createdAt": "2024-10-18T13:46:06Z",
+      "updatedAt": "2024-10-18T14:42:11Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "3decbfca38fdf45ee3781f19c46d4b85f491deed",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-54",
+      "headRefOid": "e6d0f73aa7ad9f6b4ea43f6fc84522fe5dc5724d",
+      "closedAt": "2024-10-18T14:42:11Z",
+      "mergedAt": "2024-10-18T14:42:11Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "db9e2570c59ed46f3e3da14f7121bd1d22ccdffa"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 76,
+      "id": "PR_kwDOGUUnfc5_HVZS",
+      "title": "Remove all the \"circumstances\" and provide a bullet list of examples.",
+      "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/76",
+      "state": "MERGED",
+      "author": "oej",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Close issue #53",
+      "createdAt": "2024-10-18T14:41:30Z",
+      "updatedAt": "2024-10-18T14:44:38Z",
+      "baseRepository": "ietf-wg-dance/draft-dance-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "3decbfca38fdf45ee3781f19c46d4b85f491deed",
+      "headRepository": "oej/draft-dance-architecture",
+      "headRefName": "issue-53",
+      "headRefOid": "98b588e98b4abffaa3d172b60d328e0a427dd433",
+      "closedAt": "2024-10-18T14:44:38Z",
+      "mergedAt": "2024-10-18T14:44:38Z",
+      "mergedBy": "oej",
+      "mergeCommit": {
+        "oid": "c2aa6fffe842924ed496de531fae47891c25f162"
       },
       "comments": [],
       "reviews": []
