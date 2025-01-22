@@ -36,6 +36,8 @@ author:
 normative:
 
 informative:
+  pkiiot: DOI.10.1109/PKIA56009.2022.9952253
+
   slowloris:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
     title: "Slowloris Attack"
@@ -96,8 +98,7 @@ A first-class identity is an application-independent identity.
 
 **How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
-These steps may not be performed by the same party or organization. Examples:
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. These steps may not be performed by the same party or organization. Examples:
 
 - A device manufacturer may instantiate the key pair, and a systems integrator may be
   responsible for issuing (and publishing) the device certificate in DNS.
