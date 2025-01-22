@@ -5,16 +5,16 @@
 DANCE                                                          A. Wilson
 Internet-Draft                                                  Valimail
 Intended status: Informational                                  S. Huque
-Expires: 21 April 2025                                        Salesforce
+Expires: 26 July 2025                                         Salesforce
                                                             O. Johansson
                                                               Edvina.net
                                                            M. Richardson
                                             Sandelman Software Works Inc
-                                                         18 October 2024
+                                                         22 January 2025
 
 
        An Architecture for DNS-Bound Client and Sender Identities
-                  draft-ietf-dance-architecture-latest
+                draft-ietf-dance-architecture-latest-08
 
 Abstract
 
@@ -50,11 +50,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 April 2025.
+   This Internet-Draft will expire on 26 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -889,9 +889,9 @@ Table of Contents
    [I-D.ietf-dance-client-auth]
               Huque, S. and V. Dukhovni, "TLS Client Authentication via
               DANE TLSA records", Work in Progress, Internet-Draft,
-              draft-ietf-dance-client-auth-05, 13 January 2024,
+              draft-ietf-dance-client-auth-06, 7 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-dance-
-              client-auth-05>.
+              client-auth-06>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -927,16 +927,16 @@ Table of Contents
    [I-D.ietf-dance-tls-clientid]
               Huque, S. and V. Dukhovni, "TLS Extension for DANE Client
               Identity", Work in Progress, Internet-Draft, draft-ietf-
-              dance-tls-clientid-03, 8 January 2024,
+              dance-tls-clientid-04, 7 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-dance-
-              tls-clientid-03>.
+              tls-clientid-04>.
 
    [I-D.ietf-madinas-use-cases]
-              Henry, J. and Y. Lee, "Randomized and Changing MAC Address
-              Use Cases", Work in Progress, Internet-Draft, draft-ietf-
-              madinas-use-cases-10, 23 June 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-madinas-
-              use-cases-10>.
+              Henry, J. and Y. Lee, "Randomized and Changing MAC
+              Address: Context, Network Impacts, and Use Cases", Work in
+              Progress, Internet-Draft, draft-ietf-madinas-use-cases-19,
+              20 December 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-madinas-use-cases-19>.
 
    [I-D.johansson-sipcore-dane-sip]
               Johansson, O. E., "TLS sessions in SIP using DNS-based
