@@ -946,6 +946,13 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-johansson-
               sipcore-dane-sip-00>.
 
+   [pkiiot]   Balakrichenan, S., Ayoub, I., and B. Ampeau, "PKI for IoT
+              using the DNS infrastructure", IEEE, 2022 IEEE
+              International Conference on Public Key Infrastructure and
+              its Applications (PKIA) pp. 1-8,
+              DOI 10.1109/pkia56009.2022.9952253, September 2022,
+              <https://doi.org/10.1109/pkia56009.2022.9952253>.
+
    [RFC3748]  Aboba, B., Blunk, L., Vollbrecht, J., Carlson, J., and H.
               Levkowetz, Ed., "Extensible Authentication Protocol
               (EAP)", RFC 3748, DOI 10.17487/RFC3748, June 2004,
