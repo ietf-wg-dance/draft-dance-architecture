@@ -2,8 +2,9 @@
 #
 title: "An Architecture for DNS-Bound Client and Sender Identities"
 abbrev: "DNS-Bound Identities Architecture"
-docname: draft-ietf-dance-architecture-latest
+docname: draft-ietf-dance-architecture-latest-08
 category: info
+stream: IETF
 
 ipr: trust200902
 area: Internet
@@ -97,13 +98,15 @@ A first-class identity is an application-independent identity.
 
 **How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
-Under some circumstances, these steps are not all performed by the same party or organization.
-A device manufacturer may instantiate the key pair, and a systems integrator may be responsible for issuing (and publishing) the device certificate in DNS.
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. These steps may not be performed by the same party or organization. Examples:
 
-In some circumstances, a manufacturer may also publish device identity records in DNS.
-In this case, the system integrator needs to perform network and application access configuration, since the identity already exists in DNS.
-A user may instantiate a key pair, based upon which an organization's CA may produce a certificate after internally assuring the user identity, and the systems integrator may publish the CA root certificate in DNS.
+- A device manufacturer may instantiate the key pair, and a systems integrator may be
+  responsible for issuing (and publishing) the device certificate in DNS.
+- A device manufacturer publish device identity records in DNS. The system integrator
+  needs to perform network and application access configuration, since the identity already exists in DNS.
+- A user may instantiate a key pair, based upon which an organization's CA may produce
+  a certificate after internally assuring the user identity, and the systems integrator
+  may publish the CA root certificate in DNS.
 
 **DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
 usually through a _How to DANCE with_ document.
@@ -113,7 +116,6 @@ any server with a DNS-bound identity, as long as a network path exists, the enti
 its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
 The act of joining a security domain, in the past, may have involved certificate provisioning.
 Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
-[Is the security domain defined by how broadly the identity is recognized, or by the breadth of the application or network access policy?]
 
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
 
@@ -176,11 +178,11 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 The client sets up a TLS connection to a server, attaches a client certificate with one
 subjectAltName element dNSName indicating the DNS owner name of the client {{?RFC5280}}.
-If the client is a user, their user identity is added in one subjectAltName element otherName holding their uid attribute {{?RFC4519}}.
+If the client is a user, their user identity is added in one subjectAltName element
+otherName holding their uid attribute {{?RFC4519}} or email address {{?RFC9598}}.
 
 In the TLS connection the DANE-client-id extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
-(PKIX offers rfc822Name with userid@domain.name as alternative for a user's uid & dNSName, but it is limited to ASCII and suggests email only).
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
@@ -193,7 +195,8 @@ This sort of attack (of type slowloris) could have a performance or availability
 - The TLS server compares the dane_clientid (conveyed via the DANE Client Identity extension) to a list of allowed client domains.
 - If the dane_clientid is allowed, the TLS server then performs a DNS lookup for the client's TLSA record.
 If the dane_clientid is not allowed, authentication fails.
-- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes successfully and the authenticated dane_clientid is presented to the web application in the (TBD) header field.
+- If the client's TLSA record matches the presented certificate or public key, the TLS handshake completes
+  successfully and the authenticated dane_clientid is presented to the web application in a header field.
 
 This pattern has the following advantages:
 
@@ -204,7 +207,7 @@ This pattern has the following advantages:
 
 - The client initiates a TLS connection to the server.
 - The TLS server accepts any certificate for which the client can prove possession of the corresponding private key.
-- The TLS server passes the certificate to the web application in (TBD) header field.
+- The TLS server passes the certificate to the web application in a header field.
 - The HTTP request body contains the dane_clientid, and is passed to the web application.
 - The web application compares the dane_clientid to a list of allowed clients or client domains.
 - If the dane\_clientid is allowed, the web application makes the DNS query for the TLSA records for dane\_clientid
@@ -232,7 +235,7 @@ This pattern has the following advantages:
 - User identities cannot be iterated in DNS; TLS 1.3 conceals the client certificate; TLS in general conceals the user's choice of authorization identity during SASL EXTERNAL.
 - This can be implemented with no changes to the TLS handshake.
 
-### IoT: Device to cloud
+### Example 4: IoT: Device to cloud
 
 Direct device-to-cloud communication is common in simple IoT applications.
 Authentication in these applications is usually accomplished using shared credentials like API keys, or using client certificates.
@@ -243,7 +246,7 @@ Using client DANE for device identity can allow parties other than the implement
 A hardware manufacturer can provide a pre-established identity, with the certificate or public key already published in DNS.
 This makes PKI-based identity more approachable for small organizations which currently lack the resources to operate an organizational CA.
 
-### LoRaWAN
+### Example 5: LoRaWAN
 
 
 For the end-device onboarding in LoRaWAN, the "network server" and the "join server" {{?RFC8376}} needs to establish mutual TLS authentication in order to exchange configuration parameters.
@@ -253,7 +256,7 @@ Self-signed certificate based mutual-TLS authentication method is the alternativ
 DANE based client identity allows the server to authenticate clients during the TLS handhsake.
 Thus, independent of the private PKI used to issue the client's self-signed certificate, the "network server" and the "join server" could be mutually authenticated.
 
-### Edge Computing
+### Example 6: Edge Computing
 
 {{?I-D.hong-t2trg-iot-edge-computing}} may require devices to mutually authenticate in the field.
 A practical example of this pattern is the edge computing in construction use case {{?I-D.hong-t2trg-iot-edge-computing, Section 6.2.1}}
@@ -265,7 +268,7 @@ Important sensor measurements forwarded by the gateway to the cloud may bear the
 the originating sensor, and the cloud application may authenticate the measurement independent of the gateway
 which forwarded the information to the application.
 
-### Domain Users
+### Example 7: Domain Users
 
 The allocation of user identities is the prerogative of a domain, in line with the nesting suggested in URI notation.
 Domains may even choose to assign domain user identities to services, possibly with easily recognised identities like +mail+archive@domain.name.
@@ -277,7 +280,7 @@ Any DANCEr may however define alternate derivation procedures to obtain the DNS 
 
 There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
 
-### SIP and WebRTC inter-domain privacy
+### Example 8: SIP and WebRTC inter-domain privacy
 
 End to end security in SIP is currently based on a classical S/MIME model which has not received much implementation.
 There are also SIP standards that build upon a trust chain anchored on the HTTP trust chain (SIP identity, STIR).
@@ -291,7 +294,7 @@ In addition, SIP devices can establish security in the SIP messaging by using DN
 For an example, read {{?I-D.johansson-sipcore-dane-sip}}(SIPDANE).
 
 
-### DNS over TLS client authentication
+### Example 9: DNS over TLS client authentication
 
 DNS-over-TLS client authentication is applicable to most portions of the
 transport segments of the DNS infrastructure.
@@ -318,7 +321,7 @@ internal zone, or to distinguish between subscribers to different performance ti
 
 In the ideal implementation, client and server would bidirectionally authenticate, using DANE client certificates to bootstrap TLS transport security.
 
-### SMTP, STARTTLS
+### Example 10: SMTP, STARTTLS
 
 SMTP has included the ability to upgrade in-protocol to TLS using the STARTTLS {{?RFC7817}} command.
 When upgrading the connection, the client checks the server certificate using the DNS-ID mechanisms described in {{!RFC9525}}.
@@ -329,7 +332,7 @@ The use of client TLS certificates has not yet become common, in part because it
 For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{!I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
 There are many use cases, but a major one is often dealing with authenticated relaying of email.
 
-### SSH client
+### Example 11: SSH client
 
 SSH servers have for some time been able to put their host keys into DNS using {{?RFC4255}}.
 
@@ -349,7 +352,7 @@ Separation of authorization and authentication in this case would involve puttin
 The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
 Since SSH can trust CA certificates from X.509, those may be published for user authentication.
 
-### Network Access
+### Example 12: Network Access
 
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.
@@ -401,7 +404,7 @@ RADIUS datagrams are then transmitted between the authenticator and authenticati
 Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
 The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
 
-### Structured data messages: JOSE/COSE
+### Example 13: Structured data messages: JOSE/COSE
 
 JOSE and COSE provide formats for exchanging authenticated and encrypted structured data. JOSE defines the x5u field in {{?RFC7515, Section 4.1.5}}, and COSE defines a field of the same name in {{?I-D.ietf-cose-x509, Section 2}}.
 
@@ -409,6 +412,20 @@ However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
 In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
+
+# Protocol implementations
+
+For each protocol implementation, a specific usage document needs to be published. In this document,
+the DANCE protocol requirements and usage needs to be specified (this is refered above as the "How to DANCE" document).
+These documents should as a minimum contain the following sections:
+
+- Specifics on naming: How the name of the client is defined and how this is related to the name in
+  a DNS zone. This defines the organization of the related DNS zone. Whether a flat namespace is used,
+  or a way to use a DNS Zone hierarchy is applied to this usage. (see notes above on DNS zone design)
+- Privacy: If the subject name is a personal identifier, how to protect that name from being exposed
+  in the DNS zone. {{?RFC7929}} describes one way to handle privacy for personal identifiers in DNS.
+- TTL: Recommended TTL settings for records in this usage
+- Security: Security considerations for this usage
 
 # Security Considerations
 
