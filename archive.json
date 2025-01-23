@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-21T01:19:55.444649+00:00",
+  "timestamp": "2025-01-23T01:20:19.848638+00:00",
   "repo": "ietf-wg-dance/draft-dance-architecture",
   "labels": [
     {
@@ -563,7 +563,7 @@
       "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/32",
       "state": "CLOSED",
       "author": "hardaker",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -573,7 +573,7 @@
       "comments": [
         {
           "author": "hardaker",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "Whoops; I'm blind and scrolled past it.",
           "createdAt": "2024-02-13T23:28:01Z",
           "updatedAt": "2024-02-13T23:28:01Z"
@@ -850,7 +850,7 @@
       "id": "I_kwDOGUUnfc6SRdJK",
       "title": "IotDIR: rewrite identity provisioning",
       "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/issues/53",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "oej",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -861,8 +861,8 @@
       ],
       "body": "2- Section 2, Identity provisioning: \"... in some circumstances, a\r\nmanufacturer...\"  -> Could examples of these circumstances be added? For\r\ninstance, \"examples include manufacturer-initiated key generation.\r\n\r\nhttps://datatracker.ietf.org/doc/review-ietf-dance-architecture-06-iotdir-early-robles-2024-07-17/",
       "createdAt": "2024-08-07T18:10:21Z",
-      "updatedAt": "2024-10-18T14:40:39Z",
-      "closedAt": null,
+      "updatedAt": "2025-01-22T19:06:24Z",
+      "closedAt": "2025-01-22T19:06:23Z",
       "comments": [
         {
           "author": "mcr",
@@ -884,6 +884,13 @@
           "body": "Rewritten as examples with a bullet list",
           "createdAt": "2024-10-18T14:40:33Z",
           "updatedAt": "2024-10-18T14:40:33Z"
+        },
+        {
+          "author": "hardaker",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Closing as merged",
+          "createdAt": "2025-01-22T19:06:23Z",
+          "updatedAt": "2025-01-22T19:06:23Z"
         }
       ]
     },
@@ -2870,25 +2877,35 @@
       "id": "PR_kwDOGUUnfc57rWqH",
       "title": "added reference to Sandoche paper; but not sure where to reference it",
       "url": "https://github.com/ietf-wg-dance/draft-dance-architecture/pull/70",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "close #43\r\nnot sure where to reference this paper.\r\n",
       "createdAt": "2024-09-16T21:24:32Z",
-      "updatedAt": "2024-10-18T13:16:49Z",
+      "updatedAt": "2025-01-22T19:05:51Z",
       "baseRepository": "ietf-wg-dance/draft-dance-architecture",
       "baseRefName": "main",
-      "baseRefOid": "b93de6997e8b1492c472b74cd4ee7d6be4b979a7",
+      "baseRefOid": "4f2a2fe8f003d94051ecb89d0434c09dc2258af1",
       "headRepository": "ietf-wg-dance/draft-dance-architecture",
       "headRefName": "cite-afnic-paper",
-      "headRefOid": "179f02e30d765c6f1a734e3cfe48b8664a915422",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "7ea605902e9d8b24f32114ebd7a0a2443afa64f1",
+      "closedAt": "2025-01-22T19:05:51Z",
+      "mergedAt": "2025-01-22T19:05:51Z",
+      "mergedBy": "hardaker",
+      "mergeCommit": {
+        "oid": "24e0a4a5eaf967aac9a9ff93ea693ba49e21583b"
+      },
+      "comments": [
+        {
+          "author": "hardaker",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "merged -- we should find a reference place though",
+          "createdAt": "2025-01-22T19:05:39Z",
+          "updatedAt": "2025-01-22T19:05:39Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOGUUnfc6NvjP1",
