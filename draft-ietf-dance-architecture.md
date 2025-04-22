@@ -2,7 +2,7 @@
 #
 title: "An Architecture for DNS-Bound Client and Sender Identities"
 abbrev: "DNS-Bound Identities Architecture"
-docname: draft-ietf-dance-architecture-latest-08
+docname: draft-ietf-dance-architecture-latest
 category: info
 stream: IETF
 
