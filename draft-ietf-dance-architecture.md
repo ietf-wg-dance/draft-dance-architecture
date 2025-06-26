@@ -5,12 +5,10 @@ abbrev: "DNS-Bound Identities Architecture"
 docname: draft-ietf-dance-architecture-latest
 category: info
 stream: IETF
-
 ipr: trust200902
 area: Internet
 workgroup: DANCE
 keyword: Internet-Draft
-
 stand_alone: yes
 smart_quotes: no
 pi: [toc, sortrefs, symrefs]
@@ -93,8 +91,6 @@ application also trusting the DNS.
 A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
 
 **How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
 
