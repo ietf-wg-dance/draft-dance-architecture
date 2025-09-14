@@ -35,7 +35,8 @@ normative:
 
 informative:
   pkiiot: DOI.10.1109/PKIA56009.2022.9952253
-
+  EAP-TLS: RFC5216
+  RADSEC: RFC6614
   slowloris:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
     title: "Slowloris Attack"
@@ -384,7 +385,7 @@ RADIUS (RFC 2865) is a frequently-used authentication server protocol.
 **Authenticator:** The authenticator is the device which acts as a server in the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
 The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.
 
-[https://datatracker.ietf.org/doc/html/rfc5216](EAP-TLS) is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
+{{EAP-TLS}} is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
 IEEE 802.1x defines the encapsulation of EAP over LAN access technologies, like IEEE 802.11 wireless and IEEE 802.3 ethernet.
 RADIUS is a protocol and server technology frequently used for supporting the server side of EAP-TLS authentication.
 Guidance for implementing RADIUS strongly encourages the use of a single common CA for all supplicants, to mitigate the possibility of identifier collisions across PKIs.
@@ -395,10 +396,11 @@ Certificates represented in DNS are valid, and all others are un-trusted.
 #### RADSEC
 
 The RADIUS protocol has a few recognized security problems.
-[https://datatracker.ietf.org/doc/html/rfc6614](RADSEC) addresses the challenges related to the weakness of MD5-based authentication and confidentiality over untrusted networks by establishing a TLS session between the RADIUS protocol client and the RADIUS protocol server.
-RADIUS datagrams are then transmitted between the authenticator and authentication server within the TLS session.
-Updating the RADSEC standard to include the use of DANE for client and server identity would allow a RADIUS server and client to mutually authenticate, independent of the client’s and server’s issuing CAs.
-The benefit for this use case is that a hosted RADIUS service may mutually authenticate any client device, like a WiFi access point or ethernet switch, via RADSEC, without requiring the distribution of CA certificates.
+{{RADSEC}} and {{?I-D.ietf-radext-radiusdtls-bis}} addresses the challenges related to the weakness of MD5-based authentication and confidentiality over untrusted networks by establishing a TLS session between the RADIUS protocol client and the RADIUS protocol server.
+The use of client-side certificates has been encouraged by the recent work.
+There are no protocol or specification changes required to put client-side certificates into DNS.
+The use of the {{!I-D.ietf-dance-client-id}} with the created TLS connectio should suffice.
+Note that this use cases addresses the security of the hop-by-hop RADIUS protocol, not the security of the end-to-end EAP(-TLS) session that might be carried within.
 
 ### Example 13: Structured data messages: JOSE/COSE
 
