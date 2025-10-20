@@ -32,6 +32,8 @@ author:
     email: mcr+ietf@sandelman.ca
 
 normative:
+  I-D.ietf-dance-tls-clientid:
+  I-D.ietf-dance-client-auth:
 
 informative:
   pkiiot: DOI.10.1109/PKIA56009.2022.9952253
@@ -160,7 +162,7 @@ A client system sets up a TLS connection to a server, attaching a client certifi
 subjectAltName `dNSName` indicating the DNS owner name of the client {{?RFC5280}}.
 When the client is a user, then their user identity is a subjectAltName extension containing either an `otherName` type with uid attribute {{?RFC4519}} or email address {{?RFC9598}}.
 
-In the TLS connection the DANE-client-id {{!I-D.ietf-dance-client-id}} extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
+In the TLS connection the DANE-client-id {{I-D.ietf-dance-tls-clientid}} extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
@@ -309,7 +311,7 @@ Support for this is very common and most email on the Internet is transmitted in
 
 The use of client TLS certificates has not yet become common, in part because it is unclear how or what the server would check the certificate against.
 
-For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{!I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
+For mail-transfer-agent (MTA) to MTA communications, the use of a TLSA RR as described in {{I-D.ietf-dance-client-auth}} permits the SMTP server to check the identity of the parties trying to send email.
 There are many use cases, but a major one is often dealing with authenticated relaying of email.
 
 ### Example 11: SSH client
@@ -354,7 +356,7 @@ The authenticating system (the "authentication server" in EAP terms) is a system
 Transferring the client certificate is redundant.
 That is, the authenticator already has access to the entire certificate, but the client does not know this to the case, so it sends the entire certificate anyway.
 
-The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
+The use of DANE Client IDs in TLS as described in {{I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
 ##### Terminology
 
@@ -382,7 +384,7 @@ The RADIUS protocol has a few recognized security problems.
 {{RADSEC}} and {{?I-D.ietf-radext-radiusdtls-bis}} addresses the challenges related to the weakness of MD5-based authentication and confidentiality over untrusted networks by establishing a TLS session between the RADIUS protocol client and the RADIUS protocol server.
 The use of client-side certificates has been encouraged by the recent work.
 There are no protocol or specification changes required to put client-side certificates into DNS.
-The use of the {{!I-D.ietf-dance-client-id}} with the created TLS connectio should suffice.
+The use of the {{I-D.ietf-dance-tls-clientid}} with the created TLS connectio should suffice.
 Note that this use cases addresses the security of the hop-by-hop RADIUS protocol, not the security of the end-to-end EAP(-TLS) session that might be carried within.
 
 ### Example 13: Structured data messages: JOSE/COSE
