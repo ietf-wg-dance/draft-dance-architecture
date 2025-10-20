@@ -106,12 +106,6 @@ A first-class identity is an application-independent identity.
 
 **Server:** This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"
 
-**Sending Agent:** Software which encodes and transmits messages.
-A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.
-
-**Receiving Agent:** Software which interprets and processes messages.
-A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.
-
 **Store-and-forward system:** A message handling system in-path between the sending agent and the receiving agent.
 
 **Hardware supplier role:** The entity which manufactures or assembles the physical device.
