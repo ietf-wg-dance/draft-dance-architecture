@@ -41,6 +41,12 @@ informative:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
     title: "Slowloris Attack"
     date: 2024-08-15
+  WPAPSK:
+    title: "WPA (Wi-Fi Protected Access). v3.1 2004"
+    target: "https://www.wi-fi.org/system/files/WPA_80211_v3_1_090922.pdf"
+    date: 2025-10-20
+    org:
+      name: "The Wi-Fi Alliance"
 
 --- abstract
 
@@ -331,7 +337,7 @@ Since SSH can trust CA certificates from X.509 {{?RFC6187}}, those may be publis
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
-While there are EAP protocols that do not involve certificates, such as EAPSIM {{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
+While there are EAP protocols that do not involve certificates, such as EAPSIM {{?RFC4186}}, the use of symmetric key mechanisms as the "network key" {{WPAPSK}} (is common in many homes.
 The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{?I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
