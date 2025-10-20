@@ -476,7 +476,7 @@ Further work has do be done in this area.
 
 ### DNS Scalability
 
-In the use case for IoT an implementation must be scalable to a large amount of devices.
+In the use case for IoT, an implementation must be scalable to a large amount of devices.
 In many cases, identities may also be very short lived as revocation is performed by simply removing a DNS record.
 A zone will have to manage a large amount of changes as devices are constantly added and de-activated.
 
