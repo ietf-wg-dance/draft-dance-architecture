@@ -324,7 +324,7 @@ Separation of authorization and authentication in this case would involve puttin
 * An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.
 
 The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
-Since SSH can trust CA certificates from X.509, those may be published for user authentication.
+Since SSH can trust CA certificates from X.509 {{?RFC6187}}, those may be published for user authentication.
 
 ### Example 12: Network Access
 
