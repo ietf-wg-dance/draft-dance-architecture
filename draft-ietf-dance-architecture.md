@@ -173,8 +173,8 @@ If the dane_clientid is not allowed, authentication fails.
 
 This pattern has the following advantages:
 
-- This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.
-- No traffic reaches the application behind the load balancer unless DANE client authentication is successful.
+- This pattern translates well to TLS/TCP load balancers, by using a TLS TLV instead of an HTTP header.
+- No traffic reaches the application behind the TLS terminating proxy (and load balancer) unless DANE client authentication is successful.
 
 ### Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application
 
