@@ -61,11 +61,6 @@ The CA acts as a mutually trusted third party, a root of trust.
 Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the
 application responsible for issuing or validating the identity.
 
-An example of this limitation is well-illustrated by organizational Public Key Infrastructure (PKI).
-Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating
-a human or machine identity identifier with a public key.
-Within the organization, authentication systems already agree on the roots of trust for validating entity certificates issued by organizational PKI.
-
 Attempting to use organizational PKI outside the organization can be challenging.
 In order to authenticate a certificate, the certificate’s CA must be trusted.
 CAs have no way of controlling identifiers in certificates issued by other CAs.
