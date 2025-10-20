@@ -100,12 +100,6 @@ A first-class identity is an application-independent identity.
 
 **DANCE protocol:** A DANCE protocol is protocol that has been taught to use DANE client mchanisms..
 
-**Security Domain:** DNS-bound client identity allows the device to establish secure communications with
-any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
-its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
-The act of joining a security domain, in the past, may have involved certificate provisioning.
-Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
-
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
 
 **User:** A client whose name consists of a user identity and a DNS owner name prefixed with a _user label.
