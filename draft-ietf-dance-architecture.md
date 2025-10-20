@@ -88,8 +88,6 @@ A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
 
-**How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
-
 **Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. These steps may not be performed by the same party or organization. Examples:
 
 - A device manufacturer may instantiate the key pair, and a systems integrator may be
@@ -100,8 +98,7 @@ A first-class identity is an application-independent identity.
   a certificate after internally assuring the user identity, and the systems integrator
   may publish the CA root certificate in DNS.
 
-**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a _How to DANCE with_ document.
+**DANCE protocol:** A DANCE protocol is protocol that has been taught to use DANE client mchanisms..
 
 **Security Domain:** DNS-bound client identity allows the device to establish secure communications with
 any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
@@ -268,7 +265,7 @@ Domains who publish TLSA records for a CA under a _user name underneath their do
 This mechanism is not restricted to domain-internal users, but can be used to validate users under any domain.
 
 Since ENUM maps telephone numbers to DNS owner names, it is possible to employ these same mechanisms for telephone number users.
-Any DANCEr may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
+Any DANCE protocol may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
 
 There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
 
@@ -404,7 +401,7 @@ JOSE and COSE provide formats for exchanging authenticated and encrypted structu
 However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
-In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
+In order to make use of x5u, a DANCE protocol would have to define a new URI scheme that explained how to get the right key from DNS.
 
 # Protocol implementations
 
@@ -481,7 +478,7 @@ If the DNS owner name of the identity proven by a certificate is directly or ind
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
 When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
 The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
-If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.
+If there is such a relation, a DANCE protocol may specify support for CA certificates, stored under a wildcard in DNS.
 
 Further work has do be done in this area.
 
