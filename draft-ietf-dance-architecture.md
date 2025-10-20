@@ -88,11 +88,13 @@ A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
 
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. These steps may not be performed by the same party or organization. Examples:
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
+These steps not necessarily performed by the same party or organization.
+Examples:
 
 - A device manufacturer may instantiate the key pair, and a systems integrator may be
   responsible for issuing (and publishing) the device certificate in DNS.
-- A device manufacturer publish device identity records in DNS. The system integrator
+- A device manufacturer may publish the device identity records in DNS. The system integrator
   needs to perform network and application access configuration, since the identity already exists in DNS.
 - A user may instantiate a key pair, based upon which an organization's CA may produce
   a certificate after internally assuring the user identity, and the systems integrator
