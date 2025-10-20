@@ -108,11 +108,6 @@ A first-class identity is an application-independent identity.
 
 **Store-and-forward system:** A message handling system in-path between the sending agent and the receiving agent.
 
-**Hardware supplier role:** The entity which manufactures or assembles the physical device.
-In many situations, multiple hardware suppliers are involved in producing a given device.
-In some cases, the hardware supplier may provision an asymmetric key pair for the device and establish the device identity in DNS.
-In some cases, the hardware supplier may ship a device with software pre-installed.
-
 **Systems integrator:** The party responsible for configuration and deployment of application components.
 In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.
 
