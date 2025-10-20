@@ -159,7 +159,8 @@ If the server can validate the DNSSEC response, the server validates the certifi
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
-For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
+
+For instance, an authoritative DNS server {{?RFC9499}} which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
 
 ### Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance
@@ -279,7 +280,7 @@ XFR-over-TLS ("XoT") as an upgrade to TSIG, removing the need for out-of-band
 communication of shared secrets, currently a weak point in that portion of
 the infrastructure.
 
-From authoritative servers to recursive servers, in situations in which both
+From authoritative servers to recursive servers {{?RFC9499}}, in situations in which both
 are part of a common trust-group or have access to the same non-public or
 split-horizon zone data, client authentication allows authoritative servers
 to give selective access to specific recursive servers. Alternatively, some
@@ -287,7 +288,7 @@ recursive servers could authenticate in order to gain access to
 non-content-related special services, such as a higher query rate-limit quota
 than is publicly available.
 
-Between recursive resolvers and caching/forwarding or stub resolvers,
+Between recursive resolvers and caching/forwarding or stub resolvers {{?RFC9499}},
 authentication can be used to gain access to special services, such as
 subscription-based malware blocking, or visibility of corporate split-horizon
 internal zone, or to distinguish between subscribers to different performance tiers.
@@ -411,7 +412,8 @@ DNS clients should use DNS over TLS with trusted DNS resolvers to protect the id
 
 The integrity of public keys represented in DNS is most important.
 An altered public key can enable device impersonation, and the denial of existence for a valid identity can cause devices to become un-trusted by the network or the application.
-DNS records should be validated by the DNS stub resolver, using the DNSSEC protocol.
+DNS records should be validated using the DNSSEC protocol.
+When using a DNS stub resolver {{?RFC9499}} rather than doing local validation, then the connection to the validating DNS resolver needs to be secured.
 
 Compartmentalizing failure domains within an application is a well-known architectural best practice.
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
