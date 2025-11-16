@@ -48,6 +48,13 @@ informative:
     author:
       org: "The Wi-Fi Alliance"
 
+  comodogate:
+    target: "https://www.schneier.com/blog/archives/2011/03/comodo_group_is.html"
+    title: "Comodo Group Issues Bogus SSL Certificates"
+    date: 2011-03-31
+    author:
+      name: "Bruce Schneier"
+
 --- abstract
 
 This architecture document defines terminology, interaction, and authentication patterns,
@@ -71,6 +78,8 @@ Attempting to use organizational PKI outside the organization can be challenging
 In order to authenticate a certificate, the certificate’s CA must be trusted.
 CAs have no way of controlling identifiers in certificates issued by other CAs.
 Consequently, trusting multiple CAs at the same time can enable entity identifier collisions.
+In the browser-anchored "WebPKI" this is a serious concern with noteable events such as {{comodogate}}, which has led to the IETF Public Notary Transparency WG:trans, {{?RFC6962}} and later {{?RFC9162}}.
+
 Asking an entity to trust your CA implies trust in anything that your CA signs.
 This is why many organizations operate a private CA, and require users and devices connecting to the
 organization’s networks or applications to possess certificates issued by the organization’s CA.
