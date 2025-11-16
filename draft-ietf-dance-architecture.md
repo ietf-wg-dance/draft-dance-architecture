@@ -45,8 +45,8 @@ informative:
     title: "WPA (Wi-Fi Protected Access). v3.1 2004"
     target: "https://www.wi-fi.org/system/files/WPA_80211_v3_1_090922.pdf"
     date: 2025-10-20
-    org:
-      name: "The Wi-Fi Alliance"
+    author:
+      org: "The Wi-Fi Alliance"
 
 --- abstract
 
