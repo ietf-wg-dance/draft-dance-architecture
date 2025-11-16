@@ -139,10 +139,14 @@ A secure implementation of this pattern includes a TLS-protected session directl
 A secure implementation may also include public key-based mutual authentication.
 
 Extending DANE to include client identity allows the server to authenticate clients independent of the private PKI used to issue the client certificate.
-This reduces the complexity of managing the CA certificate collection, and mitigates the possibility of client identifier collision.
-If the client is a user, the certificate holds an additional user identity supplied under the prerogative of a DNS owner name, which reduces the complexity of authenticating both internal and external users, through protocol mechanisms like SASL EXTERNAL {{?RFC4422}}.
+This reduces the complexity of managing the CA certificate collection, and mitigates the possibility of client identifier collision: the client identity is always a DNS name, no matter what is in the certificate, so no impersonation is possible.
 
-## Peer2peer
+In many cases the client is not a user specific device (like a laptop or smartphone), but rather an enterprise or residential device with a non-user specific name.
+
+When the client is a user device, then additional precautions may be necessary to avoid divulging personally identitiable information in the DNS.
+Mechanisms like SASL EXTERNAL {{?RFC4422}} can be used to integrate more abstract user identities with specific authorizations that need to be more personal.
+
+## Peer to peer
 
 The extension also allows an application to find an application identity and set up a secure communication channel directly.
 This pattern can be used in mesh networking, IoT and in many communication protocols for multimedia sessions, chat and messaging, where each endpoint may represent a device or a user.
@@ -174,6 +178,8 @@ If the server can validate the DNSSEC response, the server validates the certifi
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
+
+Without the use of the DANE-client-id extension, a server can not know if the DNS lookup will result in a useful result, and the server then winds up doing needless and potentially privacy violating DNS lookups.
 
 For instance, an authoritative DNS server {{?RFC9499}} which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
@@ -365,8 +371,6 @@ That is, the authenticator already has access to the entire certificate, but the
 
 The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
-{{EAP-TLS}} is a mature and widely-used protocol for network authentication.
-It's use in IoT is not yet common, but use is growing.
 Guidance for implementing RADIUS strongly encourages the use of a single common CA for all supplicants, to mitigate the possibility of identifier collisions across PKIs.
 The use of DANE for client identity can allow the safe use of any number of CAs.
 DNS acts as a constraining namespace, which prevents two unrelated CAs from issuing valid certificates bearing the same identifier.
