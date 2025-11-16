@@ -370,6 +370,9 @@ Transferring the client certificate is redundant.
 That is, the authenticator already has access to the entire certificate, but the client does not know this to the case, so it sends the entire certificate anyway.
 
 The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
+If the client can assume that the server will be able to lookup it's client certificate in DNS, then it need never send it.
+For the eduroam case, where it was never needed, so this significantly reduces the packet size.
+For the non-eduroam cases, the client can be assured that omitting an inline certificate chain will not result in failure.
 
 Guidance for implementing RADIUS strongly encourages the use of a single common CA for all supplicants, to mitigate the possibility of identifier collisions across PKIs.
 The use of DANE for client identity can allow the safe use of any number of CAs.
