@@ -41,6 +41,12 @@ informative:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
     title: "Slowloris Attack"
     date: 2024-08-15
+  WPAPSK:
+    title: "WPA (Wi-Fi Protected Access). v3.1 2004"
+    target: "https://www.wi-fi.org/system/files/WPA_80211_v3_1_090922.pdf"
+    date: 2025-10-20
+    org:
+      name: "The Wi-Fi Alliance"
 
 --- abstract
 
@@ -60,11 +66,6 @@ The CA acts as a mutually trusted third party, a root of trust.
 
 Certificate-based identities are limited in scope by the issuing CA, or by the namespace of the
 application responsible for issuing or validating the identity.
-
-An example of this limitation is well-illustrated by organizational Public Key Infrastructure (PKI).
-Organizational PKI is very often coupled with email and LDAP systems, and can be used for associating
-a human or machine identity identifier with a public key.
-Within the organization, authentication systems already agree on the roots of trust for validating entity certificates issued by organizational PKI.
 
 Attempting to use organizational PKI outside the organization can be challenging.
 In order to authenticate a certificate, the certificate’s CA must be trusted.
@@ -93,26 +94,19 @@ A first-class identity is an application-independent identity.
 
 # Conventions and Definitions
 
-**How to DANCE with ENTITY:** This architecture document delegates many details of how DANCE can be used with some specific protocol to a document with the name "How to DANCE with _entity_".
-
-**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS. These steps may not be performed by the same party or organization. Examples:
+**Identity provisioning:** This refers to the set of tasks required to securely provision an asymmetric key pair for the device, sign the certificate (if the public credential is not simply a raw public key), and publish the public key or certificate in DNS.
+These steps not necessarily performed by the same party or organization.
+Examples:
 
 - A device manufacturer may instantiate the key pair, and a systems integrator may be
   responsible for issuing (and publishing) the device certificate in DNS.
-- A device manufacturer publish device identity records in DNS. The system integrator
+- A device manufacturer may publish the device identity records in DNS. The system integrator
   needs to perform network and application access configuration, since the identity already exists in DNS.
 - A user may instantiate a key pair, based upon which an organization's CA may produce
   a certificate after internally assuring the user identity, and the systems integrator
   may publish the CA root certificate in DNS.
 
-**DANCEr:** A DANCEr is the term which is used to describe a protocol that has been taught to use DANE,
-usually through a _How to DANCE with_ document.
-
-**Security Domain:** DNS-bound client identity allows the device to establish secure communications with
-any server with a DNS-bound identity, as long as a network path exists, the entity is configured to trust
-its communicating peer by its DNS owner name, and agreement on protocols can be achieved.
-The act of joining a security domain, in the past, may have involved certificate provisioning.
-Now, it can be as simple as using a manufacturer-provisioned identity to join the device to the network and application.
+**DANCE protocol:** A DANCE protocol is protocol that has been taught to use DANE client mchanisms..
 
 **Client:** This architecture document adopts the definition of "Client" from RFC 8446: "The endpoint initiating the TLS connection"
 
@@ -120,18 +114,7 @@ Now, it can be as simple as using a manufacturer-provisioned identity to join th
 
 **Server:** This architecture document adopts the definition of "Server" from RFC 8446: "The endpoint that did not initiate the TLS connection"
 
-**Sending agent:** Software which encodes and transmits messages.
-A sending agent may perform tasks related to generating cryptographic signatures and/or encrypting messages before transmission.
-
-**Receiving agent:** Software which interprets and processes messages.
-A receiving agent may perform tasks related to the decryption of messages, and verification of message signatures.
-
 **Store-and-forward system:** A message handling system in-path between the sending agent and the receiving agent.
-
-**Hardware supplier role:** The entity which manufactures or assembles the physical device.
-In many situations, multiple hardware suppliers are involved in producing a given device.
-In some cases, the hardware supplier may provision an asymmetric key pair for the device and establish the device identity in DNS.
-In some cases, the hardware supplier may ship a device with software pre-installed.
 
 **Systems integrator:** The party responsible for configuration and deployment of application components.
 In some cases, the systems integrator also installs the software onto the device, and may provision the device identity in DNS.
@@ -173,17 +156,17 @@ Decoupled applications benefit from an out-of-band public key discovery mechanis
 
 ## Overview - DANCE usage examples
 
-The client sets up a TLS connection to a server, attaches a client certificate with one
-subjectAltName element dNSName indicating the DNS owner name of the client {{?RFC5280}}.
-If the client is a user, their user identity is added in one subjectAltName element
-otherName holding their uid attribute {{?RFC4519}} or email address {{?RFC9598}}.
+A client system sets up a TLS connection to a server, attaching a client certificate with a
+subjectAltName `dNSName` indicating the DNS owner name of the client {{?RFC5280}}.
+When the client is a user, then their user identity is a subjectAltName extension containing either an `otherName` type with uid attribute {{?RFC4519}} or email address {{?RFC9598}}.
 
 In the TLS connection the DANE-client-id {{!I-D.ietf-dance-client-id}} extension is used to tell the server to use the certificate dNSName to find a DANE record including the public key of the certificate to be able to validate.
 If the server can validate the DNSSEC response, the server validates the certificate and completes the TLS connection setup.
 
 Using DANE to convey certificate information for authenticating TLS clients gives a not-yet-authenticated client the ability to trigger a DNS lookup on the server side of the TLS connection.
 An opportunity for DDOS may exist when malicious clients can trigger arbitrary DNS lookups.
-For instance, an authoritative DNS server which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
+
+For instance, an authoritative DNS server {{?RFC9499}} which has been configured to respond slowly, may cause a high concurrency of in-flight TLS authentication processes as well as open connections to upstream resolvers.
 This sort of attack (of type slowloris) could have a performance or availability impact on the TLS server.
 
 ### Example 1: TLS authentication for HTTPS API interaction, DANE pattern assurance
@@ -197,8 +180,8 @@ If the dane_clientid is not allowed, authentication fails.
 
 This pattern has the following advantages:
 
-- This pattern translates well to TLS/TCP load balancers, by using a TCP TLV instead of an HTTP header.
-- No traffic reaches the application behind the load balancer unless DANE client authentication is successful.
+- This pattern translates well to TLS/TCP load balancers, by using a TLS TLV instead of an HTTP header.
+- No traffic reaches the application behind the TLS terminating proxy (and load balancer) unless DANE client authentication is successful.
 
 ### Example 2: TLS authentication for HTTPS API interaction, DANE matching in web application
 
@@ -273,7 +256,7 @@ Domains who publish TLSA records for a CA under a _user name underneath their do
 This mechanism is not restricted to domain-internal users, but can be used to validate users under any domain.
 
 Since ENUM maps telephone numbers to DNS owner names, it is possible to employ these same mechanisms for telephone number users.
-Any DANCEr may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
+Any DANCE protocol may however define alternate derivation procedures to obtain the DNS owner name for a phone number from specialised PKIX or LDAP attributes such as telephoneNumber, telexNumber, homePhone, mobile and pager.
 
 There is no reason why other uses, such as store-and-forward with S/MIME, could not benefit from this DNS-based PKI, as long as they remain mindful that anything in the certificate is the prerogative of the domain publishing the TLSA record, and the only reliable identity statements are for resources underneath the domain -- notably, the assignment of uid names.
 
@@ -303,7 +286,7 @@ XFR-over-TLS ("XoT") as an upgrade to TSIG, removing the need for out-of-band
 communication of shared secrets, currently a weak point in that portion of
 the infrastructure.
 
-From authoritative servers to recursive servers, in situations in which both
+From authoritative servers to recursive servers {{?RFC9499}}, in situations in which both
 are part of a common trust-group or have access to the same non-public or
 split-horizon zone data, client authentication allows authoritative servers
 to give selective access to specific recursive servers. Alternatively, some
@@ -311,7 +294,7 @@ recursive servers could authenticate in order to gain access to
 non-content-related special services, such as a higher query rate-limit quota
 than is publicly available.
 
-Between recursive resolvers and caching/forwarding or stub resolvers,
+Between recursive resolvers and caching/forwarding or stub resolvers {{?RFC9499}},
 authentication can be used to gain access to special services, such as
 subscription-based malware blocking, or visibility of corporate split-horizon
 internal zone, or to distinguish between subscribers to different performance tiers.
@@ -347,21 +330,21 @@ Separation of authorization and authentication in this case would involve puttin
 * An administrator who controls the domain would be able to remove a departing user's key from DNS, preventing the user from authenticating in the future.
 
 The DNS record used could be TLSA, but it is possible with some protocol work that it could instead be SSHFP.
-Since SSH can trust CA certificates from X.509, those may be published for user authentication.
+Since SSH can trust CA certificates from X.509 {{?RFC6187}}, those may be published for user authentication.
 
 ### Example 12: Network Access
 
 Network access refers to an authentication process by which a node is admitted securely onto network infrastructure.
 This is most common for wireless networks (wifi, 802.15.4), but has also routinely been done for wired infrastructure using 802.1X mechanisms with EAPOL.
 
-While there are EAP protocols that do not involve certificates, such as EAPSIM {{?RFC4186}}, the use of symmetric key mechanisms as the "network key" is common in many homes.
+While there are EAP protocols that do not involve certificates, such as EAPSIM {{?RFC4186}}, the use of symmetric key mechanisms as the "network key" {{WPAPSK}} (is common in many homes.
 The use of certificate based mechanisms are expected to increase, due to challenges, such as Randomized and Changing MAC addresses (RCM), as described in {{?I-D.ietf-madinas-use-cases}}.
 
 #### EAP-TLS with RADIUS
 
 Enterprise EAP methods use a version of TLS to form a secure transport.
 Client and server-side certificates are used as credentials.
-EAP-TLS does not run over TCP, but rather over a reliable transport provided by EAP.
+EAP-TLS {{?RFC9190}} does not run over TCP, but rather over a reliable transport provided by EAP.
 To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
 {{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
 
@@ -409,7 +392,7 @@ JOSE and COSE provide formats for exchanging authenticated and encrypted structu
 However, this URL field points to where the key can be found.
 There is, as yet, no URI scheme which says that the key can be found via the DNS lookup itself.
 
-In order to make use of x5u, a DANCEr would have to define a new URI scheme that explained how to get the right key from DNS.
+In order to make use of x5u, a DANCE protocol would have to define a new URI scheme that explained how to get the right key from DNS.
 
 # Protocol implementations
 
@@ -435,7 +418,8 @@ DNS clients should use DNS over TLS with trusted DNS resolvers to protect the id
 
 The integrity of public keys represented in DNS is most important.
 An altered public key can enable device impersonation, and the denial of existence for a valid identity can cause devices to become un-trusted by the network or the application.
-DNS records should be validated by the DNS stub resolver, using the DNSSEC protocol.
+DNS records should be validated using the DNSSEC protocol.
+When using a DNS stub resolver {{?RFC9499}} rather than doing local validation, then the connection to the validating DNS resolver needs to be secured.
 
 Compartmentalizing failure domains within an application is a well-known architectural best practice.
 Within the context of protecting DNS-based identities, this compartmentalization may manifest by hosting an identity zone on a DNS server which only supports the resource record types essential for representing device identities.
@@ -486,13 +470,13 @@ If the DNS owner name of the identity proven by a certificate is directly or ind
 This privacy is implied for domain users inasfar as the domain CA does not mention users.
 When creating the DNS owner name, effects of DNS zone walking and possible harvesting of identities in the DNS zone will have to be considered.
 The DNS owner name may not have to have a direct relation to the name of the subject or the subjectAltName of the certificate.
-If there is such a relation, a DANCEr may specify support for CA certificates, stored under a wildcard in DNS.
+If there is such a relation, a DANCE protocol may specify support for CA certificates, stored under a wildcard in DNS.
 
 Further work has do be done in this area.
 
 ### DNS Scalability
 
-In the use case for IoT an implementation must be scalable to a large amount of devices.
+In the use case for IoT, an implementation must be scalable to a large amount of devices.
 In many cases, identities may also be very short lived as revocation is performed by simply removing a DNS record.
 A zone will have to manage a large amount of changes as devices are constantly added and de-activated.
 
