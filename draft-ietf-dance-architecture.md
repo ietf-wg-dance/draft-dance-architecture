@@ -35,7 +35,7 @@ normative:
 
 informative:
   pkiiot: DOI.10.1109/PKIA56009.2022.9952253
-  EAP-TLS: RFC5216
+  EAP-TLS: RFC9190
   RADSEC: RFC6614
   slowloris:
     target: "https://en.wikipedia.org/wiki/Slowloris_(computer_security)"
@@ -344,11 +344,11 @@ The use of certificate based mechanisms are expected to increase, due to challen
 
 Enterprise EAP methods use a version of TLS to form a secure transport.
 Client and server-side certificates are used as credentials.
-EAP-TLS {{?RFC9190}} does not run over TCP, but rather over a reliable transport provided by EAP.
+EAP-TLS {{?EAP-TLS}} does not run over TCP, but rather over a reliable transport provided by EAP.
 To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
 {{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
 
-The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator.
+The client side certificates are often larger than 1500 bytes and can take two or three round trip times to transport from the supplicant to the authenticator (see {{EAP-TLS}} and {{?RFC5126}} for terminology).
 In worst case scenarios, which are common with eduroam {{?RFC7593}}, the EAP packets are transported some distance, easily across the entire planet.
 The authenticating system (the "authentication server" in EAP terms) is a system at the institute that issued the client side certificate, and so already has access to the entire client certificate.
 Transferring the client certificate is redundant.
@@ -356,27 +356,15 @@ That is, the authenticator already has access to the entire certificate, but the
 
 The use of DANE Client IDs in TLS as described in {{?I-D.ietf-dance-tls-clientid}} reduces the redundant bytes of certificate sent.
 
-##### Terminology
-
-**Supplicant:** The entity which acts as the TLS client in the EAP-TLS authentication protocol.
-This term is defined in IEEE 802.1x.
-The suppliant acts as a client in the EAPOL (EAP over LAN) protocol, which is terminated at the authenticator (defined below).
-
-**Authentication server:** The entity which acts as the TLS server in the EAP-TLS protocol.
-RADIUS (RFC 2865) is a frequently-used authentication server protocol.
-
-**Authenticator:** The authenticator is the device which acts as a server in the EAPOL (EAP over LAN) protocol, and is a client of the authentication server.
-The authenticator is responsible for passing EAP messages between the supplicant and the authentication server, and for ensuring that only authenticated supplicants gain access to the network.
-
-{{EAP-TLS}} is a mature and widely-used protocol for network authentication, for IoT and IT equipment.
-IEEE 802.1x defines the encapsulation of EAP over LAN access technologies, like IEEE 802.11 wireless and IEEE 802.3 ethernet.
-RADIUS is a protocol and server technology frequently used for supporting the server side of EAP-TLS authentication.
+{{EAP-TLS}} is a mature and widely-used protocol for network authentication.
+It's use in IoT is not yet common, but use is growing.
 Guidance for implementing RADIUS strongly encourages the use of a single common CA for all supplicants, to mitigate the possibility of identifier collisions across PKIs.
 The use of DANE for client identity can allow the safe use of any number of CAs.
 DNS acts as a constraining namespace, which prevents two unrelated CAs from issuing valid certificates bearing the same identifier.
-Certificates represented in DNS are valid, and all others are un-trusted.
 
 #### RADSEC
+
+Note that EAP-TLS lives within a number of protocols, including RADIUS, but this section refers to the outer layer, while the above was about the inner portion.
 
 The RADIUS protocol has a few recognized security problems.
 {{RADSEC}} and {{?I-D.ietf-radext-radiusdtls-bis}} addresses the challenges related to the weakness of MD5-based authentication and confidentiality over untrusted networks by establishing a TLS session between the RADIUS protocol client and the RADIUS protocol server.
