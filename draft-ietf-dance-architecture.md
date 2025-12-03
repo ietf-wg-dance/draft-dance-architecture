@@ -359,7 +359,7 @@ The use of certificate based mechanisms are expected to increase, due to challen
 
 Enterprise EAP methods use a version of TLS to form a secure transport.
 Client and server-side certificates are used as credentials.
-EAP-TLS {{?EAP-TLS}} does not run over TCP, but rather over a reliable transport provided by EAP.
+EAP-TLS {{EAP-TLS}} does not run over TCP, but rather over a reliable transport provided by EAP.
 To keep it simple the EAP "window" is always one, and there are various amounts of overhead that needs to be accounted for, and the EAP segment size is often noticeably smaller than the normal ethernet 1500 bytes.
 {{?RFC3748}} does guarantee a minimum payload of 1020 bytes.
 
